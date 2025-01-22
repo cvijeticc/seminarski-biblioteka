@@ -4,14 +4,16 @@
  */
 package domen;
 
+import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 /**
  *
  * @author andri
  */
-public class StavkaIznajmljivanja {
+public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
     private int idIznajmljivanje;
     private int rb;
     private String opisStavke;
@@ -145,6 +147,41 @@ public class StavkaIznajmljivanja {
 
     public void setKnjiga(Knjiga knjiga) {
         this.knjiga = knjiga;
+    }
+
+    @Override
+    public String vratiNazivTabele() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String vratiKoloneZaUbacivanje() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String vratiVrednostiZaUbacivanje() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String vratiPrimarnikljuc() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ApstraktniDomenskiObjekat vratiobjekatIzRS(ResultSet rs) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String vratiVrednostiZaIzmenu() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     

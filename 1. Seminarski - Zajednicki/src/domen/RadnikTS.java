@@ -4,49 +4,53 @@
  */
 package domen;
 
+import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 /**
  *
  * @author andri
  */
-public class RadnikTS {
+public class RadnikTS implements ApstraktniDomenskiObjekat{
     private LocalDate datumSmene;
-    private int idRadnik;
-    private int idTerminSmene;
+    private Radnik radnik;
+    private TerminSmene terminSmene;
 
     public RadnikTS() {
     }
 
-    public RadnikTS(LocalDate datumSmene, int idRadnik, int idTerminSmene) {
+    public RadnikTS(LocalDate datumSmene, Radnik radnik, TerminSmene terminSmene) {
         this.datumSmene = datumSmene;
-        this.idRadnik = idRadnik;
-        this.idTerminSmene = idTerminSmene;
+        this.radnik = radnik;
+        this.terminSmene = terminSmene;
     }
 
     @Override
     public String toString() {
-        return "RadnikTS{" + "datumSmene=" + datumSmene + ", idRadnik=" + idRadnik + ", idTerminSmene=" + idTerminSmene + '}';
+        return "RadnikTS{" + "datumSmene=" + datumSmene + ", radnik=" + radnik + ", terminSmene=" + terminSmene + '}';
+    }
+
+    public Radnik getRadnik() {
+        return radnik;
+    }
+
+    public void setRadnik(Radnik radnik) {
+        this.radnik = radnik;
+    }
+
+    public TerminSmene getTerminSmene() {
+        return terminSmene;
+    }
+
+    public void setTerminSmene(TerminSmene terminSmene) {
+        this.terminSmene = terminSmene;
     }
 
     
 
-    public int getIdRadnik() {
-        return idRadnik;
-    }
-
-    public void setIdRadnik(int idRadnik) {
-        this.idRadnik = idRadnik;
-    }
-
-    public int getIdTerminSmene() {
-        return idTerminSmene;
-    }
-
-    public void setIdTerminSmene(int idTerminSmene) {
-        this.idTerminSmene = idTerminSmene;
-    }
+    
 
     public LocalDate getDatumSmene() {
         return datumSmene;
@@ -74,13 +78,47 @@ public class RadnikTS {
             return false;
         }
         final RadnikTS other = (RadnikTS) obj;
-        if (this.idRadnik != other.idRadnik) {
+        if (!Objects.equals(this.datumSmene, other.datumSmene)) {
             return false;
         }
-        if (this.idTerminSmene != other.idTerminSmene) {
-            return false;
-        }
-        return Objects.equals(this.datumSmene, other.datumSmene);
+        return Objects.equals(this.radnik, other.radnik);
+    }
+
+    
+
+    @Override
+    public String vratiNazivTabele() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String vratiKoloneZaUbacivanje() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String vratiVrednostiZaUbacivanje() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String vratiPrimarnikljuc() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ApstraktniDomenskiObjekat vratiobjekatIzRS(ResultSet rs) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String vratiVrednostiZaIzmenu() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     
