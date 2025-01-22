@@ -15,15 +15,19 @@ public class Radnik {
     private String ime;
     private String prezime;
     private String email;
+    private String korisnickoIme;
+    private String sifra;
 
     public Radnik() {
     }
 
-    public Radnik(int idRadnik, String ime, String prezime, String email) {
+    public Radnik(int idRadnik, String ime, String prezime, String email, String korisnickoIme, String sifra) {
         this.idRadnik = idRadnik;
         this.ime = ime;
         this.prezime = prezime;
         this.email = email;
+        this.korisnickoIme = korisnickoIme;
+        this.sifra = sifra;
     }
 
     @Override
@@ -63,9 +67,25 @@ public class Radnik {
         this.email = email;
     }
 
+    public String getKorisnickoIme() {
+        return korisnickoIme;
+    }
+
+    public void setKorisnickoIme(String korisnickoIme) {
+        this.korisnickoIme = korisnickoIme;
+    }
+
+    public String getSifra() {
+        return sifra;
+    }
+
+    public void setSifra(String sifra) {
+        this.sifra = sifra;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
+        int hash = 7;
         return hash;
     }
 
@@ -81,14 +101,15 @@ public class Radnik {
             return false;
         }
         final Radnik other = (Radnik) obj;
-        if (!Objects.equals(this.ime, other.ime)) {
+        if (!Objects.equals(this.korisnickoIme, other.korisnickoIme)) {
             return false;
         }
-        if (!Objects.equals(this.prezime, other.prezime)) {
-            return false;
-        }
-        return Objects.equals(this.email, other.email);
+        return Objects.equals(this.sifra, other.sifra);
     }
+    
+    
+
+    
     
     
     

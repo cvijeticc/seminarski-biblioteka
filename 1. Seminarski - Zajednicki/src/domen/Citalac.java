@@ -16,6 +16,7 @@ public class Citalac {
     private String prezime;
     private String email;
     private KategorijaCitaoca KategorijaCitaoca;
+    
 
     public Citalac() {
     }

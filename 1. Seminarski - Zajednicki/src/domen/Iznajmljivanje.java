@@ -14,6 +14,7 @@ import java.util.Objects;
 public class Iznajmljivanje {
     private int idIznajmljivanja;
     private double ukupanIznos;
+    private String opisIznajmljivanja;
     private Radnik radnik;
     private Citalac citalac;
     private List<StavkaIznajmljivanja> stakve;
@@ -21,9 +22,10 @@ public class Iznajmljivanje {
     public Iznajmljivanje() {
     }
 
-    public Iznajmljivanje(int idIznajmljivanja, double ukupanIznos, Radnik radnik, Citalac citalac, List<StavkaIznajmljivanja> stakve) {
+    public Iznajmljivanje(int idIznajmljivanja, double ukupanIznos, String opisIznajmljivanja, Radnik radnik, Citalac citalac, List<StavkaIznajmljivanja> stakve) {
         this.idIznajmljivanja = idIznajmljivanja;
         this.ukupanIznos = ukupanIznos;
+        this.opisIznajmljivanja = opisIznajmljivanja;
         this.radnik = radnik;
         this.citalac = citalac;
         this.stakve = stakve;
@@ -74,6 +76,14 @@ public class Iznajmljivanje {
         this.stakve = stakve;
     }
 
+    public String getOpisIznajmljivanja() {
+        return opisIznajmljivanja;
+    }
+
+    public void setOpisIznajmljivanja(String opisIznajmljivanja) {
+        this.opisIznajmljivanja = opisIznajmljivanja;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 5;

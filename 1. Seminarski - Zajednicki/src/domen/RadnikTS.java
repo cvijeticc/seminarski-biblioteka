@@ -12,23 +12,25 @@ import java.util.Objects;
  * @author andri
  */
 public class RadnikTS {
+    private LocalDate datumSmene;
     private int idRadnik;
     private int idTerminSmene;
-    private LocalDate datumSmene;
 
     public RadnikTS() {
     }
 
-    public RadnikTS(int idRadnik, int idTerminSmene, LocalDate datumSmene) {
+    public RadnikTS(LocalDate datumSmene, int idRadnik, int idTerminSmene) {
+        this.datumSmene = datumSmene;
         this.idRadnik = idRadnik;
         this.idTerminSmene = idTerminSmene;
-        this.datumSmene = datumSmene;
     }
 
     @Override
     public String toString() {
-        return "RadnikTS{" + "idRadnik=" + idRadnik + ", idTerminSmene=" + idTerminSmene + ", datumSmene=" + datumSmene + '}';
+        return "RadnikTS{" + "datumSmene=" + datumSmene + ", idRadnik=" + idRadnik + ", idTerminSmene=" + idTerminSmene + '}';
     }
+
+    
 
     public int getIdRadnik() {
         return idRadnik;
