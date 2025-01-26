@@ -15,38 +15,42 @@ import java.util.Objects;
  */
 public class RadnikTS implements ApstraktniDomenskiObjekat{
     private LocalDate datumSmene;
-    private Radnik radnik;
-    private TerminSmene terminSmene;
+    private Radnik idRadnik;
+    private TerminSmene idTerminSmene;
 
     public RadnikTS() {
     }
 
     public RadnikTS(LocalDate datumSmene, Radnik radnik, TerminSmene terminSmene) {
         this.datumSmene = datumSmene;
-        this.radnik = radnik;
-        this.terminSmene = terminSmene;
+        this.idRadnik = idRadnik;
+        this.idTerminSmene = idTerminSmene;
     }
 
     @Override
     public String toString() {
-        return "RadnikTS{" + "datumSmene=" + datumSmene + ", radnik=" + radnik + ", terminSmene=" + terminSmene + '}';
+        return "RadnikTS{" + "datumSmene=" + datumSmene + ", idRadnik=" + idRadnik + ", idTerminSmene=" + idTerminSmene + '}';
     }
 
-    public Radnik getRadnik() {
-        return radnik;
+    public Radnik getIdRadnik() {
+        return idRadnik;
     }
 
-    public void setRadnik(Radnik radnik) {
-        this.radnik = radnik;
+    public void setIdRadnik(Radnik idRadnik) {
+        this.idRadnik = idRadnik;
     }
 
-    public TerminSmene getTerminSmene() {
-        return terminSmene;
+    public TerminSmene getIdTerminSmene() {
+        return idTerminSmene;
     }
 
-    public void setTerminSmene(TerminSmene terminSmene) {
-        this.terminSmene = terminSmene;
+    public void setIdTerminSmene(TerminSmene idTerminSmene) {
+        this.idTerminSmene = idTerminSmene;
     }
+
+    
+
+   
 
     
 
@@ -62,7 +66,7 @@ public class RadnikTS implements ApstraktniDomenskiObjekat{
 
     @Override
     public int hashCode() {
-        int hash = 5;
+        int hash = 3;
         return hash;
     }
 
@@ -81,8 +85,10 @@ public class RadnikTS implements ApstraktniDomenskiObjekat{
         if (!Objects.equals(this.datumSmene, other.datumSmene)) {
             return false;
         }
-        return Objects.equals(this.radnik, other.radnik);
+        return Objects.equals(this.idRadnik, other.idRadnik);
     }
+
+    
 
     
 

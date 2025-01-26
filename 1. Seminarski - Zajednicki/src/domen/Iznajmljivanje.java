@@ -16,8 +16,8 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat{
     private int idIznajmljivanja;
     private double ukupanIznos;
     private String opisIznajmljivanja;
-    private Radnik radnik;
-    private Citalac citalac;
+    private Radnik idRadnik;
+    private Citalac idCitalac;
     private List<StavkaIznajmljivanja> stakve;
 
     public Iznajmljivanje() {
@@ -27,15 +27,17 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat{
         this.idIznajmljivanja = idIznajmljivanja;
         this.ukupanIznos = ukupanIznos;
         this.opisIznajmljivanja = opisIznajmljivanja;
-        this.radnik = radnik;
-        this.citalac = citalac;
+        this.idRadnik = idRadnik;
+        this.idCitalac = idCitalac;
         this.stakve = stakve;
     }
 
     @Override
     public String toString() {
-        return "Iznajmljivanje{" + "idIznajmljivanja=" + idIznajmljivanja + ", ukupanIznos=" + ukupanIznos + ", radnik=" + radnik + ", citalac=" + citalac + ", stakve=" + stakve + '}';
+        return "Iznajmljivanje{" + "idIznajmljivanja=" + idIznajmljivanja + ", ukupanIznos=" + ukupanIznos + ", opisIznajmljivanja=" + opisIznajmljivanja + ", idRadnik=" + idRadnik + ", idCitalac=" + idCitalac + ", stakve=" + stakve + '}';
     }
+
+   
 
     public int getIdIznajmljivanja() {
         return idIznajmljivanja;
@@ -53,21 +55,23 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat{
         this.ukupanIznos = ukupanIznos;
     }
 
-    public Radnik getRadnik() {
-        return radnik;
+    public Radnik getIdRadnik() {
+        return idRadnik;
     }
 
-    public void setRadnik(Radnik radnik) {
-        this.radnik = radnik;
+    public void setIdRadnik(Radnik idRadnik) {
+        this.idRadnik = idRadnik;
     }
 
-    public Citalac getCitalac() {
-        return citalac;
+    public Citalac getIdCitalac() {
+        return idCitalac;
     }
 
-    public void setCitalac(Citalac citalac) {
-        this.citalac = citalac;
+    public void setIdCitalac(Citalac idCitalac) {
+        this.idCitalac = idCitalac;
     }
+
+    
 
     public List<StavkaIznajmljivanja> getStakve() {
         return stakve;
@@ -84,7 +88,7 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat{
     public void setOpisIznajmljivanja(String opisIznajmljivanja) {
         this.opisIznajmljivanja = opisIznajmljivanja;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 5;
@@ -103,14 +107,16 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat{
             return false;
         }
         final Iznajmljivanje other = (Iznajmljivanje) obj;
-        if (!Objects.equals(this.radnik, other.radnik)) {
+        if (Double.doubleToLongBits(this.ukupanIznos) != Double.doubleToLongBits(other.ukupanIznos)) {
             return false;
         }
-        if (!Objects.equals(this.citalac, other.citalac)) {
+        if (!Objects.equals(this.opisIznajmljivanja, other.opisIznajmljivanja)) {
             return false;
         }
         return Objects.equals(this.stakve, other.stakve);
     }
+    
+    
 
     @Override
     public String vratiNazivTabele() {

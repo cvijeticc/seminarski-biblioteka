@@ -17,7 +17,7 @@ public class Citalac implements ApstraktniDomenskiObjekat{
     private String ime;
     private String prezime;
     private String email;
-    private KategorijaCitaoca KategorijaCitaoca;
+    private KategorijaCitaoca idKategorijaCitaoca;
     
 
     public Citalac() {
@@ -28,7 +28,7 @@ public class Citalac implements ApstraktniDomenskiObjekat{
         this.ime = ime;
         this.prezime = prezime;
         this.email = email;
-        this.KategorijaCitaoca = KategorijaCitaoca;
+        this.idKategorijaCitaoca = idKategorijaCitaoca;
     }
 
     @Override
@@ -68,13 +68,15 @@ public class Citalac implements ApstraktniDomenskiObjekat{
         this.email = email;
     }
 
-    public KategorijaCitaoca getKategorijaCitaoca() {
-        return KategorijaCitaoca;
+    public KategorijaCitaoca getIdKategorijaCitaoca() {
+        return idKategorijaCitaoca;
     }
 
-    public void setKategorijaCitaoca(KategorijaCitaoca KategorijaCitaoca) {
-        this.KategorijaCitaoca = KategorijaCitaoca;
+    public void setIdKategorijaCitaoca(KategorijaCitaoca idKategorijaCitaoca) {
+        this.idKategorijaCitaoca = idKategorijaCitaoca;
     }
+
+    
 
     @Override
     public int hashCode() {

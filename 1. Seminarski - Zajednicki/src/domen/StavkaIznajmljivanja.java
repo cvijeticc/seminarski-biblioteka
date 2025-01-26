@@ -22,7 +22,7 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
     private int brojDana;
     private double iznosPoDanu;
     private double ukupanIznosStavke;
-    private Knjiga knjiga;
+    private Knjiga idKnjiga;
 
     public StavkaIznajmljivanja() {
     }
@@ -36,16 +36,13 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
         this.brojDana = brojDana;
         this.iznosPoDanu = iznosPoDanu;
         this.ukupanIznosStavke = ukupanIznosStavke;
-        this.knjiga = knjiga;
+        this.idKnjiga = idKnjiga;
     }
 
     @Override
     public String toString() {
         return "StavkaIznajmljivanja{" + "rb=" + rb + ", opisStavke=" + opisStavke + '}';
     }
-
-    
-    
 
     @Override
     public int hashCode() {
@@ -65,17 +62,21 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
             return false;
         }
         final StavkaIznajmljivanja other = (StavkaIznajmljivanja) obj;
-        if (this.rb != other.rb) {
+        if (this.idIznajmljivanje != other.idIznajmljivanje) {
             return false;
         }
-        if (Double.doubleToLongBits(this.ukupanIznosStavke) != Double.doubleToLongBits(other.ukupanIznosStavke)) {
+        if (this.rb != other.rb) {
             return false;
         }
         if (!Objects.equals(this.opisStavke, other.opisStavke)) {
             return false;
         }
-        return Objects.equals(this.knjiga, other.knjiga);
+        return Objects.equals(this.idKnjiga, other.idKnjiga);
     }
+
+    
+    
+
 
     public int getIdIznajmljivanje() {
         return idIznajmljivanje;
@@ -141,13 +142,15 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
         this.ukupanIznosStavke = ukupanIznosStavke;
     }
 
-    public Knjiga getKnjiga() {
-        return knjiga;
+    public Knjiga getIdKnjiga() {
+        return idKnjiga;
     }
 
-    public void setKnjiga(Knjiga knjiga) {
-        this.knjiga = knjiga;
+    public void setIdKnjiga(Knjiga idKnjiga) {
+        this.idKnjiga = idKnjiga;
     }
+
+    
 
     @Override
     public String vratiNazivTabele() {
