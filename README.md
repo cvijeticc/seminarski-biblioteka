@@ -26,7 +26,6 @@ Ovaj projekat je implementacija informacionog sistema za upravljanje bibliotekam
 - **MySQL** - Baza podataka za čuvanje podataka o biblioteci.
 - **JDBC** - Konekcija između aplikacije i baze podataka.
 - **Git** - Verziona kontrola.
-- **Maven** - Upravljanje zavisnostima i build-ovanje.
 - **SQLyog** - Alat za upravljanje MySQL bazom podataka.
 
 ## Instalacija
