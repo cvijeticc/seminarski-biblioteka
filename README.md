@@ -20,6 +20,12 @@ Ovaj projekat je implementacija informacionog sistema za upravljanje bibliotekam
 - **TerminSmene:** Informacije o terminima smena radnika.
 - **RadnikTS:** Povezuje radnike sa terminima smena.
 
+## Konceptualni model
+
+Projekat se zasniva na sledećem konceptualnom modelu baze podataka:
+
+![Konceptualni model](./Images/konceptualni_model.png)
+
 ## Tehnologije i alati
 
 - **Java** - Glavni programski jezik.
