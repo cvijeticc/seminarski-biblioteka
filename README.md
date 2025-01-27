@@ -24,7 +24,7 @@ Ovaj projekat je implementacija informacionog sistema za upravljanje bibliotekam
 
 Projekat se zasniva na sledećem konceptualnom modelu baze podataka:
 
-![Konceptualni model](./Images/konceptualni_model.png)
+![Konceptualni model](./Images/konceptualni_model_1.png)
 
 ## Tehnologije i alati
 
