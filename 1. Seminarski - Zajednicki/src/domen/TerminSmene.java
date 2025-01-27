@@ -82,7 +82,7 @@ public class TerminSmene implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiNazivTabele() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "terminsmene";
     }
 
     @Override
@@ -92,7 +92,7 @@ public class TerminSmene implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "trajanjeSmene, brojSmene";
     }
 
     @Override
@@ -102,7 +102,7 @@ public class TerminSmene implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiPrimarnikljuc() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "terminsmene.idterminsmene=" + idTerminSmene;
     }
 
     @Override

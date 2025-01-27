@@ -85,7 +85,7 @@ public class KategorijaCitaoca implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiNazivTabele() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "kategorijacitaoca";
     }
 
     @Override
@@ -95,17 +95,17 @@ public class KategorijaCitaoca implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "nazivKategorije, beneficije";
     }
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "'" + nazivKategorije + "','" + beneficije + "','";
     }
 
     @Override
     public String vratiPrimarnikljuc() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "kategorijacitaoca.idkategorijacitaoca = "+idKategorijaCitaoca;
     }
 
     @Override
@@ -115,7 +115,7 @@ public class KategorijaCitaoca implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiVrednostiZaIzmenu() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "nazivKategorije = '"+nazivKategorije+"', beneficije ='"+beneficije+"'";
     }
     
     

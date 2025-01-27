@@ -48,14 +48,7 @@ public class RadnikTS implements ApstraktniDomenskiObjekat{
         this.idTerminSmene = idTerminSmene;
     }
 
-    
-
-   
-
-    
-
-    
-
+ 
     public LocalDate getDatumSmene() {
         return datumSmene;
     }
@@ -94,7 +87,7 @@ public class RadnikTS implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiNazivTabele() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "radnikts";
     }
 
     @Override
@@ -104,7 +97,7 @@ public class RadnikTS implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "datumSmene,idRadnik,idTerminSmene";
     }
 
     @Override
@@ -114,7 +107,9 @@ public class RadnikTS implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiPrimarnikljuc() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //radnikts.datumsmene= "2025-01-01" AND radnikts.idradnik = 1 AND radnikts.idterminsmene = 2
+        return "radnikts.datumsmene= " +datumSmene+" AND " +
+"radnikts.idradnik = "+idRadnik+" AND "+ "radnikts.idterminsmene = "+idTerminSmene;
     }
 
     @Override

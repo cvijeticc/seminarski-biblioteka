@@ -107,7 +107,7 @@ public class Citalac implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiNazivTabele() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "citalac";
     }
 
     @Override
@@ -117,12 +117,12 @@ public class Citalac implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "ime,prezime,email,idKategorijaCitaoca";
     }
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "'" + ime + "','" + prezime + "','" + email + "'" + idKategorijaCitaoca.getIdKategorijaCitaoca();
     }
 
     @Override

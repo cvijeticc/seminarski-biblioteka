@@ -111,7 +111,7 @@ public class Radnik implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiNazivTabele() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "radnik";
     }
 
     @Override
@@ -121,17 +121,17 @@ public class Radnik implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "ime,prezime,email,korisnickoIme,sifra";
     }
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "'" + ime + "','" + prezime + "','" + email + "','" + korisnickoIme + "','" + sifra + "','";
     }
 
     @Override
     public String vratiPrimarnikljuc() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "radnik.idradnik="+idRadnik;
     }
 
     @Override
@@ -141,7 +141,8 @@ public class Radnik implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiVrednostiZaIzmenu() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "ime = '"+ime+"', prezime ='"+prezime+"', email = '"+email
+                + "'korisnickoIme = '" + korisnickoIme + "'sifra = '"+sifra+"'";
     }
     
     
