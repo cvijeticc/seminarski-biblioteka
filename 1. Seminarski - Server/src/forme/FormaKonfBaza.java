@@ -19,6 +19,10 @@ public class FormaKonfBaza extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        txtUrl.setText(konfiguracija.Konfiguracija.getInstance().getProperty("url"));
+        txtUsername.setText(konfiguracija.Konfiguracija.getInstance().getProperty("username"));
+        pass.setText(konfiguracija.Konfiguracija.getInstance().getProperty("password"));
+        
     }
 
     /**

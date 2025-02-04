@@ -23,6 +23,7 @@ public class ServerskaForma extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         server = new Server();
         lblStatus.setText("");
+        btnZaustaviServer.setEnabled(false);
     }
 
     /**
@@ -132,14 +133,17 @@ public class ServerskaForma extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void btnPokreniServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPokreniServerActionPerformed
-        
         server.start();
         lblStatus.setText("Server je pokrenut");
+        btnZaustaviServer.setEnabled(true);
+        btnPokreniServer.setEnabled(false);
     }//GEN-LAST:event_btnPokreniServerActionPerformed
 
     private void btnZaustaviServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZaustaviServerActionPerformed
         server.zaustaviServer();
         lblStatus.setText("Server je zaustavljen");
+        btnPokreniServer.setEnabled(true);
+        btnZaustaviServer.setEnabled(false);
     }//GEN-LAST:event_btnZaustaviServerActionPerformed
 
     /**
