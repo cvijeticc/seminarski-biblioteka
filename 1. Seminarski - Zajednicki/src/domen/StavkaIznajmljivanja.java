@@ -154,7 +154,7 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiNazivTabele() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "stavkaiznajmljivanja";
     }
 
     @Override
@@ -164,7 +164,7 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "idIznajmljivanje, opisStavke, datumOd, datumDo, brojDana, iznosPoDanu, ukupanIznosStavke, idKnjiga";
     }
 
     @Override
@@ -174,7 +174,10 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiPrimarnikljuc() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //tavkaiznajmljivanja.idiznajmljivanje =3 AND stavkaiznajmljivanja.rb = 2
+//        return "stavkaiznajmljivanja.idiznajmljivanje ="+idIznajmljivanje+" AND " +
+//"stavkaiznajmljivanja.rb = "+rb;
+    return ""; //kao treba kasnije da se sredi
     }
 
     @Override
@@ -183,9 +186,16 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
     }
 
     @Override
-    public String vratiVrednostiZaIzmenu() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+public String vratiVrednostiZaIzmenu() {
+    return "opisStavke = '" + opisStavke + "', " +
+           "datumOd = '" + datumOd + "', " +
+           "datumDo = '" + datumDo + "', " +
+           "brojDana = " + brojDana + ", " +
+           "iznosPoDanu = " + iznosPoDanu + ", " +
+           "ukupanIznosStavke = " + ukupanIznosStavke + ", " +
+           "stavkaiznajmljivanja.idKnjiga = " + idKnjiga;
+}
+
     
     
           

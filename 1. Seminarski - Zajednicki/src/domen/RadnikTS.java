@@ -119,7 +119,8 @@ public class RadnikTS implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiVrednostiZaIzmenu() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "datumSmene = '"+datumSmene+
+"', radnikts.idradnik = "+idRadnik+ ", radnikts.idterminsmene = "+idTerminSmene;
     }
     
     

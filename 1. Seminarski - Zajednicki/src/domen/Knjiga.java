@@ -5,6 +5,7 @@
 package domen;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -104,27 +105,40 @@ public class Knjiga implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiNazivTabele() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "knjiga";
     }
 
     @Override
-    public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
+    List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
+    while (rs.next()) {
+        int idKnjiga = rs.getInt("knjiga.idKnjiga");
+        String naziv = rs.getString("knjiga.naziv");
+        String zanrKnjige = rs.getString("knjiga.zanrKnjige");
+        int godinaIzdavanja = rs.getInt("knjiga.godinaIzdavanja");
+        double iznosPoDanu = rs.getDouble("knjiga.iznosPoDanu");
+
+        Knjiga k = new Knjiga(idKnjiga, naziv, zanrKnjige, godinaIzdavanja, iznosPoDanu);
+        lista.add(k);
     }
+
+    return lista;
+}
+
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "naziv,zanrKnjige,godinaIzdavanja,iznosPoDanu";
     }
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "'" + naziv + "','" + zanrKnjige + "," + godinaIzdavanja + "," + iznosPoDanu ;
     }
 
     @Override
     public String vratiPrimarnikljuc() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "knjiga.idknjiga= "+idKnjiga;
     }
 
     @Override
@@ -134,7 +148,8 @@ public class Knjiga implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiVrednostiZaIzmenu() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "naziv = '"+naziv+"', zanrKnjige ='"+zanrKnjige+"', godinaIzdavanja = "+godinaIzdavanja
+                + "iznosPoDanu" + iznosPoDanu;
     }
     
     

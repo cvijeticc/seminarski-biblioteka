@@ -5,6 +5,7 @@
 package domen;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -86,9 +87,20 @@ public class TerminSmene implements ApstraktniDomenskiObjekat{
     }
 
     @Override
-    public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
+    List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
+    while (rs.next()) {
+        int idTerminSmene = rs.getInt("terminsmene.idTerminSmene");
+        int trajanjeSmene = rs.getInt("terminsmene.trajanjeSmene");
+        int brojSmene = rs.getInt("terminsmene.brojSmene");
+
+        TerminSmene termin = new TerminSmene(idTerminSmene, trajanjeSmene, brojSmene);
+        lista.add(termin);
     }
+
+    return lista;
+}
+
 
     @Override
     public String vratiKoloneZaUbacivanje() {
@@ -111,9 +123,11 @@ public class TerminSmene implements ApstraktniDomenskiObjekat{
     }
 
     @Override
-    public String vratiVrednostiZaIzmenu() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+public String vratiVrednostiZaIzmenu() {
+    return "trajanjeSmene = " + trajanjeSmene + ", " +
+           "brojSmene = " + brojSmene;
+}
+
     
     
 }

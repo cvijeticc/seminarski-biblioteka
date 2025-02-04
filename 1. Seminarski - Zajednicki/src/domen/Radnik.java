@@ -5,6 +5,7 @@
 package domen;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -116,7 +117,21 @@ public class Radnik implements ApstraktniDomenskiObjekat{
 
     @Override
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
+        while (rs.next()) { 
+            int idRadnik = rs.getInt("radnik.idRadnik");
+            String ime = rs.getString("radnik.ime");
+            String prezime = rs.getString("radnik.prezime");
+            String email= rs.getString("radnik.email");
+            String korisnickoIme = rs.getString("radnik.korisnickoIme");
+            String sifra = rs.getString("radnik.sifra");
+            
+            Radnik r = new Radnik(idRadnik, ime, prezime, email, korisnickoIme, sifra);
+            lista.add(r);
+        }
+                
+                
+        return lista;
     }
 
     @Override
