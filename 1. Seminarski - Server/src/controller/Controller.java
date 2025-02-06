@@ -4,10 +4,43 @@
  */
 package controller;
 
+import Komunikacija.Operacija;
+import domen.Radnik;
+import operacija.login.LoginOperacija;
+
 /**
  *
  * @author andri
  */
 public class Controller {
+    private static Controller instance;
+
+    private Controller() {
+    }
+    
+    public static Controller getInstance(){
+        if (instance == null) {
+            instance = new Controller();
+        }
+        return instance;    
+    }
+
+    public Radnik login(Radnik r) throws Exception {
+        LoginOperacija operacija = new LoginOperacija();
+        operacija.izvrsi(r, null);
+        
+        System.out.println("Klasa Controller "+ operacija.getRadnik());
+        
+        
+        return operacija.getRadnik();
+        
+        
+        
+        
+        
+        
+//        return dbb.login(r);
+    
+    }
     
 }
