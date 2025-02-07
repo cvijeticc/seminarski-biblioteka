@@ -10,9 +10,12 @@ import Komunikacija.Primalac;
 import Komunikacija.Zahtev; 
 import Komunikacija.Operacija;
 import Komunikacija.Odgovor;
+import domen.Citalac;
 
 import domen.Radnik;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -65,6 +68,18 @@ public class Komunikacija {
 //        Odg
         
        
+    }
+
+    public List<Citalac> ucitajCitaoce() {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_CITAOCE, null);
+        List<Citalac> citaoci = new ArrayList<>();
+        
+        posiljalac.posalji(zahtev);
+        
+        Odgovor odg = (Odgovor) primalac.primi();
+        citaoci = (List<Citalac>) odg.getOdgovor();
+        return citaoci;
+               
     }
 
 }

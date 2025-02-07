@@ -5,6 +5,7 @@
 package domen;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -112,7 +113,24 @@ public class Citalac implements ApstraktniDomenskiObjekat{
 
     @Override
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
+        while (rs.next()) { 
+            int idCitalac = rs.getInt("citalac.idCitalac");
+            String ime = rs.getString("citalac.ime");
+            String prezime = rs.getString("citalac.prezime");
+            String email= rs.getString("citalac.email");
+//            KategorijaCitaoca idKategorijaCitaoca = (KategorijaCitaoca) rs.getObject("citalac.idKategorijaCitaoca");
+            int idKategorijaCitaoca = rs.getInt("citalac.idKategorijaCitaoca");
+            KategorijaCitaoca kategorijaCitaoca = new KategorijaCitaoca(idKategorijaCitaoca, null, null);
+
+
+
+            Citalac c = new Citalac(idCitalac, ime, prezime, email, kategorijaCitaoca);
+            lista.add(c);
+        }
+                
+                
+        return lista;
     }
 
     @Override

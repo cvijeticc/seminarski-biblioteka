@@ -9,9 +9,11 @@ import Komunikacija.Posiljalac;
 import Komunikacija.Primalac;
 import Komunikacija.Zahtev;
 import controller.Controller;
+import domen.Citalac;
 import domen.Radnik;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,6 +46,10 @@ public class ObradaKlijentskihZahteva extends Thread {
                         Radnik r = (Radnik) zahtev.getParametar();
                         r = Controller.getInstance().login(r);
                         odgovor.setOdgovor(r);
+                        break;
+                    case UCITAJ_CITAOCE:
+                        List<Citalac> citaoci = Controller.getInstance().ucitajCitaoce();
+                        odgovor.setOdgovor(citaoci);
                         break;
 
                     default:

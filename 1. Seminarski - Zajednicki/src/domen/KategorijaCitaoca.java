@@ -84,6 +84,8 @@ public class KategorijaCitaoca implements ApstraktniDomenskiObjekat{
         return Objects.equals(this.nazivKategorije, other.nazivKategorije);
     }
 
+    
+    
     @Override
     public String vratiNazivTabele() {
         return "kategorijacitaoca";
