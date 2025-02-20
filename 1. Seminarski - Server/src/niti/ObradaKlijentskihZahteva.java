@@ -51,6 +51,16 @@ public class ObradaKlijentskihZahteva extends Thread {
                         List<Citalac> citaoci = Controller.getInstance().ucitajCitaoce();
                         odgovor.setOdgovor(citaoci);
                         break;
+                    case OBRISI_CITAOCA:
+                        try {
+                        Citalac c = (Citalac) zahtev.getParametar();
+                        Controller.getInstance().obrisiCitaoca(c);
+                        odgovor.setOdgovor(null);
+
+                    } catch (Exception e) {
+                        odgovor.setOdgovor(e);
+                    }
+                    break;
 
                     default:
                         System.out.println("Greska ta operacija ne postoji");

@@ -82,4 +82,21 @@ public class Komunikacija {
                
     }
 
+    public void obrisiCitaoca(Citalac c) throws Exception {
+        Zahtev zahtev = new Zahtev(Operacija.OBRISI_CITAOCA, c);
+        
+        posiljalac.posalji(zahtev);
+        
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspesno obrisano");
+        }else{
+            System.out.println("Neuspesno obrisano");
+            ((Exception)odg.getOdgovor()).printStackTrace();
+            throw new Exception("Greska");
+        }
+            
+        
+    }
+
 }

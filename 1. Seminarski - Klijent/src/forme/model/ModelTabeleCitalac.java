@@ -44,4 +44,10 @@ public class ModelTabeleCitalac extends AbstractTableModel {
     public String getColumnName(int column) {
         return kolone[column];
     }
+
+    public List<Citalac> getLista() {
+        return lista;
+    }
+    
+    
 }

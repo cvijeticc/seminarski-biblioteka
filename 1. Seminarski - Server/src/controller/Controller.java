@@ -8,7 +8,8 @@ import Komunikacija.Operacija;
 import domen.Citalac;
 import domen.Radnik;
 import java.util.List;
-import operacija.UcitajCitaoceSO;
+import operacija.citaoci.ObrisiCitaocaSO;
+import operacija.citaoci.UcitajCitaoceSO;
 import operacija.login.LoginOperacija;
 
 /**
@@ -46,5 +47,15 @@ public class Controller {
         System.out.println("Klasa Controller " + operacija.getCitaoci());
         return operacija.getCitaoci();
     }
+
+    public void obrisiCitaoca(Citalac c) throws Exception {
+        
+        ObrisiCitaocaSO operacija = new ObrisiCitaocaSO();
+        operacija.izvrsi(c, null); 
+    }
+
+    
+    
+    
 
 }

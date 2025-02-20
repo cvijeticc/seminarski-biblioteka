@@ -4,10 +4,10 @@
  */
 package operacija.login;
 
+import domen.Citalac;
 import domen.Radnik;
 import java.util.List;
 import operacija.ApstraktnaGenerickaOperacija;
-import repository.Repository;
 
 /**
  *
@@ -18,7 +18,10 @@ public class LoginOperacija extends ApstraktnaGenerickaOperacija {
     Radnik radnik;
 
     @Override
-    protected void preduslovi(Object objekat) throws Exception {
+    protected void preduslovi(Object param) throws Exception {
+        if (param == null || !(param instanceof Radnik)) {//param nije instance klase Citalac
+            throw new Exception("Sistem ne moze da obrise citaoca");
+        }
     }
 
     @Override

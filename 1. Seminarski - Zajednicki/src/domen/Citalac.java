@@ -24,7 +24,7 @@ public class Citalac implements ApstraktniDomenskiObjekat{
     public Citalac() {
     }
 
-    public Citalac(int idCitalac, String ime, String prezime, String email, KategorijaCitaoca KategorijaCitaoca) {
+    public Citalac(int idCitalac, String ime, String prezime, String email, KategorijaCitaoca idKategorijaCitaoca) {
         this.idCitalac = idCitalac;
         this.ime = ime;
         this.prezime = prezime;

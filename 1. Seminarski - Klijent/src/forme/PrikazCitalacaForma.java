@@ -4,6 +4,8 @@
  */
 package forme;
 
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JTable;
 
 /**
@@ -31,6 +33,7 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCitaoci = new javax.swing.JTable();
+        btnObrisi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,21 +50,29 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblCitaoci);
 
+        btnObrisi.setText("Obrisi");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(btnObrisi)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(16, 16, 16))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addComponent(btnObrisi)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -103,6 +114,7 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnObrisi;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblCitaoci;
     // End of variables declaration//GEN-END:variables
@@ -110,5 +122,15 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
     public JTable getTblCitaoci() {
         return tblCitaoci;
     }
+
+    public JButton getBtnObrisi() {
+        return btnObrisi;
+    }
+
+    public void addBtnObrisiActionListener(ActionListener actionListener) {
+        btnObrisi.addActionListener(actionListener);
+    }
+    
+    
     
 }
