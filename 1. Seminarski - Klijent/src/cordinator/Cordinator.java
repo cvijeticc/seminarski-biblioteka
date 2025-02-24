@@ -6,10 +6,13 @@ package cordinator;
 
 import domen.Radnik;
 import forme.DodajCitaocaForma;
+import forme.FormaMod;
 import kontroleri.GlavnaFormaController;
 import forme.GlavnaForma;
 import forme.LoginForma;
 import forme.PrikazCitalacaForma;
+import java.util.HashMap;
+import java.util.Map;
 import kontroleri.DodajCitaocaController;
 import kontroleri.LoginController;
 import kontroleri.PrikazCitalacaController;
@@ -19,23 +22,26 @@ import kontroleri.PrikazCitalacaController;
  * @author andri
  */
 public class Cordinator {
+
     private static Cordinator instance;
     private Radnik ulogovani;
     private LoginController loginController;
     private GlavnaFormaController glavnaFormaController;
     private PrikazCitalacaController pcController;
     private DodajCitaocaController dcController;
-    
+    private Map<String, Object> parametri;
+
     private Cordinator() {
+        parametri = new HashMap<>();
     }
-    
-    public static Cordinator getInstance(){
+
+    public static Cordinator getInstance() {
         if (instance == null) {
             instance = new Cordinator();
         }
         return instance;
-        
-    }   
+
+    }
 
     public void otvoriLoginFormu() {
         loginController = new LoginController(new LoginForma());
@@ -51,12 +57,12 @@ public class Cordinator {
         pcController = new PrikazCitalacaController(new PrikazCitalacaForma());
         pcController.otvoriFormu();
     }
-    
+
     public void otvoriDodajCitaocaFormu() {
         dcController = new DodajCitaocaController(new DodajCitaocaForma());
-        dcController.otvoriFormu();
+        dcController.otvoriFormu(FormaMod.DODAJ);
     }
-    
+
     public Radnik getUlogovani() {
         return ulogovani;
     }
@@ -65,10 +71,19 @@ public class Cordinator {
         this.ulogovani = ulogovani;
     }
 
-    
+    public void dodajParam(String s, Object o) {
+        parametri.put(s, o);
 
+    }
 
+    public Object vratiParam(String s) {
+        return parametri.get(s); //vraca objekat koji se nalazi pod tim kljucem
+    }
 
-    
-    
+        public void otvoriIzmeniCitaocaFormu() {
+        dcController = new DodajCitaocaController(new DodajCitaocaForma());
+        dcController.otvoriFormu(FormaMod.IZMENI);
+        
+    }
+ 
 }

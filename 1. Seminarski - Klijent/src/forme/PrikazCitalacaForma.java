@@ -6,6 +6,7 @@ package forme;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JTable;
 
 /**
@@ -20,6 +21,7 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
     public PrikazCitalacaForma() {
         initComponents();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -34,6 +36,7 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCitaoci = new javax.swing.JTable();
         btnObrisi = new javax.swing.JButton();
+        btnAzuriraj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,6 +55,8 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
 
         btnObrisi.setText("Obrisi");
 
+        btnAzuriraj.setText("Azuriraj");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,7 +65,9 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(btnObrisi)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnObrisi)
+                    .addComponent(btnAzuriraj))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,6 +79,8 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(163, 163, 163)
                 .addComponent(btnObrisi)
+                .addGap(36, 36, 36)
+                .addComponent(btnAzuriraj)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -114,6 +123,7 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAzuriraj;
     private javax.swing.JButton btnObrisi;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblCitaoci;
@@ -129,6 +139,10 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
 
     public void addBtnObrisiActionListener(ActionListener actionListener) {
         btnObrisi.addActionListener(actionListener);
+    }
+    
+    public void addBtnAzurirajActionListener(ActionListener actionListener) {
+        btnAzuriraj.addActionListener(actionListener);
     }
     
     

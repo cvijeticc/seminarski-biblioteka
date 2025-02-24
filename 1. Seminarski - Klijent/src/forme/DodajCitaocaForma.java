@@ -6,7 +6,9 @@ package forme;
 
 import domen.KategorijaCitaoca;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 /**
@@ -21,6 +23,8 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
     public DodajCitaocaForma() {
         initComponents();
         setLocationRelativeTo(null);
+        txtId.setEnabled(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -41,6 +45,9 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnDodaj = new javax.swing.JButton();
         cmbKategorijaCitaoca = new javax.swing.JComboBox<>();
+        btnAzuriraj = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,33 +78,45 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
             }
         });
 
+        btnAzuriraj.setText("Azuriraj");
+
+        jLabel5.setText("Id");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(302, Short.MAX_VALUE)
+                .addComponent(btnAzuriraj)
+                .addGap(76, 76, 76)
+                .addComponent(btnDodaj)
+                .addGap(68, 68, 68))
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel5))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtPrezime)
                     .addComponent(txtIme)
                     .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                    .addComponent(cmbKategorijaCitaoca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(117, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDodaj)
-                .addGap(61, 61, 61))
+                    .addComponent(cmbKategorijaCitaoca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtId))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -113,9 +132,11 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(cmbKategorijaCitaoca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnDodaj)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDodaj)
+                    .addComponent(btnAzuriraj))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         pack();
@@ -133,13 +154,16 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAzuriraj;
     private javax.swing.JButton btnDodaj;
     private javax.swing.JComboBox<KategorijaCitaoca> cmbKategorijaCitaoca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtIme;
     private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables
@@ -164,4 +188,30 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
      public JComboBox<KategorijaCitaoca> getCmbKategorijaCitaoca() {
         return cmbKategorijaCitaoca;
     }
+
+    public JButton getBtnAzuriraj() {
+        return btnAzuriraj;
+    }
+
+    public void setBtnAzuriraj(JButton btnAzuriraj) {
+        this.btnAzuriraj = btnAzuriraj;
+    }
+
+    public JButton getBtnDodaj() {
+        return btnDodaj;
+    }
+
+    public void setBtnDodaj(JButton btnDodaj) {
+        this.btnDodaj = btnDodaj;
+    }
+
+    public JTextField getTxtId() {
+        return txtId;
+    }
+
+    public void setTxtId(JTextField txtId) {
+        this.txtId = txtId;
+    }
+     
+     
 }

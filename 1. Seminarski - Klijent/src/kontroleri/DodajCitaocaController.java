@@ -9,11 +9,13 @@ import domen.Citalac;
 import domen.KategorijaCitaoca;
 import domen.Radnik;
 import forme.DodajCitaocaForma;
+import forme.FormaMod;
 import forme.PrikazCitalacaForma;
 import forme.model.ModelTabeleCitalac;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
@@ -31,8 +33,10 @@ public class DodajCitaocaController {
         addActionListeners();
     }
 
-    public void otvoriFormu() {
+    public void otvoriFormu(FormaMod mod) {
         pripremiFormu();
+        pripremiFormu(mod);
+
         dcf.setVisible(true);
     }
 
@@ -90,5 +94,48 @@ public class DodajCitaocaController {
             dcf.getCmbKategorijaCitaoca().addItem(kategorija);
         }
 
+    }
+
+    private void pripremiFormu(FormaMod mod) {
+
+        switch (mod) {
+            case DODAJ:
+                dcf.getBtnAzuriraj().setVisible(false);
+                dcf.getBtnDodaj().setVisible(true);
+                dcf.getBtnDodaj().setEnabled(true);
+
+                break;
+            case IZMENI:
+                dcf.getBtnAzuriraj().setVisible(true);
+                dcf.getBtnDodaj().setVisible(false);
+                dcf.getBtnAzuriraj().setEnabled(true);
+
+                Citalac c = (Citalac) Cordinator.getInstance().vratiParam("citalac");
+                dcf.getTxtIme().setText(c.getIme());
+                dcf.getTxtPrezime().setText(c.getPrezime());
+                dcf.getTxtEmail().setText(c.getEmail());
+                dcf.getTxtId().setText(c.getIdCitalac() + "");
+                
+                // Dohvati kategoriju čitaoca iz objekta čitalac
+                KategorijaCitaoca kategorijaCitaoca = c.getIdKategorijaCitaoca();
+
+                // Iteracija kroz sve stavke u JComboBox pomoću for-each petlje
+                ComboBoxModel<KategorijaCitaoca> model = dcf.getCmbKategorijaCitaoca().getModel();
+                int size = model.getSize();
+
+                for (int i = 0; i < size; i++) {
+                    KategorijaCitaoca kategorija = model.getElementAt(i);
+                    if (kategorija.equals(kategorijaCitaoca)) {
+                        dcf.getCmbKategorijaCitaoca().setSelectedItem(kategorija);
+                        break;
+                    }
+                }
+
+                
+
+                break;
+            default:
+                throw new AssertionError();
+        }
     }
 }

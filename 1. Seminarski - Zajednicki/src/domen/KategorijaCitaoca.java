@@ -66,23 +66,18 @@ public class KategorijaCitaoca implements ApstraktniDomenskiObjekat{
         return hash;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final KategorijaCitaoca other = (KategorijaCitaoca) obj;
-        if (this.idKategorijaCitaoca != other.idKategorijaCitaoca) {
-            return false;
-        }
-        return Objects.equals(this.nazivKategorije, other.nazivKategorije);
+   @Override
+public boolean equals(Object obj) {
+    if (this == obj) {
+        return true;
     }
+    if (obj == null || getClass() != obj.getClass()) {
+        return false;
+    }
+    final KategorijaCitaoca other = (KategorijaCitaoca) obj;
+    return this.idKategorijaCitaoca == other.idKategorijaCitaoca;
+}
+
 
     
     
