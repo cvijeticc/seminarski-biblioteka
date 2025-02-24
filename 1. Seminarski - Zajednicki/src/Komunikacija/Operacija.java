@@ -13,5 +13,7 @@ import java.io.Serializable;
 public enum Operacija implements Serializable {
     LOGIN, 
     UCITAJ_CITAOCE, 
-    OBRISI_CITAOCA
+    OBRISI_CITAOCA, 
+    UCITAJ_KATEGORIJE_CITAOCA, 
+    DODAJ_CITAOCA
 }

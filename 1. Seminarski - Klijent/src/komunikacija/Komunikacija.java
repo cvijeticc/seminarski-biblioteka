@@ -11,6 +11,7 @@ import Komunikacija.Zahtev;
 import Komunikacija.Operacija;
 import Komunikacija.Odgovor;
 import domen.Citalac;
+import domen.KategorijaCitaoca;
 
 import domen.Radnik;
 import java.io.IOException;
@@ -97,6 +98,29 @@ public class Komunikacija {
         }
             
         
+    }
+
+    public List<KategorijaCitaoca> ucitajKategorijeCitalaca() {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_KATEGORIJE_CITAOCA, null);
+        List<KategorijaCitaoca> kategorije = new ArrayList<>();
+        
+        posiljalac.posalji(zahtev);
+        
+        Odgovor odg = (Odgovor) primalac.primi();
+        kategorije = (List<KategorijaCitaoca>) odg.getOdgovor();
+        return kategorije;
+        
+    }
+
+    public void dodajCitaoca(Citalac c) {
+        Zahtev zahtev = new Zahtev(Operacija.DODAJ_CITAOCA, c);
+        posiljalac.posalji(zahtev);
+         Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspesno kreiran citaoc");
+        }else{
+            System.out.println("Neuspesno kreiran citaoc");
+        }
     }
 
 }

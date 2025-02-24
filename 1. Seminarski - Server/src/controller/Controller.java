@@ -4,12 +4,14 @@
  */
 package controller;
 
-import Komunikacija.Operacija;
 import domen.Citalac;
+import domen.KategorijaCitaoca;
 import domen.Radnik;
 import java.util.List;
+import operacija.citaoci.KreirajCitaocaSO;
 import operacija.citaoci.ObrisiCitaocaSO;
 import operacija.citaoci.UcitajCitaoceSO;
+import operacija.citaoci.UcitajKategorijeCitaocaSO;
 import operacija.login.LoginOperacija;
 
 /**
@@ -52,6 +54,19 @@ public class Controller {
         
         ObrisiCitaocaSO operacija = new ObrisiCitaocaSO();
         operacija.izvrsi(c, null); 
+    }
+
+    public List<KategorijaCitaoca> ucitajKategorijeCitaoca() throws Exception {
+        UcitajKategorijeCitaocaSO operacija = new UcitajKategorijeCitaocaSO();
+        operacija.izvrsi(null, null);
+        System.out.println("Klasa Controller " + operacija.getKategorije());
+        return operacija.getKategorije();
+    }
+
+    public void dodajCitaoca(Citalac c) throws Exception {
+        KreirajCitaocaSO operacija = new KreirajCitaocaSO();
+        operacija.izvrsi(c, null);
+        
     }
 
     

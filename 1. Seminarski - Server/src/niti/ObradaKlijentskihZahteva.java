@@ -10,6 +10,7 @@ import Komunikacija.Primalac;
 import Komunikacija.Zahtev;
 import controller.Controller;
 import domen.Citalac;
+import domen.KategorijaCitaoca;
 import domen.Radnik;
 import java.io.IOException;
 import java.net.Socket;
@@ -61,7 +62,15 @@ public class ObradaKlijentskihZahteva extends Thread {
                         odgovor.setOdgovor(e);
                     }
                     break;
-
+                    case UCITAJ_KATEGORIJE_CITAOCA:
+                        List<KategorijaCitaoca> kategorija = Controller.getInstance().ucitajKategorijeCitaoca();
+                        odgovor.setOdgovor(kategorija);
+                        break;  
+                    case DODAJ_CITAOCA:
+                        Citalac c = (Citalac) zahtev.getParametar();
+                        Controller.getInstance().dodajCitaoca(c);
+                        odgovor.setOdgovor(null);
+                        break;  
                     default:
                         System.out.println("Greska ta operacija ne postoji");
 //                    throw new AssertionError();

@@ -5,10 +5,12 @@
 package cordinator;
 
 import domen.Radnik;
+import forme.DodajCitaocaForma;
 import kontroleri.GlavnaFormaController;
 import forme.GlavnaForma;
 import forme.LoginForma;
 import forme.PrikazCitalacaForma;
+import kontroleri.DodajCitaocaController;
 import kontroleri.LoginController;
 import kontroleri.PrikazCitalacaController;
 
@@ -22,7 +24,7 @@ public class Cordinator {
     private LoginController loginController;
     private GlavnaFormaController glavnaFormaController;
     private PrikazCitalacaController pcController;
-    
+    private DodajCitaocaController dcController;
     
     private Cordinator() {
     }
@@ -45,9 +47,14 @@ public class Cordinator {
         glavnaFormaController.otvoriFormu();
     }
 
-    public void otvoriPrikazPacijanataFormu() {
+    public void otvoriPrikazCitalacaFormu() {
         pcController = new PrikazCitalacaController(new PrikazCitalacaForma());
         pcController.otvoriFormu();
+    }
+    
+    public void otvoriDodajCitaocaFormu() {
+        dcController = new DodajCitaocaController(new DodajCitaocaForma());
+        dcController.otvoriFormu();
     }
     
     public Radnik getUlogovani() {
@@ -57,6 +64,9 @@ public class Cordinator {
     public void setUlogovani(Radnik ulogovani) {
         this.ulogovani = ulogovani;
     }
+
+    
+
 
 
     

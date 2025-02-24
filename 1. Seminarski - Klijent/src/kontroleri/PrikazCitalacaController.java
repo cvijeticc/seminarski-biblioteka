@@ -34,7 +34,7 @@ public class PrikazCitalacaController {
         pcf.setVisible(true);
     }
 
-    private void pripremiFormu() {
+    public void pripremiFormu() {
         List<Citalac> citaoci = Komunikacija.getInstance().ucitajCitaoce();
         ModelTabeleCitalac mtc = new ModelTabeleCitalac(citaoci);
         pcf.getTblCitaoci().setModel(mtc);

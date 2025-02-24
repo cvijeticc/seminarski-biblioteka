@@ -140,7 +140,7 @@ public class Citalac implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        return "'" + ime + "','" + prezime + "','" + email + "'" + idKategorijaCitaoca.getIdKategorijaCitaoca();
+        return "'" + ime + "','" + prezime + "','" + email + "'," + idKategorijaCitaoca.getIdKategorijaCitaoca();
     }
 
     @Override
