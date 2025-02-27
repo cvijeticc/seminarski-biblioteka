@@ -10,6 +10,7 @@ import Komunikacija.Primalac;
 import Komunikacija.Zahtev; 
 import Komunikacija.Operacija;
 import Komunikacija.Odgovor;
+import cordinator.Cordinator;
 import domen.Citalac;
 import domen.KategorijaCitaoca;
 
@@ -121,6 +122,19 @@ public class Komunikacija {
         }else{
             System.out.println("Neuspesno kreiran citaoc");
         }
+    }
+
+    public void azurirajCitaoca(Citalac c) {
+        Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_CITAOCA, c);
+        posiljalac.posalji(zahtev);
+         Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspesno azuriran citaoc");
+            Cordinator.getInstance().osveziFormu();
+        }else{
+            System.out.println("Neuspesno azuriran citaoc");
+        }
+        
     }
 
 }

@@ -112,6 +112,13 @@ public class Citalac implements ApstraktniDomenskiObjekat{
     }
 
     @Override
+//    SELECT citalac.idCitalac, 
+//       citalac.ime, 
+//       citalac.prezime, 
+//       citalac.email, 
+//       citalac.idKategorijaCitaoca
+//FROM citalac;
+
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
         List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
         while (rs.next()) { 
@@ -119,10 +126,11 @@ public class Citalac implements ApstraktniDomenskiObjekat{
             String ime = rs.getString("citalac.ime");
             String prezime = rs.getString("citalac.prezime");
             String email= rs.getString("citalac.email");
-//            KategorijaCitaoca idKategorijaCitaoca = (KategorijaCitaoca) rs.getObject("citalac.idKategorijaCitaoca");
+            // Ucitavanje kategorije citaoca
             int idKategorijaCitaoca = rs.getInt("citalac.idKategorijaCitaoca");
-            KategorijaCitaoca kategorijaCitaoca = new KategorijaCitaoca(idKategorijaCitaoca, null, null);
-
+            String nazivKategorijaCitaoca = rs.getString("kategorijaCitaoca.nazivKategorije");
+            KategorijaCitaoca kategorijaCitaoca = new KategorijaCitaoca(idKategorijaCitaoca, nazivKategorijaCitaoca, null);
+            
 
 
             Citalac c = new Citalac(idCitalac, ime, prezime, email, kategorijaCitaoca);
@@ -157,7 +165,7 @@ public class Citalac implements ApstraktniDomenskiObjekat{
     @Override
     public String vratiVrednostiZaIzmenu() {
         return "ime = '"+ime+"', prezime ='"+prezime+"', email = '"+email
-                + "'idKategorijaCitaoca" + idKategorijaCitaoca;
+                + "',idKategorijaCitaoca = " + idKategorijaCitaoca.getIdKategorijaCitaoca();
     }
     
     

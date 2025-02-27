@@ -23,8 +23,17 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
     @Override
     public List<ApstraktniDomenskiObjekat> getAll(ApstraktniDomenskiObjekat param, String uslov) throws Exception {
         List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
-        //select * from pacijent where id = 5
-        String upit = "SELECT * FROM " + param.vratiNazivTabele();
+        
+        String upit;
+        //samo u slucaju kada je citalac onda mi treba i naziv kategorija citaoca
+        if (param.vratiNazivTabele().equals("citalac")) {
+            upit = "SELECT * FROM citalac "
+                    + "JOIN kategorijacitaoca ON citalac.idKategorijaCitaoca = kategorijacitaoca.idKategorijaCitaoca";
+        } else {
+            //select * from citalac
+            upit = "SELECT * FROM " + param.vratiNazivTabele();
+        }
+
         if (uslov != null) {
             upit += uslov;
         }
@@ -52,7 +61,7 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
     @Override
     public void edit(ApstraktniDomenskiObjekat param) throws Exception {
         String upit = "UPDATE " + param.vratiNazivTabele() + " SET "
-                + param.vratiVrednostiZaIzmenu();
+                + param.vratiVrednostiZaIzmenu() + " WHERE " + param.vratiPrimarnikljuc();
         System.out.println(upit);
         Statement st = DbConnectionFactory.getInstance().getConnection().createStatement();
         st.executeUpdate(upit);
@@ -62,7 +71,7 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
 
     @Override
     public void delete(ApstraktniDomenskiObjekat param) throws Exception {
-        String upit = "DELETE FROM "+ param.vratiNazivTabele() +" WHERE "+ param.vratiPrimarnikljuc();
+        String upit = "DELETE FROM " + param.vratiNazivTabele() + " WHERE " + param.vratiPrimarnikljuc();
         System.out.println(upit);
         Statement st = DbConnectionFactory.getInstance().getConnection().createStatement();
         st.executeUpdate(upit);

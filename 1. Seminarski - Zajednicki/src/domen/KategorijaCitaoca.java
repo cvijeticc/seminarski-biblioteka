@@ -68,7 +68,7 @@ public class KategorijaCitaoca implements ApstraktniDomenskiObjekat{
 
    @Override
 public boolean equals(Object obj) {
-    if (this == obj) {
+    if (this == obj) {//this je taj objekat na kome je pozvana equals fja
         return true;
     }
     if (obj == null || getClass() != obj.getClass()) {

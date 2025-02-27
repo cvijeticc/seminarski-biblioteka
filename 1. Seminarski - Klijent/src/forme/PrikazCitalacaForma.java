@@ -4,10 +4,13 @@
  */
 package forme;
 
+import domen.KategorijaCitaoca;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -20,8 +23,8 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
      */
     public PrikazCitalacaForma() {
         initComponents();
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//        setLocationRelativeTo(null);
+//        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -37,6 +40,16 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
         tblCitaoci = new javax.swing.JTable();
         btnObrisi = new javax.swing.JButton();
         btnAzuriraj = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtIme = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtPrezime = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        cmbKategorijaCitaoca = new javax.swing.JComboBox<>();
+        btnPretrazi = new javax.swing.JButton();
+        btnResetujPretragu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,35 +70,96 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
 
         btnAzuriraj.setText("Azuriraj");
 
+        jLabel1.setText("Ime");
+
+        txtIme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtImeActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Prezime");
+
+        jLabel3.setText("Email");
+
+        jLabel4.setText("Kategorija citaoca");
+
+        btnPretrazi.setText("Pretraži");
+
+        btnResetujPretragu.setText("Resetuj pretragu");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addContainerGap()
+                .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnObrisi)
-                    .addComponent(btnAzuriraj))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtIme, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbKategorijaCitaoca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnPretrazi)
+                                .addGap(41, 41, 41)
+                                .addComponent(btnResetujPretragu))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnObrisi)
+                                    .addComponent(btnAzuriraj))))))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
             .addGroup(layout.createSequentialGroup()
                 .addGap(163, 163, 163)
                 .addComponent(btnObrisi)
                 .addGap(36, 36, 36)
                 .addComponent(btnAzuriraj)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(cmbKategorijaCitaoca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPretrazi)
+                    .addComponent(btnResetujPretragu))
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtImeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtImeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,8 +199,18 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAzuriraj;
     private javax.swing.JButton btnObrisi;
+    private javax.swing.JButton btnPretrazi;
+    private javax.swing.JButton btnResetujPretragu;
+    private javax.swing.JComboBox<KategorijaCitaoca> cmbKategorijaCitaoca;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblCitaoci;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtIme;
+    private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables
 
     public JTable getTblCitaoci() {
@@ -137,14 +221,42 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
         return btnObrisi;
     }
 
+    public JComboBox<KategorijaCitaoca> getCmbKategorijaCitaoca() {
+        return cmbKategorijaCitaoca;
+    }
+
+    public void setCmbKategorijaCitaoca(JComboBox<KategorijaCitaoca> cmbKategorijaCitaoca) {
+        this.cmbKategorijaCitaoca = cmbKategorijaCitaoca;
+    }
+
     public void addBtnObrisiActionListener(ActionListener actionListener) {
         btnObrisi.addActionListener(actionListener);
     }
-    
+
     public void addBtnAzurirajActionListener(ActionListener actionListener) {
         btnAzuriraj.addActionListener(actionListener);
     }
+
+    public void addBtnPretraziActionListener(ActionListener actionListener) {
+        btnPretrazi.addActionListener(actionListener);
+    }
+    
+    public void addBtnResetujPretraguActionListener(ActionListener actionListener) {
+        btnResetujPretragu.addActionListener(actionListener);
+    }
+
+    public JTextField getTxtEmail() {
+        return txtEmail;
+    }
+
+    public JTextField getTxtIme() {
+        return txtIme;
+    }
+
+    public JTextField getTxtPrezime() {
+        return txtPrezime;
+    }
     
     
-    
+
 }

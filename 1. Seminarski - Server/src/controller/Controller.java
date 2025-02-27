@@ -8,6 +8,7 @@ import domen.Citalac;
 import domen.KategorijaCitaoca;
 import domen.Radnik;
 import java.util.List;
+import operacija.citaoci.AzurirajCitaocaSO;
 import operacija.citaoci.KreirajCitaocaSO;
 import operacija.citaoci.ObrisiCitaocaSO;
 import operacija.citaoci.UcitajCitaoceSO;
@@ -67,6 +68,11 @@ public class Controller {
         KreirajCitaocaSO operacija = new KreirajCitaocaSO();
         operacija.izvrsi(c, null);
         
+    }
+
+    public void azurirajCitaoca(Citalac c) throws Exception {
+        AzurirajCitaocaSO operacija = new AzurirajCitaocaSO();
+        operacija.izvrsi(c, null);
     }
 
     

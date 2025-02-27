@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
 
@@ -83,6 +84,33 @@ public class DodajCitaocaController {
             }
 
         });
+        /////////////
+        dcf.izmeniAddActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                izmeni(e);
+            }
+
+            private void izmeni(ActionEvent e) {
+                int id = Integer.parseInt( dcf.getTxtId().getText());
+                String ime = dcf.getTxtIme().getText().trim();
+                String prezime = dcf.getTxtPrezime().getText().trim();
+                String email = dcf.getTxtEmail().getText().trim();
+                KategorijaCitaoca kategorija = (KategorijaCitaoca) dcf.getCmbKategorijaCitaoca().getSelectedItem();
+
+                // Kreiranje objekta čitaoca
+                Citalac c = new Citalac(id, ime, prezime, email, kategorija);
+
+                try {
+                    Komunikacija.getInstance().azurirajCitaoca(c);
+                    JOptionPane.showMessageDialog(dcf, "Uspešno azuriran čitalac!", "Obaveštenje", JOptionPane.INFORMATION_MESSAGE);
+                    dcf.dispose(); // Zatvaramo prozor nakon uspešnog dodavanja
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(dcf, "Neuspešno azuriran čitalac!", "Greška", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+        });
     }
 
     private void pripremiFormu() {
@@ -93,6 +121,10 @@ public class DodajCitaocaController {
 
             dcf.getCmbKategorijaCitaoca().addItem(kategorija);
         }
+        
+        dcf.setLocationRelativeTo(null);
+        dcf.getTxtId().setEnabled(false);
+        dcf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
 

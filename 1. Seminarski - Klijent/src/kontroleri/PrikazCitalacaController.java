@@ -6,6 +6,7 @@ package kontroleri;
 
 import cordinator.Cordinator;
 import domen.Citalac;
+import domen.KategorijaCitaoca;
 import forme.GlavnaForma;
 import forme.PrikazCitalacaForma;
 import forme.model.ModelTabeleCitalac;
@@ -14,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
 
@@ -39,6 +41,16 @@ public class PrikazCitalacaController {
         List<Citalac> citaoci = Komunikacija.getInstance().ucitajCitaoce();
         ModelTabeleCitalac mtc = new ModelTabeleCitalac(citaoci);
         pcf.getTblCitaoci().setModel(mtc);
+        pcf.setLocationRelativeTo(null);
+        pcf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        List<KategorijaCitaoca> kategorije = Komunikacija.getInstance().ucitajKategorijeCitalaca();
+
+        pcf.getCmbKategorijaCitaoca().addItem(null);
+        for (KategorijaCitaoca kategorija : kategorije) {
+
+            pcf.getCmbKategorijaCitaoca().addItem(kategorija);
+        }
     }
 
     private void addActionListeners() {
@@ -79,6 +91,35 @@ public class PrikazCitalacaController {
                 }
             }
         });
+        
+        pcf.addBtnPretraziActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String ime = pcf.getTxtIme().getText().trim();
+                String prezime = pcf.getTxtPrezime().getText().trim();
+                String email = pcf.getTxtEmail().getText().trim();
+                KategorijaCitaoca kategorija = (KategorijaCitaoca) pcf.getCmbKategorijaCitaoca().getSelectedItem();
+                
+                ModelTabeleCitalac mtc = (ModelTabeleCitalac) pcf.getTblCitaoci().getModel();
+                mtc.pretrazi(ime, prezime, email, kategorija);    
+                
+                    
+                }
+            });
+        
+        
+        pcf.addBtnResetujPretraguActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                   
+                pripremiFormu();//mogao sam i osveziFormu();
+                    
+                }
+            });
 
+    }
+
+    public void osveziFormu() {
+        pripremiFormu();
     }
 }

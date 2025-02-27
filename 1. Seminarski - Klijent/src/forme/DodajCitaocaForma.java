@@ -22,9 +22,9 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
      */
     public DodajCitaocaForma() {
         initComponents();
-        setLocationRelativeTo(null);
-        txtId.setEnabled(false);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//        setLocationRelativeTo(null);
+//        txtId.setEnabled(false);
+//        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -169,8 +169,11 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void dodajAddActionListener(ActionListener actionListener) {
-
         btnDodaj.addActionListener(actionListener);
+    }
+    
+    public void izmeniAddActionListener(ActionListener actionListener) {
+        btnAzuriraj.addActionListener(actionListener);
     }
 
     public JTextField getTxtEmail() {

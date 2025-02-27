@@ -85,5 +85,9 @@ public class Cordinator {
         dcController.otvoriFormu(FormaMod.IZMENI);
         
     }
+
+    public void osveziFormu() {
+        pcController.osveziFormu();
+    }
  
 }
