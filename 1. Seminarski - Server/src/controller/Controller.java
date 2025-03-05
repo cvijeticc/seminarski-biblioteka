@@ -4,7 +4,9 @@
  */
 package controller;
 
+import operacija.iznajmljivanja.UcitajIznajmljivanjaSO;
 import domen.Citalac;
+import domen.Iznajmljivanje;
 import domen.KategorijaCitaoca;
 import domen.Radnik;
 import java.util.List;
@@ -73,6 +75,13 @@ public class Controller {
     public void azurirajCitaoca(Citalac c) throws Exception {
         AzurirajCitaocaSO operacija = new AzurirajCitaocaSO();
         operacija.izvrsi(c, null);
+    }
+
+    public List<Iznajmljivanje> ucitajIznajmljivanja() throws Exception {
+        UcitajIznajmljivanjaSO operacija = new UcitajIznajmljivanjaSO();
+        operacija.izvrsi(null, null);
+        System.out.println("Klasa Controller " + operacija.getIznajmljivanja());
+        return operacija.getIznajmljivanja();
     }
 
     

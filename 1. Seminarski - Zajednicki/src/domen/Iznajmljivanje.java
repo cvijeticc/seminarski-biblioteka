@@ -5,6 +5,7 @@
 package domen;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,7 +13,8 @@ import java.util.Objects;
  *
  * @author andri
  */
-public class Iznajmljivanje implements ApstraktniDomenskiObjekat{
+public class Iznajmljivanje implements ApstraktniDomenskiObjekat {
+
     private int idIznajmljivanja;
     private double ukupanIznos;
     private String opisIznajmljivanja;
@@ -23,7 +25,7 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat{
     public Iznajmljivanje() {
     }
 
-    public Iznajmljivanje(int idIznajmljivanja, double ukupanIznos, String opisIznajmljivanja, Radnik radnik, Citalac citalac, List<StavkaIznajmljivanja> stakve) {
+    public Iznajmljivanje(int idIznajmljivanja, double ukupanIznos, String opisIznajmljivanja, Radnik idRadnik, Citalac idCitalac, List<StavkaIznajmljivanja> stakve) {
         this.idIznajmljivanja = idIznajmljivanja;
         this.ukupanIznos = ukupanIznos;
         this.opisIznajmljivanja = opisIznajmljivanja;
@@ -36,8 +38,6 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat{
     public String toString() {
         return "Iznajmljivanje{" + "idIznajmljivanja=" + idIznajmljivanja + ", ukupanIznos=" + ukupanIznos + ", opisIznajmljivanja=" + opisIznajmljivanja + ", idRadnik=" + idRadnik + ", idCitalac=" + idCitalac + ", stakve=" + stakve + '}';
     }
-
-   
 
     public int getIdIznajmljivanja() {
         return idIznajmljivanja;
@@ -70,8 +70,6 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat{
     public void setIdCitalac(Citalac idCitalac) {
         this.idCitalac = idCitalac;
     }
-
-    
 
     public List<StavkaIznajmljivanja> getStakve() {
         return stakve;
@@ -115,8 +113,6 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat{
         }
         return Objects.equals(this.stakve, other.stakve);
     }
-    
-    
 
     @Override
     public String vratiNazivTabele() {
@@ -125,7 +121,33 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat{
 
     @Override
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
+
+        while (rs.next()) {
+//            int idIznajmljivanja = rs.getInt("iznajmljivanje.idIznajmljivanja");
+            int idIznajmljivanja = rs.getInt("iznajmljivanje.idIznajmljivanja");
+            double ukupanIznos = rs.getDouble("iznajmljivanje.ukupanIznos");
+            String opisIznajmljivanja = rs.getString("iznajmljivanje.opisIznajmljivanja");
+            // Ucitavanje kategorije citaoca
+//            int idKategorijaCitaoca = rs.getInt("citalac.idKategorijaCitaoca");
+//            String nazivKategorijaCitaoca = rs.getString("kategorijaCitaoca.nazivKategorije");
+//            KategorijaCitaoca kategorijaCitaoca = new KategorijaCitaoca(idKategorijaCitaoca, nazivKategorijaCitaoca, null);
+            int idRadnik = rs.getInt("iznajmljivanje.idRadnik");
+            int idCitalac = rs.getInt("iznajmljivanje.idCitalac");
+            String imeRadnika = rs.getString("radnik.ime");
+            String imeCitaoca = rs.getString("citalac.ime");
+            String prezimeRadnika = rs.getString("radnik.prezime");
+            String prezimeCitaoca = rs.getString("citalac.prezime");
+
+            Radnik r = new Radnik(idRadnik, imeRadnika, prezimeRadnika, null, null, null);
+           
+            Citalac c =  new Citalac(idCitalac, imeCitaoca, prezimeCitaoca, null, null);
+            
+            Iznajmljivanje i = new Iznajmljivanje(idIznajmljivanja, ukupanIznos, opisIznajmljivanja, r, c, null);
+            lista.add(i);
+        }
+
+        return lista;
     }
 
     @Override
@@ -136,13 +158,13 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat{
     @Override
     public String vratiVrednostiZaUbacivanje() {
         //'ukupanIznos','dasad','oinmoi'
-        return ukupanIznos +",'" +opisIznajmljivanja+"'," +idRadnik.getIdRadnik()+"," 
-                +idCitalac.getIdCitalac();
+        return ukupanIznos + ",'" + opisIznajmljivanja + "'," + idRadnik.getIdRadnik() + ","
+                + idCitalac.getIdCitalac();
     }
 
     @Override
     public String vratiPrimarnikljuc() {
-        return "iznajmljivanje.idIznajmljivanja = "+idIznajmljivanja;
+        return "iznajmljivanje.idIznajmljivanja = " + idIznajmljivanja;
     }
 
     @Override
@@ -152,11 +174,9 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiVrednostiZaIzmenu() {
-        return "ukupanIznos = '"+ukupanIznos+"', opisIznajmljivanja ='"+opisIznajmljivanja+"', idRadnik.getIdRadnik() = "+
-                idRadnik.getIdRadnik()+ "idCitalac.getIdCitalac()" + idCitalac.getIdCitalac();
-    
+        return "ukupanIznos = '" + ukupanIznos + "', opisIznajmljivanja ='" + opisIznajmljivanja + "', idRadnik.getIdRadnik() = "
+                + idRadnik.getIdRadnik() + "idCitalac.getIdCitalac()" + idCitalac.getIdCitalac();
+
     }
-    
-    
-    
+
 }

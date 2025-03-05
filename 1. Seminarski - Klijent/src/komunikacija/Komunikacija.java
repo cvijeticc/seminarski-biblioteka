@@ -12,6 +12,7 @@ import Komunikacija.Operacija;
 import Komunikacija.Odgovor;
 import cordinator.Cordinator;
 import domen.Citalac;
+import domen.Iznajmljivanje;
 import domen.KategorijaCitaoca;
 
 import domen.Radnik;
@@ -134,6 +135,18 @@ public class Komunikacija {
         }else{
             System.out.println("Neuspesno azuriran citaoc");
         }
+        
+    }
+
+    public List<Iznajmljivanje> ucitajIznajmljivanja() {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_IZNAJMLJIVANJA, null);
+        List<Iznajmljivanje> iznajmljivanja = new ArrayList<>();
+        
+        posiljalac.posalji(zahtev);
+        
+        Odgovor odg = (Odgovor) primalac.primi();
+        iznajmljivanja = (List<Iznajmljivanje>) odg.getOdgovor();
+        return iznajmljivanja;
         
     }
 

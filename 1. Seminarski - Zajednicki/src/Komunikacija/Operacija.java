@@ -16,5 +16,6 @@ public enum Operacija implements Serializable {
     OBRISI_CITAOCA, 
     UCITAJ_KATEGORIJE_CITAOCA, 
     DODAJ_CITAOCA,
-    AZURIRAJ_CITAOCA
+    AZURIRAJ_CITAOCA, 
+    UCITAJ_IZNAJMLJIVANJA
 }

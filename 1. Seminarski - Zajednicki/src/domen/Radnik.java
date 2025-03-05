@@ -13,7 +13,8 @@ import java.util.Objects;
  *
  * @author andri
  */
-public class Radnik implements ApstraktniDomenskiObjekat{
+public class Radnik implements ApstraktniDomenskiObjekat {
+
     private int idRadnik;
     private String ime;
     private String prezime;
@@ -35,7 +36,7 @@ public class Radnik implements ApstraktniDomenskiObjekat{
 
     @Override
     public String toString() {
-        return ime + " " + prezime ;
+        return (ime != null && prezime != null) ? ime + " " + prezime : "ID: " + idRadnik;
     }
 
     public int getIdRadnik() {
@@ -118,19 +119,18 @@ public class Radnik implements ApstraktniDomenskiObjekat{
     @Override
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
         List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
-        while (rs.next()) { 
+        while (rs.next()) {
             int idRadnik = rs.getInt("radnik.idRadnik");
             String ime = rs.getString("radnik.ime");
             String prezime = rs.getString("radnik.prezime");
-            String email= rs.getString("radnik.email");
+            String email = rs.getString("radnik.email");
             String korisnickoIme = rs.getString("radnik.korisnickoIme");
             String sifra = rs.getString("radnik.sifra");
-            
+
             Radnik r = new Radnik(idRadnik, ime, prezime, email, korisnickoIme, sifra);
             lista.add(r);
         }
-                
-                
+
         return lista;
     }
 
@@ -146,7 +146,7 @@ public class Radnik implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiPrimarnikljuc() {
-        return "radnik.idradnik="+idRadnik;
+        return "radnik.idradnik=" + idRadnik;
     }
 
     @Override
@@ -156,15 +156,8 @@ public class Radnik implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiVrednostiZaIzmenu() {
-        return "ime = '"+ime+"', prezime ='"+prezime+"', email = '"+email
-                + "'korisnickoIme = '" + korisnickoIme + "'sifra = '"+sifra+"'";
+        return "ime = '" + ime + "', prezime ='" + prezime + "', email = '" + email
+                + "'korisnickoIme = '" + korisnickoIme + "'sifra = '" + sifra + "'";
     }
-    
-    
 
-    
-    
-    
-    
-    
 }

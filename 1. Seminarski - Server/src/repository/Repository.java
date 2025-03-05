@@ -4,6 +4,7 @@
  */
 package repository;
 
+import domen.Iznajmljivanje;
 import java.util.List;
 
 
@@ -20,7 +21,9 @@ public interface Repository<T> {//T je bilo koji objekat iz domena u Zajednickom
     void edit(T param) throws Exception;
 
     void delete(T param) throws Exception;
-
+    
     List<T> getAll();
+    
+    List<T> getAllIznajmljivanje(T param, String uslov) throws Exception;
 
 }

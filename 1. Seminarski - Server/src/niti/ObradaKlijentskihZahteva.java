@@ -10,6 +10,7 @@ import Komunikacija.Primalac;
 import Komunikacija.Zahtev;
 import controller.Controller;
 import domen.Citalac;
+import domen.Iznajmljivanje;
 import domen.KategorijaCitaoca;
 import domen.Radnik;
 import java.io.IOException;
@@ -65,17 +66,23 @@ public class ObradaKlijentskihZahteva extends Thread {
                     case UCITAJ_KATEGORIJE_CITAOCA:
                         List<KategorijaCitaoca> kategorija = Controller.getInstance().ucitajKategorijeCitaoca();
                         odgovor.setOdgovor(kategorija);
-                        break;  
+                        break;
                     case DODAJ_CITAOCA:
                         Citalac c = (Citalac) zahtev.getParametar();
                         Controller.getInstance().dodajCitaoca(c);
                         odgovor.setOdgovor(null);
-                        break;  
+                        break;
                     case AZURIRAJ_CITAOCA:
                         Citalac c1 = (Citalac) zahtev.getParametar();
                         Controller.getInstance().azurirajCitaoca(c1);
                         odgovor.setOdgovor(null);
-                        break;  
+                        break;
+                    case UCITAJ_IZNAJMLJIVANJA:
+                        List<Iznajmljivanje> iznajmljivanja = Controller.getInstance().ucitajIznajmljivanja();
+                        System.out.println("Klasa obrada klijentskih zahteva: ");
+                        System.out.println(iznajmljivanja);
+                        odgovor.setOdgovor(iznajmljivanja);
+                        break;
                     default:
                         System.out.println("Greska ta operacija ne postoji");
 //                    throw new AssertionError();

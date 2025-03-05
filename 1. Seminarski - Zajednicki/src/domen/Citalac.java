@@ -13,13 +13,13 @@ import java.util.Objects;
  *
  * @author andri
  */
-public class Citalac implements ApstraktniDomenskiObjekat{
+public class Citalac implements ApstraktniDomenskiObjekat {
+
     private int idCitalac;
     private String ime;
     private String prezime;
     private String email;
     private KategorijaCitaoca idKategorijaCitaoca;
-    
 
     public Citalac() {
     }
@@ -34,7 +34,7 @@ public class Citalac implements ApstraktniDomenskiObjekat{
 
     @Override
     public String toString() {
-        return  ime + " " + prezime;
+        return (ime != null && prezime != null) ? ime + " " + prezime : "ID: " + idCitalac;
     }
 
     public int getIdCitalac() {
@@ -76,8 +76,6 @@ public class Citalac implements ApstraktniDomenskiObjekat{
     public void setIdKategorijaCitaoca(KategorijaCitaoca idKategorijaCitaoca) {
         this.idKategorijaCitaoca = idKategorijaCitaoca;
     }
-
-    
 
     @Override
     public int hashCode() {
@@ -121,23 +119,21 @@ public class Citalac implements ApstraktniDomenskiObjekat{
 
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
         List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
-        while (rs.next()) { 
+        while (rs.next()) {
             int idCitalac = rs.getInt("citalac.idCitalac");
             String ime = rs.getString("citalac.ime");
             String prezime = rs.getString("citalac.prezime");
-            String email= rs.getString("citalac.email");
+            String email = rs.getString("citalac.email");
             // Ucitavanje kategorije citaoca
             int idKategorijaCitaoca = rs.getInt("citalac.idKategorijaCitaoca");
+
             String nazivKategorijaCitaoca = rs.getString("kategorijaCitaoca.nazivKategorije");
             KategorijaCitaoca kategorijaCitaoca = new KategorijaCitaoca(idKategorijaCitaoca, nazivKategorijaCitaoca, null);
-            
-
 
             Citalac c = new Citalac(idCitalac, ime, prezime, email, kategorijaCitaoca);
             lista.add(c);
         }
-                
-                
+
         return lista;
     }
 
@@ -164,10 +160,8 @@ public class Citalac implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiVrednostiZaIzmenu() {
-        return "ime = '"+ime+"', prezime ='"+prezime+"', email = '"+email
+        return "ime = '" + ime + "', prezime ='" + prezime + "', email = '" + email
                 + "',idKategorijaCitaoca = " + idKategorijaCitaoca.getIdKategorijaCitaoca();
     }
-    
-    
-    
+
 }

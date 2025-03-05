@@ -99,7 +99,11 @@ public class PrikazCitalacaController {
                 String prezime = pcf.getTxtPrezime().getText().trim();
                 String email = pcf.getTxtEmail().getText().trim();
                 KategorijaCitaoca kategorija = (KategorijaCitaoca) pcf.getCmbKategorijaCitaoca().getSelectedItem();
-                
+                if (ime.isEmpty() && prezime.isEmpty() && email.isEmpty() && kategorija == null ) {
+                    JOptionPane.showMessageDialog(pcf, "Navedi neku informaciju o citaocu", "Moras popuniti nesto", JOptionPane.INFORMATION_MESSAGE);;
+                    return;
+                   
+                }
                 ModelTabeleCitalac mtc = (ModelTabeleCitalac) pcf.getTblCitaoci().getModel();
                 mtc.pretrazi(ime, prezime, email, kategorija);    
                 

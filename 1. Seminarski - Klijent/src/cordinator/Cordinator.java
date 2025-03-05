@@ -11,11 +11,13 @@ import kontroleri.GlavnaFormaController;
 import forme.GlavnaForma;
 import forme.LoginForma;
 import forme.PrikazCitalacaForma;
+import forme.PrikazIznajmljivanjaForma;
 import java.util.HashMap;
 import java.util.Map;
 import kontroleri.DodajCitaocaController;
 import kontroleri.LoginController;
 import kontroleri.PrikazCitalacaController;
+import kontroleri.PrikazIznajmljivanjaController;
 
 /**
  *
@@ -30,6 +32,7 @@ public class Cordinator {
     private PrikazCitalacaController pcController;
     private DodajCitaocaController dcController;
     private Map<String, Object> parametri;
+    private PrikazIznajmljivanjaController piController;
 
     private Cordinator() {
         parametri = new HashMap<>();
@@ -84,6 +87,11 @@ public class Cordinator {
         dcController = new DodajCitaocaController(new DodajCitaocaForma());
         dcController.otvoriFormu(FormaMod.IZMENI);
         
+    }
+        
+        public void otvoriPrikazIznajmljivanjaFormu() {
+        piController = new PrikazIznajmljivanjaController(new PrikazIznajmljivanjaForma());
+        piController.otvoriFormu();
     }
 
     public void osveziFormu() {
