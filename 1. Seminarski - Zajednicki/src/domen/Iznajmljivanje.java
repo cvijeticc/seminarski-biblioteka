@@ -71,11 +71,11 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat {
         this.idCitalac = idCitalac;
     }
 
-    public List<StavkaIznajmljivanja> getStakve() {
+    public List<StavkaIznajmljivanja> getStavke() {
         return stakve;
     }
 
-    public void setStakve(List<StavkaIznajmljivanja> stakve) {
+    public void setStavke(List<StavkaIznajmljivanja> stakve) {
         this.stakve = stakve;
     }
 

@@ -9,12 +9,14 @@ import domen.Citalac;
 import domen.Iznajmljivanje;
 import domen.KategorijaCitaoca;
 import domen.Radnik;
+import domen.StavkaIznajmljivanja;
 import java.util.List;
 import operacija.citaoci.AzurirajCitaocaSO;
 import operacija.citaoci.KreirajCitaocaSO;
 import operacija.citaoci.ObrisiCitaocaSO;
 import operacija.citaoci.UcitajCitaoceSO;
 import operacija.citaoci.UcitajKategorijeCitaocaSO;
+import operacija.iznajmljivanja.stavke.UcitajStavkuIznajmljivanjaSO;
 import operacija.login.LoginOperacija;
 
 /**
@@ -82,6 +84,13 @@ public class Controller {
         operacija.izvrsi(null, null);
         System.out.println("Klasa Controller " + operacija.getIznajmljivanja());
         return operacija.getIznajmljivanja();
+    }
+
+    public List<StavkaIznajmljivanja> ucitajStavkuIznajmljivanja(int id) throws Exception {
+        UcitajStavkuIznajmljivanjaSO operacija = new UcitajStavkuIznajmljivanjaSO();
+        operacija.izvrsi(id, null);
+        System.out.println("Klasa Controller " + operacija.getStavkaIznajmljivanja());
+        return operacija.getStavkaIznajmljivanja();
     }
 
     

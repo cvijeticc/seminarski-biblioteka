@@ -6,6 +6,7 @@ package domen;
 
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,7 +14,8 @@ import java.util.Objects;
  *
  * @author andri
  */
-public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
+public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat {
+
     private int idIznajmljivanje;
     private int rb;
     private String opisStavke;
@@ -27,7 +29,7 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
     public StavkaIznajmljivanja() {
     }
 
-    public StavkaIznajmljivanja(int idIznajmljivanje, int rb, String opisStavke, LocalDate datumOd, LocalDate datumDo, int brojDana, double iznosPoDanu, double ukupanIznosStavke, Knjiga knjiga) {
+    public StavkaIznajmljivanja(int idIznajmljivanje, int rb, String opisStavke, LocalDate datumOd, LocalDate datumDo, int brojDana, double iznosPoDanu, double ukupanIznosStavke, Knjiga idKnjiga) {
         this.idIznajmljivanje = idIznajmljivanje;
         this.rb = rb;
         this.opisStavke = opisStavke;
@@ -73,10 +75,6 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
         }
         return Objects.equals(this.idKnjiga, other.idKnjiga);
     }
-
-    
-    
-
 
     public int getIdIznajmljivanje() {
         return idIznajmljivanje;
@@ -150,8 +148,6 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
         this.idKnjiga = idKnjiga;
     }
 
-    
-
     @Override
     public String vratiNazivTabele() {
         return "stavkaiznajmljivanja";
@@ -159,7 +155,38 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
 
     @Override
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
+
+        while (rs.next()) {
+            int idIznajmljivanje = rs.getInt("idIznajmljivanje");
+            int rb = rs.getInt("rb");
+            String opisStavke = rs.getString("opisStavke");
+            LocalDate datumOd = rs.getObject("datumOd", LocalDate.class);
+            LocalDate datumDo = rs.getObject("datumDo", LocalDate.class);
+            int brojDana = rs.getInt("brojDana");
+            double iznosPoDanu = rs.getDouble("iznosPoDanu");
+            double ukupanIznosStavke = rs.getDouble("ukupanIznosStavke");
+            int idKnjiga = rs.getInt("idKnjiga");
+            String nazivKnjige = rs.getString("knjiga.naziv");
+            
+            Knjiga knjiga = new Knjiga(idKnjiga, nazivKnjige, null, -1, 0);
+            StavkaIznajmljivanja stavka = new StavkaIznajmljivanja(idIznajmljivanje, rb, opisStavke, datumOd, datumDo, brojDana, iznosPoDanu, ukupanIznosStavke, knjiga);
+
+            System.out.println("ID Iznajmljivanja: " + stavka.getIdIznajmljivanje());
+            System.out.println("RB: " + stavka.getRb());
+            System.out.println("Opis stavke: " + stavka.getOpisStavke());
+            System.out.println("Datum od: " + stavka.getDatumOd());
+            System.out.println("Datum do: " + stavka.getDatumDo());
+            System.out.println("Broj dana: " + stavka.getBrojDana());
+            System.out.println("Iznos po danu: " + stavka.getIznosPoDanu());
+            System.out.println("Ukupan iznos stavke: " + stavka.getUkupanIznosStavke());
+            System.out.println("ID Knjige: " + knjiga.getIdKnjiga());
+            System.out.println("-------------------------");
+            lista.add(stavka);
+            System.out.println("NAZIV STAVKE " + stavka.idKnjiga.getNaziv());
+
+        }
+        return lista;
     }
 
     @Override
@@ -177,7 +204,7 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
         //tavkaiznajmljivanja.idiznajmljivanje =3 AND stavkaiznajmljivanja.rb = 2
 //        return "stavkaiznajmljivanja.idiznajmljivanje ="+idIznajmljivanje+" AND " +
 //"stavkaiznajmljivanja.rb = "+rb;
-    return ""; //kao treba kasnije da se sredi
+        return ""; //kao treba kasnije da se sredi
     }
 
     @Override
@@ -186,19 +213,14 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat{
     }
 
     @Override
-public String vratiVrednostiZaIzmenu() {
-    return "opisStavke = '" + opisStavke + "', " +
-           "datumOd = '" + datumOd + "', " +
-           "datumDo = '" + datumDo + "', " +
-           "brojDana = " + brojDana + ", " +
-           "iznosPoDanu = " + iznosPoDanu + ", " +
-           "ukupanIznosStavke = " + ukupanIznosStavke + ", " +
-           "stavkaiznajmljivanja.idKnjiga = " + idKnjiga;
-}
+    public String vratiVrednostiZaIzmenu() {
+        return "opisStavke = '" + opisStavke + "', "
+                + "datumOd = '" + datumOd + "', "
+                + "datumDo = '" + datumDo + "', "
+                + "brojDana = " + brojDana + ", "
+                + "iznosPoDanu = " + iznosPoDanu + ", "
+                + "ukupanIznosStavke = " + ukupanIznosStavke + ", "
+                + "stavkaiznajmljivanja.idKnjiga = " + idKnjiga;
+    }
 
-    
-    
-          
-    
-    
 }

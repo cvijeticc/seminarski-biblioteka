@@ -13,6 +13,7 @@ import domen.Citalac;
 import domen.Iznajmljivanje;
 import domen.KategorijaCitaoca;
 import domen.Radnik;
+import domen.StavkaIznajmljivanja;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.List;
@@ -82,6 +83,12 @@ public class ObradaKlijentskihZahteva extends Thread {
                         System.out.println("Klasa obrada klijentskih zahteva: ");
                         System.out.println(iznajmljivanja);
                         odgovor.setOdgovor(iznajmljivanja);
+                        break;
+                    case UCITAJ_STAVKU_IZNAJMLJIVANJA:
+                        List<StavkaIznajmljivanja> stavkaIznajmljivanja = Controller.getInstance().ucitajStavkuIznajmljivanja((int)zahtev.getParametar());
+                        System.out.println("Klasa obrada klijentskih zahteva: ");
+                        System.out.println(stavkaIznajmljivanja);
+                        odgovor.setOdgovor(stavkaIznajmljivanja);
                         break;
                     default:
                         System.out.println("Greska ta operacija ne postoji");

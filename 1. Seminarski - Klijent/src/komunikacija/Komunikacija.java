@@ -16,6 +16,7 @@ import domen.Iznajmljivanje;
 import domen.KategorijaCitaoca;
 
 import domen.Radnik;
+import domen.StavkaIznajmljivanja;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -148,6 +149,19 @@ public class Komunikacija {
         iznajmljivanja = (List<Iznajmljivanje>) odg.getOdgovor();
         return iznajmljivanja;
         
+    }
+
+    public List<StavkaIznajmljivanja> ucitajStavkuIznajmljivanja(int idIznajmljivanja) {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_STAVKU_IZNAJMLJIVANJA, idIznajmljivanja);
+        List<StavkaIznajmljivanja> stavkaIznajmljivanja = new ArrayList<>();
+        
+        posiljalac.posalji(zahtev);
+        
+        Odgovor odg = (Odgovor) primalac.primi();
+        stavkaIznajmljivanja = (List<StavkaIznajmljivanja>) odg.getOdgovor();
+        System.out.println("Klasa komunikacija");
+        System.out.println(stavkaIznajmljivanja);
+        return stavkaIznajmljivanja;
     }
 
 }
