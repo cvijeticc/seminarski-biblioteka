@@ -38,7 +38,7 @@ public class ModelTabeleCitalac extends AbstractTableModel {
             case 3:
                 return c.getEmail();
             case 4:
-                return c.getIdKategorijaCitaoca().getIdKategorijaCitaoca();//ovde treba naziv
+                return c.getIdKategorijaCitaoca().getNazivKategorije();//ovde treba naziv
             default:
                 return "NA";
         }

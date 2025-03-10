@@ -20,7 +20,7 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat {
     private String opisIznajmljivanja;
     private Radnik idRadnik;
     private Citalac idCitalac;
-    private List<StavkaIznajmljivanja> stakve;
+    private List<StavkaIznajmljivanja> stavke;
 
     public Iznajmljivanje() {
     }
@@ -31,12 +31,12 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat {
         this.opisIznajmljivanja = opisIznajmljivanja;
         this.idRadnik = idRadnik;
         this.idCitalac = idCitalac;
-        this.stakve = stakve;
+        this.stavke = stakve;
     }
 
     @Override
     public String toString() {
-        return "Iznajmljivanje{" + "idIznajmljivanja=" + idIznajmljivanja + ", ukupanIznos=" + ukupanIznos + ", opisIznajmljivanja=" + opisIznajmljivanja + ", idRadnik=" + idRadnik + ", idCitalac=" + idCitalac + ", stakve=" + stakve + '}';
+        return "Iznajmljivanje{" + "idIznajmljivanja=" + idIznajmljivanja + ", ukupanIznos=" + ukupanIznos + ", opisIznajmljivanja=" + opisIznajmljivanja + ", idRadnik=" + idRadnik + ", idCitalac=" + idCitalac + ", stakve=" + stavke + '}';
     }
 
     public int getIdIznajmljivanja() {
@@ -72,11 +72,11 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat {
     }
 
     public List<StavkaIznajmljivanja> getStavke() {
-        return stakve;
+        return stavke;
     }
 
     public void setStavke(List<StavkaIznajmljivanja> stakve) {
-        this.stakve = stakve;
+        this.stavke = stakve;
     }
 
     public String getOpisIznajmljivanja() {
@@ -111,7 +111,7 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat {
         if (!Objects.equals(this.opisIznajmljivanja, other.opisIznajmljivanja)) {
             return false;
         }
-        return Objects.equals(this.stakve, other.stakve);
+        return Objects.equals(this.stavke, other.stavke);
     }
 
     @Override

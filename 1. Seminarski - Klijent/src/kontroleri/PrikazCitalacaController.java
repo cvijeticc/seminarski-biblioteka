@@ -7,14 +7,11 @@ package kontroleri;
 import cordinator.Cordinator;
 import domen.Citalac;
 import domen.KategorijaCitaoca;
-import forme.GlavnaForma;
 import forme.PrikazCitalacaForma;
 import forme.model.ModelTabeleCitalac;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
@@ -43,7 +40,7 @@ public class PrikazCitalacaController {
         pcf.getTblCitaoci().setModel(mtc);
         pcf.setLocationRelativeTo(null);
         pcf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
+
         List<KategorijaCitaoca> kategorije = Komunikacija.getInstance().ucitajKategorijeCitalaca();
 
         pcf.getCmbKategorijaCitaoca().addItem(null);
@@ -60,17 +57,17 @@ public class PrikazCitalacaController {
             public void actionPerformed(ActionEvent e) {
                 int red = pcf.getTblCitaoci().getSelectedRow();
                 if (red == -1) {
-                    JOptionPane.showMessageDialog(pcf, "Sistem ne moze da obrise citaoca", "Greska", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(pcf, "Sistem ne moze da obrise citaoca, jer nije selektovan niko", "Greska", JOptionPane.ERROR_MESSAGE);
                 } else {
                     ModelTabeleCitalac mtc = (ModelTabeleCitalac) pcf.getTblCitaoci().getModel();
                     Citalac c = mtc.getLista().get(red);
                     try {
-                        //znaci uzeli smo tu listu gde su svi citaoci i iz te liste smo izvukli tog koji je selektovan u tom redu
+                        // Pokusaj brisanja citaoca
                         Komunikacija.getInstance().obrisiCitaoca(c);
                         JOptionPane.showMessageDialog(pcf, "Objekat klase Citalac je obrisan", "Uspesno", JOptionPane.INFORMATION_MESSAGE);
                         pripremiFormu();
                     } catch (Exception exc) {
-                        JOptionPane.showMessageDialog(pcf, "Sistem ne moze da obrise citaoca", "Greska", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(pcf, "Citalac ne moze da bude obrisan", "Greska", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -87,11 +84,11 @@ public class PrikazCitalacaController {
                     Citalac c = mtc.getLista().get(red);
                     Cordinator.getInstance().dodajParam("citalac", c);
                     Cordinator.getInstance().otvoriIzmeniCitaocaFormu();
-                    
+
                 }
             }
         });
-        
+
         pcf.addBtnPretraziActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -99,27 +96,25 @@ public class PrikazCitalacaController {
                 String prezime = pcf.getTxtPrezime().getText().trim();
                 String email = pcf.getTxtEmail().getText().trim();
                 KategorijaCitaoca kategorija = (KategorijaCitaoca) pcf.getCmbKategorijaCitaoca().getSelectedItem();
-                if (ime.isEmpty() && prezime.isEmpty() && email.isEmpty() && kategorija == null ) {
+                if (ime.isEmpty() && prezime.isEmpty() && email.isEmpty() && kategorija == null) {
                     JOptionPane.showMessageDialog(pcf, "Navedi neku informaciju o citaocu", "Moras popuniti nesto", JOptionPane.INFORMATION_MESSAGE);;
                     return;
-                   
+
                 }
                 ModelTabeleCitalac mtc = (ModelTabeleCitalac) pcf.getTblCitaoci().getModel();
-                mtc.pretrazi(ime, prezime, email, kategorija);    
-                
-                    
-                }
-            });
-        
-        
+                mtc.pretrazi(ime, prezime, email, kategorija);
+
+            }
+        });
+
         pcf.addBtnResetujPretraguActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                   
+
                 pripremiFormu();//mogao sam i osveziFormu();
-                    
-                }
-            });
+
+            }
+        });
 
     }
 

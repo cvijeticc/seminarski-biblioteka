@@ -21,7 +21,15 @@ public class UcitajIznajmljivanjaSO extends ApstraktnaGenerickaOperacija{
 
     @Override
     protected void izvrsiOperaciju(Object param, String kljuc) throws Exception {
-            iznajmljivanja = broker.getAllIznajmljivanje(new Iznajmljivanje(), "");
+//            iznajmljivanja = broker.getAllIznajmljivanje(new Iznajmljivanje(), "");
+            
+            
+            
+//            String uslov = " JOIN knjiga ON knjiga.idKnjiga = stavkaiznajmljivanja.idKnjiga"
+//                + " WHERE idIznajmljivanje = "+(int)param + " " ;
+            String uslov = " JOIN radnik ON iznajmljivanje.idRadnik = radnik.idRadnik "
+                + "JOIN citalac ON iznajmljivanje.idCitalac = citalac.idCitalac";
+        iznajmljivanja = broker.getAll(new Iznajmljivanje(), uslov);
     }
 
     public List<Iznajmljivanje> getIznajmljivanja() {

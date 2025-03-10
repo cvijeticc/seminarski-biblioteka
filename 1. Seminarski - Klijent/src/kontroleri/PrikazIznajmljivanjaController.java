@@ -13,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
 import komunikacija.Komunikacija;
 
 /**
@@ -36,7 +37,7 @@ public class PrikazIznajmljivanjaController {
 
     public void pripremiFormu() {
         pif.setLocationRelativeTo(pif);
-
+        pif.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         List<Iznajmljivanje> iznajmljivanje = Komunikacija.getInstance().ucitajIznajmljivanja();
         ModelTabeleIznajmljivanje mti = new ModelTabeleIznajmljivanje(iznajmljivanje);
         pif.getTblIznajmljivanja().setModel(mti);

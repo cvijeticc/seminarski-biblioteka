@@ -4,11 +4,9 @@
  */
 package kontroleri;
 
-import com.sun.java.accessibility.util.AWTEventMonitor;
 import cordinator.Cordinator;
 import domen.Radnik;
 import forme.GlavnaForma;
-import forme.LoginForma;
 
 /**
  *

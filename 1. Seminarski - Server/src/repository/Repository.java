@@ -23,7 +23,5 @@ public interface Repository<T> {//T je bilo koji objekat iz domena u Zajednickom
     void delete(T param) throws Exception;
     
     List<T> getAll();
-    
-    List<T> getAllIznajmljivanje(T param, String uslov) throws Exception;
 
 }

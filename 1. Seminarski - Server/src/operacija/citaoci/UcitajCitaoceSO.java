@@ -22,7 +22,9 @@ public class UcitajCitaoceSO extends ApstraktnaGenerickaOperacija{
 
     @Override
     protected void izvrsiOperaciju(Object param, String kljuc) throws Exception {
-            citaoci = broker.getAll(new Citalac(), "");
+        String uslov = " JOIN kategorijacitaoca ON "
+                + "citalac.idKategorijaCitaoca = kategorijacitaoca.idKategorijaCitaoca" ;
+            citaoci = broker.getAll(new Citalac(), uslov);
     }
 
     public List<Citalac> getCitaoci() {
