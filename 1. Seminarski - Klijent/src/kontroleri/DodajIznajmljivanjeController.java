@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
 
 /**
@@ -85,8 +86,9 @@ public class DodajIznajmljivanjeController {
                     iznajmljivanje.setOpisIznajmljivanja(dif.getTxtOpisIznajmljivanja().getText());
                     iznajmljivanje.setUkupanIznos(Double.parseDouble(dif.getTxtUkupanIznos().getText()));
                     Komunikacija.getInstance().dodajIznajmljivanje(iznajmljivanje);
+                    JOptionPane.showMessageDialog(dif, "Uspesno kreirano iznajmljivanje sa stavkama iznajmljivanja",
+                            "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                 }
-                
                 
                
             }
@@ -94,6 +96,21 @@ public class DodajIznajmljivanjeController {
     }
     
     private boolean validacija(){
+        
+         if (dif.getTxtOpisIznajmljivanja().getText().isBlank()) {
+             JOptionPane.showMessageDialog(dif, "Popuni opis",
+                        "Popuni opis", JOptionPane.INFORMATION_MESSAGE);
+             return false;
+        }
+         if (                 dif.getTxtUkupanIznos().getText().isBlank()) {
+             JOptionPane.showMessageDialog(dif, "Moras dodati stavku ili stavke iznajmljivanja"
+                     + " da bi se popunio ukupan iznos iznajmljivanja",
+                        "Popuni opis", JOptionPane.INFORMATION_MESSAGE);
+             return false;
+        }
+
+            
+        
     return true;
     }
     

@@ -142,7 +142,7 @@ public class DodajStavkuIznajmljivanjaController {
                 }
 
                 if (brojDana <= 0) {
-                    JOptionPane.showMessageDialog(dsif, "Unesi dobar datum", "Greska", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(dsif, "Mora datum od da bude pre datuma do", "Greska", JOptionPane.ERROR_MESSAGE);
                     return false;
                 }
                 JOptionPane.showMessageDialog(dsif, "Uspesna prica", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
@@ -178,7 +178,6 @@ public class DodajStavkuIznajmljivanjaController {
             // Računanje broja dana između dva datuma
             brojDana = (int) ChronoUnit.DAYS.between(datumOd, datumDo);
             if (brojDana <= 0) {
-                JOptionPane.showMessageDialog(dsif, "Unesi dobre datume", "Greska", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             // Postavljanje vrednosti u tekstualno polje
