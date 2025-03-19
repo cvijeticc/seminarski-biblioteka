@@ -4,8 +4,11 @@
  */
 package cordinator;
 
+import domen.Iznajmljivanje;
 import domen.Radnik;
 import forme.DodajCitaocaForma;
+import forme.DodajIznajmljivanjeForma;
+import forme.DodajStavkuIznajmljivanjaForma;
 import forme.FormaMod;
 import kontroleri.GlavnaFormaController;
 import forme.GlavnaForma;
@@ -15,6 +18,8 @@ import forme.PrikazIznajmljivanjaForma;
 import java.util.HashMap;
 import java.util.Map;
 import kontroleri.DodajCitaocaController;
+import kontroleri.DodajIznajmljivanjeController;
+import kontroleri.DodajStavkuIznajmljivanjaController;
 import kontroleri.LoginController;
 import kontroleri.PrikazCitalacaController;
 import kontroleri.PrikazIznajmljivanjaController;
@@ -33,7 +38,9 @@ public class Cordinator {
     private DodajCitaocaController dcController;
     private Map<String, Object> parametri;
     private PrikazIznajmljivanjaController piController;
-
+    private DodajIznajmljivanjeController diController;
+    private DodajStavkuIznajmljivanjaController dsiController;
+    
     private Cordinator() {
         parametri = new HashMap<>();
     }
@@ -65,6 +72,17 @@ public class Cordinator {
         dcController = new DodajCitaocaController(new DodajCitaocaForma());
         dcController.otvoriFormu(FormaMod.DODAJ);
     }
+    
+    public void otvoriDodajIznajmljivanjeFormu() {
+        diController = new DodajIznajmljivanjeController(new DodajIznajmljivanjeForma());
+        diController.otvoriFormu();
+    }
+    
+    public void otvoriDodajStavkuIznajmljivanjaFormu(Iznajmljivanje iznajmljivnaje, DodajIznajmljivanjeController dic) {
+        dsiController = new DodajStavkuIznajmljivanjaController(new DodajStavkuIznajmljivanjaForma(), iznajmljivnaje, dic);
+        dsiController.otvoriFormu();
+    }
+    
 
     public Radnik getUlogovani() {
         return ulogovani;
@@ -92,7 +110,10 @@ public class Cordinator {
         public void otvoriPrikazIznajmljivanjaFormu() {
         piController = new PrikazIznajmljivanjaController(new PrikazIznajmljivanjaForma());
         piController.otvoriFormu();
-    }
+        }
+        
+    
+    
 
     public void osveziFormu() {
         pcController.osveziFormu();

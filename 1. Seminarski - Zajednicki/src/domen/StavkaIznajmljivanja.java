@@ -168,7 +168,7 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat {
             double ukupanIznosStavke = rs.getDouble("ukupanIznosStavke");
             int idKnjiga = rs.getInt("idKnjiga");
             String nazivKnjige = rs.getString("knjiga.naziv");
-            
+
             Knjiga knjiga = new Knjiga(idKnjiga, nazivKnjige, null, -1, 0);
             StavkaIznajmljivanja stavka = new StavkaIznajmljivanja(idIznajmljivanje, rb, opisStavke, datumOd, datumDo, brojDana, iznosPoDanu, ukupanIznosStavke, knjiga);
 
@@ -191,12 +191,14 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        return "idIznajmljivanje, opisStavke, datumOd, datumDo, brojDana, iznosPoDanu, ukupanIznosStavke, idKnjiga";
+        return "idIznajmljivanje, rb, opisStavke, datumOd, datumDo, brojDana, iznosPoDanu, ukupanIznosStavke, idKnjiga";
     }
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        // Pravilno formatiranje vrednosti za SQL upit
+        return idIznajmljivanje + "," + rb + ",'" + opisStavke + "','" + datumOd.toString() + "','" + datumDo.toString() + "',"
+                + brojDana + "," + iznosPoDanu + "," + ukupanIznosStavke + "," + idKnjiga.getIdKnjiga();
     }
 
     @Override

@@ -14,6 +14,7 @@ import cordinator.Cordinator;
 import domen.Citalac;
 import domen.Iznajmljivanje;
 import domen.KategorijaCitaoca;
+import domen.Knjiga;
 
 import domen.Radnik;
 import domen.StavkaIznajmljivanja;
@@ -153,7 +154,7 @@ public class Komunikacija {
 
     public List<StavkaIznajmljivanja> ucitajStavkuIznajmljivanja(int idIznajmljivanja) {
         Zahtev zahtev = new Zahtev(Operacija.UCITAJ_STAVKU_IZNAJMLJIVANJA, idIznajmljivanja);
-        List<StavkaIznajmljivanja> stavkaIznajmljivanja = new ArrayList<>();
+        List<StavkaIznajmljivanja> stavkaIznajmljivanja;
         
         posiljalac.posalji(zahtev);
         
@@ -162,6 +163,45 @@ public class Komunikacija {
         System.out.println("Klasa komunikacija");
         System.out.println(stavkaIznajmljivanja);
         return stavkaIznajmljivanja;
+    }
+
+    public List<Radnik> ucitajRadnike() {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_RADNIKE, null);
+        List<Radnik> radnici ;
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        radnici = (List<Radnik>) odg.getOdgovor();
+        return radnici;
+    }
+
+    public List<Knjiga> ucitajKnjige() {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_KNJIGE, null);
+        List<Knjiga> knjige;
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        knjige = (List<Knjiga>) odg.getOdgovor();
+        return knjige;
+    }
+
+    public int ucitajIznosPoDanu(int idKnjiga) {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_IZNOS_PO_DANU, idKnjiga);
+        int iznosPoDanu;
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        iznosPoDanu = (int) odg.getOdgovor();
+        return iznosPoDanu;
+        
+    }
+
+    public void dodajIznajmljivanje(Iznajmljivanje i) {
+        Zahtev zahtev = new Zahtev(Operacija.DODAJ_IZNAJMLJIVANJE, i);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor()== null) {
+            System.out.println("Uspesno kreirano iznajmljivanje");
+        }else{
+        System.out.println("Neuspesno kreirano iznajmljivanje");
+        }
     }
 
 }

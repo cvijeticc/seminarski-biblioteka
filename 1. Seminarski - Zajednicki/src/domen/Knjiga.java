@@ -33,7 +33,7 @@ public class Knjiga implements ApstraktniDomenskiObjekat{
 
     @Override
     public String toString() {
-        return "Knjiga{" + "naziv=" + naziv + '}';
+        return naziv;
     }
 
     public int getIdKnjiga() {

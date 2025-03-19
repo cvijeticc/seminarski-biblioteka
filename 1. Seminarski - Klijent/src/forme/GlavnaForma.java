@@ -102,6 +102,11 @@ public class GlavnaForma extends javax.swing.JFrame {
         jMenu4.setText("Iznajmljivanje");
 
         jMenuItem10.setText("Kreiraj");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem10);
 
         jMenuItem9.setText("Pretraži i Promeni");
@@ -129,6 +134,11 @@ public class GlavnaForma extends javax.swing.JFrame {
         jMenu5.add(jMenuItem12);
 
         jMenuItem13.setText("Pretraži, Promeni, Obriši");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem13);
 
         jMenu2.add(jMenu5);
@@ -327,6 +337,14 @@ public class GlavnaForma extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         Cordinator.getInstance().otvoriDodajCitaocaFormu();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        Cordinator.getInstance().otvoriDodajIznajmljivanjeFormu();
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     /**
      * @param args the command line arguments

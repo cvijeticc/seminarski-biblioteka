@@ -12,6 +12,7 @@ import controller.Controller;
 import domen.Citalac;
 import domen.Iznajmljivanje;
 import domen.KategorijaCitaoca;
+import domen.Knjiga;
 import domen.Radnik;
 import domen.StavkaIznajmljivanja;
 import java.io.IOException;
@@ -89,6 +90,23 @@ public class ObradaKlijentskihZahteva extends Thread {
                         System.out.println("Klasa obrada klijentskih zahteva: ");
                         System.out.println(stavkaIznajmljivanja);
                         odgovor.setOdgovor(stavkaIznajmljivanja);
+                        break;
+                    case UCITAJ_RADNIKE:
+                        List<Radnik> radnici = Controller.getInstance().ucitajRadnike();
+                        odgovor.setOdgovor(radnici);
+                        break;
+                    case UCITAJ_KNJIGE:
+                        List<Knjiga> knjige = Controller.getInstance().ucitajKnjige();
+                        odgovor.setOdgovor(knjige);
+                        break;
+                    case UCITAJ_IZNOS_PO_DANU:
+                        int iznosPoDanu = Controller.getInstance().ucitajIznosPoDanu((int)zahtev.getParametar());
+                        odgovor.setOdgovor(iznosPoDanu);
+                        break;
+                    case DODAJ_IZNAJMLJIVANJE:
+                        Iznajmljivanje i = (Iznajmljivanje) zahtev.getParametar();
+                        Controller.getInstance().dodajIznajmljivanje(i);
+                        odgovor.setOdgovor(null);
                         break;
                     default:
                         System.out.println("Greska ta operacija ne postoji");

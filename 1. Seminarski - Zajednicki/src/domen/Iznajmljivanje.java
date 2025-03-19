@@ -20,7 +20,7 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat {
     private String opisIznajmljivanja;
     private Radnik idRadnik;
     private Citalac idCitalac;
-    private List<StavkaIznajmljivanja> stavke;
+    private List<StavkaIznajmljivanja> stavke = new ArrayList<>();
 
     public Iznajmljivanje() {
     }

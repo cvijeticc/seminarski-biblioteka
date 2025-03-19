@@ -69,6 +69,11 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
         btnObrisi.setText("Obrisi");
 
         btnAzuriraj.setText("Azuriraj");
+        btnAzuriraj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAzurirajActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Ime");
 
@@ -160,6 +165,10 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
     private void txtImeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtImeActionPerformed
+
+    private void btnAzurirajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAzurirajActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAzurirajActionPerformed
 
     /**
      * @param args the command line arguments

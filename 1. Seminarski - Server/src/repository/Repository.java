@@ -16,7 +16,7 @@ public interface Repository<T> {//T je bilo koji objekat iz domena u Zajednickom
 
     List<T> getAll(T param, String uslov) throws Exception;
 
-    void add(T param) throws Exception;
+    int add(T param) throws Exception;
 
     void edit(T param) throws Exception;
 

@@ -4,7 +4,6 @@
  */
 package operacija.iznajmljivanja.stavke;
 
-import domen.Iznajmljivanje;
 import domen.StavkaIznajmljivanja;
 import java.util.List;
 import operacija.ApstraktnaGenerickaOperacija;

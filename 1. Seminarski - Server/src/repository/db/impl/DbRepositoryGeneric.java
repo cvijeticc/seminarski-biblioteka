@@ -4,16 +4,13 @@
  */
 package repository.db.impl;
 
-import com.mysql.cj.protocol.Resultset;
 import domen.ApstraktniDomenskiObjekat;
-import domen.Iznajmljivanje;
 import java.sql.SQLException;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Statement;
-import javax.swing.JOptionPane;
 import repository.db.DbConnectionFactory;
 
 import repository.db.DbRepository;
@@ -46,18 +43,29 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
     }
 
     @Override
-    public void add(ApstraktniDomenskiObjekat param) throws Exception {
+    public int add(ApstraktniDomenskiObjekat param) throws Exception {
         //insert into pacijent (ime, prezime) values ('Marko','Markovic');
         String upit = "INSERT INTO " + param.vratiNazivTabele() + " (" + param.vratiKoloneZaUbacivanje()
                 + ") VALUES ( " + param.vratiVrednostiZaUbacivanje() + " )";
         System.out.println(upit);
         Statement st = DbConnectionFactory.getInstance().getConnection().createStatement();
-        st.executeUpdate(upit);
-        st.close();
-    }
+        st.executeUpdate(upit, Statement.RETURN_GENERATED_KEYS);
 
-    @Override
-    public void edit(ApstraktniDomenskiObjekat param) throws Exception {
+        ResultSet generatedKeys = st.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            int id = generatedKeys.getInt(1);
+        st.close ();
+            return id;
+        }else{
+        st.close ();
+        
+//        throw new Exception("Nije generisan id"); 
+        }
+        return 0;
+}
+
+@Override
+public void edit(ApstraktniDomenskiObjekat param) throws Exception {
         String upit = "UPDATE " + param.vratiNazivTabele() + " SET "
                 + param.vratiVrednostiZaIzmenu() + " WHERE " + param.vratiPrimarnikljuc();
         System.out.println(upit);
@@ -68,7 +76,7 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
     }
 
     @Override
-    public void delete(ApstraktniDomenskiObjekat param) throws Exception {
+public void delete(ApstraktniDomenskiObjekat param) throws Exception {
         String upit = "DELETE FROM " + param.vratiNazivTabele() + " WHERE " + param.vratiPrimarnikljuc();
         System.out.println(upit);
         try {
@@ -85,8 +93,18 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
     }
 
     @Override
-    public List<ApstraktniDomenskiObjekat> getAll() {
+public List<ApstraktniDomenskiObjekat> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+     public void addStavkuIznajmljivanja(ApstraktniDomenskiObjekat param) throws Exception {
+        //insert into pacijent (ime, prezime) values ('Marko','Markovic');
+        String upit = "INSERT INTO " + param.vratiNazivTabele() + " (" + param.vratiKoloneZaUbacivanje()
+                + ") VALUES ( " + param.vratiVrednostiZaUbacivanje() + " )";
+        System.out.println(upit);
+        Statement st = DbConnectionFactory.getInstance().getConnection().createStatement();
+        st.executeUpdate(upit);
+        st.close();
     }
 
 }

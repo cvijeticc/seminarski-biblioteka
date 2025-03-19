@@ -8,6 +8,7 @@ import operacija.iznajmljivanja.UcitajIznajmljivanjaSO;
 import domen.Citalac;
 import domen.Iznajmljivanje;
 import domen.KategorijaCitaoca;
+import domen.Knjiga;
 import domen.Radnik;
 import domen.StavkaIznajmljivanja;
 import java.util.List;
@@ -17,7 +18,11 @@ import operacija.citaoci.ObrisiCitaocaSO;
 import operacija.citaoci.UcitajCitaoceSO;
 import operacija.citaoci.UcitajKategorijeCitaocaSO;
 import operacija.iznajmljivanja.stavke.UcitajStavkuIznajmljivanjaSO;
+import operacija.iznajmljivanje.KreirajIznajmljivanjeSO;
+import operacija.knjige.UcitajIznosPoDanuSO;
+import operacija.knjige.UcitajKnjigeSO;
 import operacija.login.LoginOperacija;
+import operacija.radnici.UcitajRadnikeSO;
 
 /**
  *
@@ -91,6 +96,38 @@ public class Controller {
         operacija.izvrsi(id, null);
         System.out.println("Klasa Controller " + operacija.getStavkaIznajmljivanja());
         return operacija.getStavkaIznajmljivanja();
+    }
+
+    public List<Radnik> ucitajRadnike() throws Exception {
+        UcitajRadnikeSO operacija = new UcitajRadnikeSO();
+        operacija.izvrsi(null, null);
+        return operacija.getRadnici();
+    }
+
+//    public List<Citalac> ucitajCitaoce() throws Exception {
+//        UcitajCitaoceSO operacija = new UcitajCitaoceSO();
+//        operacija.izvrsi(null, null);
+//        System.out.println("Klasa Controller " + operacija.getCitaoci());
+//        return operacija.getCitaoci();
+//    }
+
+    public List<Knjiga> ucitajKnjige() throws Exception {
+        UcitajKnjigeSO operacija = new UcitajKnjigeSO();
+        operacija.izvrsi(null, null);
+        System.out.println("Klasa Controller " + operacija.getKnjige());
+        return operacija.getKnjige();
+    }
+
+    public int ucitajIznosPoDanu(int i) throws Exception {
+        UcitajIznosPoDanuSO operacija = new UcitajIznosPoDanuSO();
+        operacija.izvrsi(null, null);
+        System.out.println("Klasa Controller "/* + operacija.getKnjige()*/);
+        return operacija.getIznosPoDanu();
+    }
+
+    public void dodajIznajmljivanje(Iznajmljivanje i) throws Exception {
+        KreirajIznajmljivanjeSO operacija = new KreirajIznajmljivanjeSO();
+        operacija.izvrsi(i,null);
     }
 
     

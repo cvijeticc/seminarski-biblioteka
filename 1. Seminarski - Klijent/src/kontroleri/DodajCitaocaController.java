@@ -7,16 +7,12 @@ package kontroleri;
 import cordinator.Cordinator;
 import domen.Citalac;
 import domen.KategorijaCitaoca;
-import domen.Radnik;
 import forme.DodajCitaocaForma;
 import forme.FormaMod;
-import forme.PrikazCitalacaForma;
-import forme.model.ModelTabeleCitalac;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.ComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
@@ -121,6 +117,8 @@ public class DodajCitaocaController {
 
             dcf.getCmbKategorijaCitaoca().addItem(kategorija);
         }
+        
+        
         
         dcf.setLocationRelativeTo(null);
         dcf.getTxtId().setEnabled(false);
