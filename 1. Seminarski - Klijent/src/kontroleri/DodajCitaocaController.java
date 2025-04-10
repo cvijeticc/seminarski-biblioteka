@@ -57,7 +57,7 @@ public class DodajCitaocaController {
                 // Prikaz prozora za potvrdu
                 int izbor = JOptionPane.showConfirmDialog(
                         dcf,
-                        "Da li želite da dodate novog čitaoca?",
+                        "Da li ste sigurni da želite da dodate novog čitaoca?",
                         "Potvrda",
                         JOptionPane.YES_NO_CANCEL_OPTION,
                         JOptionPane.QUESTION_MESSAGE

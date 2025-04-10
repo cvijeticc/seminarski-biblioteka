@@ -122,7 +122,7 @@ public class Komunikacija {
          Odgovor odg = (Odgovor) primalac.primi();
         if (odg.getOdgovor() == null) {
             System.out.println("Uspesno kreiran citaoc");
-        }else{
+        } else {
             System.out.println("Neuspesno kreiran citaoc");
         }
     }

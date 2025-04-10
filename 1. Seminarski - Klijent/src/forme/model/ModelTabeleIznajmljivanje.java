@@ -4,8 +4,11 @@
  */
 package forme.model;
 
+import domen.Citalac;
 import domen.Iznajmljivanje;
+import domen.Radnik;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -38,7 +41,7 @@ public class ModelTabeleIznajmljivanje extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-            //ovo je kao petlja koja prolazi kroz matricu
+        //ovo je kao petlja koja prolazi kroz matricu
         Iznajmljivanje i = lista.get(rowIndex);
         System.out.println("Provera prikaza u tabeli:");
         System.out.println("Radnik: " + i.getIdRadnik());
@@ -52,9 +55,9 @@ public class ModelTabeleIznajmljivanje extends AbstractTableModel {
             case 2:
                 return i.getOpisIznajmljivanja();
             case 3:
-                return i.getIdRadnik().getIme() +" "+i.getIdRadnik().getPrezime();
+                return i.getIdRadnik().getIme() + " " + i.getIdRadnik().getPrezime();
             case 4:
-                return i.getIdCitalac().getIme() +" "+i.getIdCitalac().getPrezime();
+                return i.getIdCitalac().getIme() + " " + i.getIdCitalac().getPrezime();
 
             default:
                 return "NA";
@@ -72,6 +75,22 @@ public class ModelTabeleIznajmljivanje extends AbstractTableModel {
 
     public void setLista(List<Iznajmljivanje> lista) {
         this.lista = lista;
+    }
+
+    public void pretrazi(String id, String ukupanIznos, String opisIznajmljivanja, Radnik radnik, Citalac citalac) {
+        List<Iznajmljivanje> filteredList = lista.stream()
+                .filter(p -> id == null || id.isEmpty()
+                || String.valueOf(p.getIdIznajmljivanja()).contains(id))
+                .filter(p -> opisIznajmljivanja == null || opisIznajmljivanja.isEmpty()
+                || p.getOpisIznajmljivanja().toLowerCase().contains(opisIznajmljivanja.toLowerCase()))
+                .filter(p -> ukupanIznos == null || ukupanIznos.isEmpty()
+                || String.valueOf(p.getUkupanIznos()).contains(ukupanIznos))
+                .filter(p -> radnik == null || p.getIdRadnik().getIdRadnik() == radnik.getIdRadnik())
+                .filter(p -> citalac == null || p.getIdCitalac().getIdCitalac() == citalac.getIdCitalac())
+                .collect(Collectors.toList());
+
+        this.lista = filteredList;
+        fireTableDataChanged();
     }
 
 }

@@ -50,9 +50,7 @@ public class DodajStavkuIznajmljivanjaController {
         addActionListeners();
         addItemListeners();
         addListenerForDate();
-
-        dsif.setLocationRelativeTo(null);
-        dsif.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        addWindowsListener();
     }
 
     public void otvoriFormu() {
@@ -62,8 +60,9 @@ public class DodajStavkuIznajmljivanjaController {
     }
 
     private void pripremiFormu() {
+        dsif.getTxtIdIznajmljivanja().setEditable(false);
         dsif.setLocationRelativeTo(null);
-        dsif.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dsif.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         dsif.getCmbKnjige().removeAllItems();
 
         List<Knjiga> knjige = Komunikacija.getInstance().ucitajKnjige();
@@ -122,6 +121,7 @@ public class DodajStavkuIznajmljivanjaController {
                 }
                 if (dsif.getTxtDatumOd().getText().trim().isEmpty()) {
                     JOptionPane.showMessageDialog(dsif, "Moraju svi atributi da budu popunjeni", "Greska", JOptionPane.ERROR_MESSAGE);
+
                     return false;
                 }
                 if (dsif.getTxtBrojDana().getText().trim().isEmpty()) {
@@ -145,7 +145,7 @@ public class DodajStavkuIznajmljivanjaController {
                     JOptionPane.showMessageDialog(dsif, "Mora datum od da bude pre datuma do", "Greska", JOptionPane.ERROR_MESSAGE);
                     return false;
                 }
-                JOptionPane.showMessageDialog(dsif, "Uspesna prica", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(dsif, "Uspesno dodata stavka iznajmljivanja ", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             }
 
@@ -220,6 +220,27 @@ public class DodajStavkuIznajmljivanjaController {
 
     public Iznajmljivanje getIznajmljivanje() {
         return iznajmljivanje;
+    }
+
+    private void addWindowsListener() {
+        dsif.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                int odgovor = JOptionPane.showConfirmDialog(dsif,
+                        "Ako sada izađete iz ove forme, kasnije nećete moći da dodajete stavke u ovo iznajmljivanje.\nDa li ste sigurni da želite da zatvorite formu?",
+                        "Potvrda zatvaranja",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+
+                if (odgovor == JOptionPane.YES_OPTION) {
+                    dsif.dispose();
+                } else {
+                    // Ostaje u formi
+                    // Ne radi ništa, samo ignoriše zatvaranje
+                }
+            }
+        });
+
     }
 
 }

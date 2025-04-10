@@ -4,16 +4,23 @@
  */
 package kontroleri;
 
+import domen.Citalac;
 import domen.Iznajmljivanje;
+import domen.KategorijaCitaoca;
+import domen.Radnik;
 import domen.StavkaIznajmljivanja;
 import forme.PrikazIznajmljivanjaForma;
+import forme.model.ModelTabeleCitalac;
 import forme.model.ModelTabeleIznajmljivanje;
 import forme.model.ModelTabeleStavkaIznajmljivanja;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
 
 /**
@@ -36,7 +43,12 @@ public class PrikazIznajmljivanjaController {
     }
 
     public void pripremiFormu() {
-        pif.setLocationRelativeTo(pif);
+        pif.getCmbCitalac().removeAllItems();
+        pif.getCmbRadnik().removeAllItems();
+        pif.getTxtOpisIznajmljivanja().setText("");
+        pif.getTxtUkupanIznos().setText("");
+        pif.getTxtId().setText("");
+        pif.setLocationRelativeTo(null);
         pif.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         List<Iznajmljivanje> iznajmljivanje = Komunikacija.getInstance().ucitajIznajmljivanja();
         ModelTabeleIznajmljivanje mti = new ModelTabeleIznajmljivanje(iznajmljivanje);
@@ -48,10 +60,47 @@ public class PrikazIznajmljivanjaController {
         ModelTabeleStavkaIznajmljivanja mtsi = new ModelTabeleStavkaIznajmljivanja(stavkaIznajmljivanja);
         pif.getTblStavke().setModel(mtsi);
 
+        List<Radnik> radnici = Komunikacija.getInstance().ucitajRadnike();
+
+        pif.getCmbRadnik().addItem(null);
+        for (Radnik r : radnici) {
+
+            pif.getCmbRadnik().addItem(r);
+        }
+
+        List<Citalac> citaoci = Komunikacija.getInstance().ucitajCitaoce();
+        pif.getCmbCitalac().addItem(null);
+        for (Citalac c : citaoci) {
+            pif.getCmbCitalac().addItem(c);
+        }
+
     }
 
     private void addActionListener() {
+        pif.addBtnPretraziIznajmljivanjeActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String id = (pif.getTxtId().getText());
+                String ukuopanIznos = pif.getTxtUkupanIznos().getText();
+                String opisIznajmljivanja = pif.getTxtOpisIznajmljivanja().getText();
+                Radnik radnik = (Radnik) pif.getCmbRadnik().getSelectedItem();
+                Citalac citalac = (Citalac) pif.getCmbCitalac().getSelectedItem();
+                if (ukuopanIznos.isEmpty() && opisIznajmljivanja.isEmpty() && radnik == null && citalac == null && id.isEmpty()) {
+                    JOptionPane.showMessageDialog(pif, "Navedi neku informaciju o iznajmljivanju", "Moras popuniti nesto", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
+                ModelTabeleIznajmljivanje mti = (ModelTabeleIznajmljivanje) pif.getTblIznajmljivanja().getModel();
+                mti.pretrazi(id, ukuopanIznos, opisIznajmljivanja, radnik, citalac);
+            }
+        });
 
+        pif.addBtnResetujPretraguActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //osveziFormu();
+                pripremiFormu();
+            }
+        });
     }
 
     public void osveziFormu() {

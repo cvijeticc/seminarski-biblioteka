@@ -40,7 +40,8 @@ public class DodajIznajmljivanjeController {
     }
 
     private void pripremiFormu() {
-        dif.getTxtIdIznajmljivanja().setEditable(false);
+        dif.getTxtUkupanIznos().setEditable(false);
+        dif.getTxtId().setEditable(false);
         dif.setLocationRelativeTo(null);
         dif.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         dif.getCmbCitaoci().removeAllItems();

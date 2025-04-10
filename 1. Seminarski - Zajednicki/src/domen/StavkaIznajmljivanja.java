@@ -7,6 +7,7 @@ package domen;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -94,6 +95,7 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat {
 
     public String getOpisStavke() {
         return opisStavke;
+       
     }
 
     public void setOpisStavke(String opisStavke) {

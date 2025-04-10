@@ -51,8 +51,12 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
         cmbKnjige = new javax.swing.JComboBox<>();
         txtDatumOd = new javax.swing.JFormattedTextField();
         txtDatumDo = new javax.swing.JFormattedTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtIdIznajmljivanja = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtOpisStakve.setText("a");
 
         jLabel3.setText("Opis Stavke");
 
@@ -60,7 +64,11 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
 
         jLabel5.setText("Datum do(dd.MM.yyyy)");
 
-        txtBrojDana.setText("jTextField1");
+        txtBrojDana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBrojDanaActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Broj Dana");
 
@@ -69,10 +77,6 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
         jLabel8.setText("Iznos po danu");
 
         jLabel9.setText("Id Knjiga");
-
-        txtIznosPoDanu.setText("jTextField1");
-
-        txtUkupanIznosStavke.setText("jTextField1");
 
         btnDodaj.setText("Dodaj");
 
@@ -83,8 +87,18 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
         });
 
         txtDatumOd.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d.M.yyyy"))));
+        txtDatumOd.setText("03.05.2023");
 
         txtDatumDo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d.M.yyyy"))));
+        txtDatumDo.setText("07.08.2023");
+
+        jLabel1.setText("Id Iznajmljivanje");
+
+        txtIdIznajmljivanja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdIznajmljivanjaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,18 +107,22 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(62, 62, 62))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addGap(62, 62, 62))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel9)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel8))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel1)
+                        .addGap(86, 86, 86)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtDatumOd)
                     .addComponent(txtOpisStakve)
@@ -112,7 +130,8 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
                     .addComponent(txtBrojDana)
                     .addComponent(txtIznosPoDanu)
                     .addComponent(txtUkupanIznosStavke)
-                    .addComponent(cmbKnjige, 0, 86, Short.MAX_VALUE))
+                    .addComponent(cmbKnjige, 0, 86, Short.MAX_VALUE)
+                    .addComponent(txtIdIznajmljivanja))
                 .addGap(84, 84, 84)
                 .addComponent(btnDodaj)
                 .addContainerGap(170, Short.MAX_VALUE))
@@ -125,7 +144,11 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
                         .addGap(133, 133, 133)
                         .addComponent(btnDodaj))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtIdIznajmljivanja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(txtOpisStakve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -153,7 +176,7 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(cmbKnjige, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,6 +186,14 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbKnjigeActionPerformed
 
+    private void txtBrojDanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBrojDanaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBrojDanaActionPerformed
+
+    private void txtIdIznajmljivanjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdIznajmljivanjaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdIznajmljivanjaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -171,6 +202,7 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
     private javax.swing.JComboBox<Knjiga> cmbKnjige;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -181,6 +213,7 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
     private javax.swing.JTextField txtBrojDana;
     private javax.swing.JFormattedTextField txtDatumDo;
     private javax.swing.JFormattedTextField txtDatumOd;
+    private javax.swing.JTextField txtIdIznajmljivanja;
     private javax.swing.JTextField txtIznosPoDanu;
     private javax.swing.JTextField txtOpisStakve;
     private javax.swing.JTextField txtUkupanIznosStavke;
@@ -248,6 +281,14 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
 
     public JTextField getTxtUkupanIznosStavke() {
         return txtUkupanIznosStavke;
+    }
+
+    public JTextField getTxtIdIznajmljivanja() {
+        return txtIdIznajmljivanja;
+    }
+
+    public void setTxtIdIznajmljivanja(JTextField txtIdIznajmljivanja) {
+        this.txtIdIznajmljivanja = txtIdIznajmljivanja;
     }
     
     

@@ -18,7 +18,7 @@ import operacija.citaoci.ObrisiCitaocaSO;
 import operacija.citaoci.UcitajCitaoceSO;
 import operacija.citaoci.UcitajKategorijeCitaocaSO;
 import operacija.iznajmljivanja.stavke.UcitajStavkuIznajmljivanjaSO;
-import operacija.iznajmljivanje.KreirajIznajmljivanjeSO;
+import operacija.iznajmljivanja.KreirajIznajmljivanjeSO;
 import operacija.knjige.UcitajIznosPoDanuSO;
 import operacija.knjige.UcitajKnjigeSO;
 import operacija.login.LoginOperacija;
