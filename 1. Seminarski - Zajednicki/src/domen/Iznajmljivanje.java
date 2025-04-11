@@ -173,10 +173,12 @@ public class Iznajmljivanje implements ApstraktniDomenskiObjekat {
     }
 
     @Override
-    public String vratiVrednostiZaIzmenu() {
-        return "ukupanIznos = '" + ukupanIznos + "', opisIznajmljivanja ='" + opisIznajmljivanja + "', idRadnik.getIdRadnik() = "
-                + idRadnik.getIdRadnik() + "idCitalac.getIdCitalac()" + idCitalac.getIdCitalac();
+public String vratiVrednostiZaIzmenu() {
+    return "ukupanIznos = '" + ukupanIznos + 
+           "', opisIznajmljivanja = '" + opisIznajmljivanja + 
+           "', idRadnik = " + idRadnik.getIdRadnik() +
+           ", idCitalac = " + idCitalac.getIdCitalac();
+}
 
-    }
 
 }

@@ -72,7 +72,7 @@ public void edit(ApstraktniDomenskiObjekat param) throws Exception {
         Statement st = DbConnectionFactory.getInstance().getConnection().createStatement();
         st.executeUpdate(upit);
         st.close();
-
+        
     }
 
     @Override

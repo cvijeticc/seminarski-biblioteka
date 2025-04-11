@@ -4,13 +4,12 @@
  */
 package kontroleri;
 
+import cordinator.Cordinator;
 import domen.Citalac;
 import domen.Iznajmljivanje;
-import domen.KategorijaCitaoca;
 import domen.Radnik;
 import domen.StavkaIznajmljivanja;
 import forme.PrikazIznajmljivanjaForma;
-import forme.model.ModelTabeleCitalac;
 import forme.model.ModelTabeleIznajmljivanje;
 import forme.model.ModelTabeleStavkaIznajmljivanja;
 import java.awt.event.ActionEvent;
@@ -50,8 +49,8 @@ public class PrikazIznajmljivanjaController {
         pif.getTxtId().setText("");
         pif.setLocationRelativeTo(null);
         pif.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        List<Iznajmljivanje> iznajmljivanje = Komunikacija.getInstance().ucitajIznajmljivanja();
-        ModelTabeleIznajmljivanje mti = new ModelTabeleIznajmljivanje(iznajmljivanje);
+        List<Iznajmljivanje> iznajmljivanja = Komunikacija.getInstance().ucitajIznajmljivanja();
+        ModelTabeleIznajmljivanje mti = new ModelTabeleIznajmljivanje(iznajmljivanja);
         pif.getTblIznajmljivanja().setModel(mti);
 
         List<StavkaIznajmljivanja> stavkaIznajmljivanja = new ArrayList<>();
@@ -99,6 +98,25 @@ public class PrikazIznajmljivanjaController {
             public void actionPerformed(ActionEvent e) {
                 //osveziFormu();
                 pripremiFormu();
+            }
+        });
+        
+        pif.addBtnAzurirajIznajmljivanjeActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //otvori formu dodaj Iznajmljivanje 
+                int red = pif.getTblIznajmljivanja().getSelectedRow();
+                if (red == -1) {
+                    JOptionPane.showMessageDialog(pif, "Mora da bude selektovano neko iznajmljivanje", "Greska", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    ModelTabeleIznajmljivanje mti = (ModelTabeleIznajmljivanje) pif.getTblIznajmljivanja().getModel();
+                    Iznajmljivanje i = mti.getLista().get(red); // uzimamo onaj red selektovani
+                    
+                    Cordinator.getInstance().dodajParam("iznajmljivanje", i);
+                    Cordinator.getInstance().otvoriIzmeniIznajmljivanjeFormu();
+                    
+                }
+                
             }
         });
     }

@@ -167,11 +167,11 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables
 
-    public void dodajAddActionListener(ActionListener actionListener) {
+    public void addBtnDodajActionListener(ActionListener actionListener) {
         btnDodaj.addActionListener(actionListener);
     }
     
-    public void izmeniAddActionListener(ActionListener actionListener) {
+    public void addBtnAzurirajActionListener(ActionListener actionListener) {
         btnAzuriraj.addActionListener(actionListener);
     }
 

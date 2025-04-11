@@ -40,7 +40,7 @@ public class Cordinator {
     private PrikazIznajmljivanjaController piController;
     private DodajIznajmljivanjeController diController;
     private DodajStavkuIznajmljivanjaController dsiController;
-    
+
     private Cordinator() {
         parametri = new HashMap<>();
     }
@@ -72,17 +72,16 @@ public class Cordinator {
         dcController = new DodajCitaocaController(new DodajCitaocaForma());
         dcController.otvoriFormu(FormaMod.DODAJ);
     }
-    
+
     public void otvoriDodajIznajmljivanjeFormu() {
         diController = new DodajIznajmljivanjeController(new DodajIznajmljivanjeForma());
-        diController.otvoriFormu();
+        diController.otvoriFormu(FormaMod.DODAJ);
     }
-    
+
     public void otvoriDodajStavkuIznajmljivanjaFormu(Iznajmljivanje iznajmljivnaje, DodajIznajmljivanjeController dic) {
         dsiController = new DodajStavkuIznajmljivanjaController(new DodajStavkuIznajmljivanjaForma(), iznajmljivnaje, dic);
         dsiController.otvoriFormu();
     }
-    
 
     public Radnik getUlogovani() {
         return ulogovani;
@@ -101,22 +100,36 @@ public class Cordinator {
         return parametri.get(s); //vraca objekat koji se nalazi pod tim kljucem
     }
 
-        public void otvoriIzmeniCitaocaFormu() {
+    public void otvoriIzmeniCitaocaFormu() {
         dcController = new DodajCitaocaController(new DodajCitaocaForma());
         dcController.otvoriFormu(FormaMod.IZMENI);
-        
     }
-        
-        public void otvoriPrikazIznajmljivanjaFormu() {
-        piController = new PrikazIznajmljivanjaController(new PrikazIznajmljivanjaForma());
-        piController.otvoriFormu();
-        }
-        
-    
-    
+
+    public void otvoriIzmeniIznajmljivanjeFormu() {
+        diController = new DodajIznajmljivanjeController(new DodajIznajmljivanjeForma());
+        diController.otvoriFormu(FormaMod.IZMENI);
+    }
+
+//        public void otvoriPrikazIznajmljivanjaFormu() {
+//        piController = new PrikazIznajmljivanjaController(new PrikazIznajmljivanjaForma());
+//        piController.otvoriFormu();
+//        }
+    public void otvoriPrikazIznajmljivanjaFormu() {
+        PrikazIznajmljivanjaForma prikazForma = new PrikazIznajmljivanjaForma();
+        PrikazIznajmljivanjaController prikazController = new PrikazIznajmljivanjaController(prikazForma);
+        Cordinator.getInstance().dodajParam("prikazIznajmljivanjaController", prikazController);
+        prikazController.otvoriFormu();
+
+        // Ako hoćeš, i dalje možeš sačuvati referencu u polje piController
+        piController = prikazController;
+    }
 
     public void osveziFormu() {
         pcController.osveziFormu();
     }
- 
+
+    public void osveziFormuIznajmljivanja() {
+        piController.osveziFormu();
+    }
+
 }

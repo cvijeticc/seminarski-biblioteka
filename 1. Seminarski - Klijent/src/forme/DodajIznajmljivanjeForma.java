@@ -45,6 +45,7 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
         btnKreirajIznajmljivanje = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        btnAzuriraj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +68,8 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
 
         jLabel1.setText("Id ");
 
+        btnAzuriraj.setText("Azuriraj");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,14 +91,20 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbRadnici, 0, 130, Short.MAX_VALUE)
-                    .addComponent(txtUkupanIznos)
-                    .addComponent(txtOpisIznajmljivanja)
-                    .addComponent(cmbCitaoci, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtId))
-                .addGap(216, 216, 216))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbRadnici, 0, 130, Short.MAX_VALUE)
+                            .addComponent(txtUkupanIznos)
+                            .addComponent(txtOpisIznajmljivanja)
+                            .addComponent(cmbCitaoci, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtId))
+                        .addGap(216, 216, 216))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(btnAzuriraj)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,7 +133,9 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(cmbCitaoci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addComponent(btnDodajStavkuIznajmljivanja)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDodajStavkuIznajmljivanja)
+                    .addComponent(btnAzuriraj))
                 .addGap(18, 18, 18)
                 .addComponent(btnKreirajIznajmljivanje)
                 .addContainerGap(96, Short.MAX_VALUE))
@@ -134,14 +145,12 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDodajStavkuIznajmljivanjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajStavkuIznajmljivanjaActionPerformed
-        
+
     }//GEN-LAST:event_btnDodajStavkuIznajmljivanjaActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
-
     public JComboBox<Citalac> getCmbCitaoci() {
         return cmbCitaoci;
     }
@@ -158,9 +167,9 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
         this.cmbRadnici = cmbRadnici;
     }
 
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAzuriraj;
     private javax.swing.JButton btnDodajStavkuIznajmljivanja;
     private javax.swing.JButton btnKreirajIznajmljivanje;
     private javax.swing.JComboBox<Citalac> cmbCitaoci;
@@ -175,28 +184,26 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
     private javax.swing.JTextField txtUkupanIznos;
     // End of variables declaration//GEN-END:variables
 
-    public void dodajStavkuIznajmljivanjaAddActionListener(ActionListener actionListener) {
-         btnDodajStavkuIznajmljivanja.addActionListener(actionListener);
+    public void addBtnDodajStavkuIznajmljivanjaAddActionListener(ActionListener actionListener) {
+        btnDodajStavkuIznajmljivanja.addActionListener(actionListener);
     }
 
-   
+    public void addBtnAzurirajActionListener(ActionListener actionListener) {
+        btnAzuriraj.addActionListener(actionListener);
+    }
 
     public JButton getBtnKreirajIznajmljivanje() {
         return btnKreirajIznajmljivanje;
     }
 
-    public void kreirajIznajmljivanjeAddActionListener(ActionListener actionListener) {
+    public void addBtnKreirajIznajmljivanjeAddActionListener(ActionListener actionListener) {
         btnKreirajIznajmljivanje.addActionListener(actionListener);
     }
 
     public JTextField getTxtOpisIznajmljivanja() {
         return txtOpisIznajmljivanja;
-    
-        
-    
-    
-    
-}
+
+    }
 
     public JTextField getTxtUkupanIznos() {
         return txtUkupanIznos;
@@ -213,7 +220,21 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
     public void setTxtId(JTextField txtId) {
         this.txtId = txtId;
     }
-    
-    
-    
+
+    public JButton getBtnDodajStavkuIznajmljivanja() {
+        return btnDodajStavkuIznajmljivanja;
+    }
+
+    public void setBtnDodajStavkuIznajmljivanja(JButton btnDodajStavkuIznajmljivanja) {
+        this.btnDodajStavkuIznajmljivanja = btnDodajStavkuIznajmljivanja;
+    }
+
+    public JButton getBtnAzuriraj() {
+        return btnAzuriraj;
+    }
+
+    public void setBtnAzuriraj(JButton btnAzuriraj) {
+        this.btnAzuriraj = btnAzuriraj;
+    }
+
 }

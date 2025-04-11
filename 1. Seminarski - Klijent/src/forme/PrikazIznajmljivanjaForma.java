@@ -7,6 +7,7 @@ package forme;
 import domen.Citalac;
 import domen.Radnik;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -37,8 +38,7 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
         tblIznajmljivanja = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblStavke = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnAzurirajIznajmljivanje = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -82,9 +82,7 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblStavke);
 
-        jButton1.setText("Azuriraj");
-
-        jButton2.setText("Obrisi");
+        btnAzurirajIznajmljivanje.setText("Azuriraj");
 
         jButton3.setText("Obrisi stavku");
 
@@ -131,9 +129,7 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(12, 12, 12)
-                                        .addComponent(jButton1)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jButton2)))
+                                        .addComponent(btnAzurirajIznajmljivanje)))
                                 .addGap(43, 43, 43)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
@@ -163,9 +159,7 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)))
+                        .addComponent(btnAzurirajIznajmljivanje))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,12 +214,11 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAzurirajIznajmljivanje;
     private javax.swing.JButton btnPretraziIznajmljivanje;
     private javax.swing.JButton btnResetujPretragu;
     private javax.swing.JComboBox<Citalac> cmbCitalac;
     private javax.swing.JComboBox<Radnik> cmbRadnik;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -306,6 +299,19 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
         this.txtId = txtId;
     }
 
+    public void addBtnAzurirajIznajmljivanjeActionListener(ActionListener actionListener) {
+        btnAzurirajIznajmljivanje.addActionListener(actionListener);
+    }
+
+    public JButton getBtnAzurirajIznajmljivanje() {
+        return btnAzurirajIznajmljivanje;
+    }
+
+    public void setBtnAzurirajIznajmljivanje(JButton btnAzurirajIznajmljivanje) {
+        this.btnAzurirajIznajmljivanje = btnAzurirajIznajmljivanje;
+    }
+
+    
     
     
     

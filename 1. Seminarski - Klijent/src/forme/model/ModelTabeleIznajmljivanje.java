@@ -17,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ModelTabeleIznajmljivanje extends AbstractTableModel {
 
-    List<Iznajmljivanje> lista;
+        List<Iznajmljivanje> lista;
 //    private int idIznajmljivanja;
 //    private double ukupanIznos;
 //    private String opisIznajmljivanja;

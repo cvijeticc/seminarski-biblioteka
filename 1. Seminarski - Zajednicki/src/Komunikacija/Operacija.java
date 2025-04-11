@@ -22,5 +22,6 @@ public enum Operacija implements Serializable {
     UCITAJ_RADNIKE,
     UCITAJ_KNJIGE,
     UCITAJ_IZNOS_PO_DANU, 
-    DODAJ_IZNAJMLJIVANJE
+    DODAJ_IZNAJMLJIVANJE, 
+    AZURIRAJ_IZNAJMLJIVANJE
 }

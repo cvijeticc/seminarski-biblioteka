@@ -39,7 +39,7 @@ public class DodajCitaocaController {
 
     private void addActionListeners() {
 
-        dcf.dodajAddActionListener(new ActionListener() {
+        dcf.addBtnDodajActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dodaj(e);
@@ -81,7 +81,7 @@ public class DodajCitaocaController {
 
         });
         /////////////
-        dcf.izmeniAddActionListener(new ActionListener() {
+        dcf.addBtnAzurirajActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 izmeni(e);

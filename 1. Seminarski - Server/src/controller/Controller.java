@@ -17,6 +17,7 @@ import operacija.citaoci.KreirajCitaocaSO;
 import operacija.citaoci.ObrisiCitaocaSO;
 import operacija.citaoci.UcitajCitaoceSO;
 import operacija.citaoci.UcitajKategorijeCitaocaSO;
+import operacija.iznajmljivanja.AzurirajIznajmljivanjeSO;
 import operacija.iznajmljivanja.stavke.UcitajStavkuIznajmljivanjaSO;
 import operacija.iznajmljivanja.KreirajIznajmljivanjeSO;
 import operacija.knjige.UcitajIznosPoDanuSO;
@@ -128,6 +129,11 @@ public class Controller {
     public void dodajIznajmljivanje(Iznajmljivanje i) throws Exception {
         KreirajIznajmljivanjeSO operacija = new KreirajIznajmljivanjeSO();
         operacija.izvrsi(i,null);
+    }
+
+    public void azurirajIznajmljivanje(Iznajmljivanje i) throws Exception {
+        AzurirajIznajmljivanjeSO operacija = new AzurirajIznajmljivanjeSO();
+        operacija.izvrsi(i, null);
     }
 
     

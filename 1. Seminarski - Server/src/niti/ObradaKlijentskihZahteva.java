@@ -79,6 +79,13 @@ public class ObradaKlijentskihZahteva extends Thread {
                         Controller.getInstance().azurirajCitaoca(c1);
                         odgovor.setOdgovor(null);
                         break;
+                    case AZURIRAJ_IZNAJMLJIVANJE:
+                        Iznajmljivanje i = (Iznajmljivanje) zahtev.getParametar();
+                        Controller.getInstance().azurirajIznajmljivanje(i);
+                        odgovor.setOdgovor(odgovor);
+                        
+                        
+                        break;
                     case UCITAJ_IZNAJMLJIVANJA:
                         List<Iznajmljivanje> iznajmljivanja = Controller.getInstance().ucitajIznajmljivanja();
                         System.out.println("Klasa obrada klijentskih zahteva: ");
@@ -104,8 +111,8 @@ public class ObradaKlijentskihZahteva extends Thread {
                         odgovor.setOdgovor(iznosPoDanu);
                         break;
                     case DODAJ_IZNAJMLJIVANJE:
-                        Iznajmljivanje i = (Iznajmljivanje) zahtev.getParametar();
-                        Controller.getInstance().dodajIznajmljivanje(i);
+                        Iznajmljivanje iznajmljivanje = (Iznajmljivanje) zahtev.getParametar();
+                        Controller.getInstance().dodajIznajmljivanje(iznajmljivanje);
                         odgovor.setOdgovor(null);
                         break;
                     default:
