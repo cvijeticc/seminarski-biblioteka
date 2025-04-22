@@ -115,6 +115,11 @@ public class ObradaKlijentskihZahteva extends Thread {
                         Controller.getInstance().dodajIznajmljivanje(iznajmljivanje);
                         odgovor.setOdgovor(null);
                         break;
+                    case DODAJ_RADNIKA:
+                        Radnik radnik = (Radnik) zahtev.getParametar();
+                        Controller.getInstance().dodajRadnika(radnik);
+                        odgovor.setOdgovor(odgovor);
+                        
                     default:
                         System.out.println("Greska ta operacija ne postoji");
 //                    throw new AssertionError();

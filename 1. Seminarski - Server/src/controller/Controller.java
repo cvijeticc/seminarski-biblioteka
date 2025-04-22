@@ -23,6 +23,8 @@ import operacija.iznajmljivanja.KreirajIznajmljivanjeSO;
 import operacija.knjige.UcitajIznosPoDanuSO;
 import operacija.knjige.UcitajKnjigeSO;
 import operacija.login.LoginOperacija;
+import operacija.radnici.AzurirajRadnikaSO;
+import operacija.radnici.KreirajRadnikaSO;
 import operacija.radnici.UcitajRadnikeSO;
 
 /**
@@ -136,7 +138,15 @@ public class Controller {
         operacija.izvrsi(i, null);
     }
 
-    
+    public void dodajRadnika(Radnik r) throws Exception {
+        KreirajRadnikaSO operacija = new KreirajRadnikaSO();
+        operacija.izvrsi(r, null);
+    }
+
+    public void azurirajRadnika(Radnik r) throws Exception {
+        AzurirajRadnikaSO operacija = new AzurirajRadnikaSO();
+        operacija.izvrsi(r, null);
+    }
     
     
 

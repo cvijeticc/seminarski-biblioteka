@@ -65,7 +65,7 @@ public class DodajCitaocaController {
 
                 // Ako korisnik izabere "No" ili "Cancel", prekida se izvršavanje metode
                 if (izbor != JOptionPane.YES_OPTION) {
-                    dcf.dispose();
+                    //dcf.dispose();
                     return;
                 }
 
@@ -133,7 +133,8 @@ public class DodajCitaocaController {
                 dcf.getBtnAzuriraj().setVisible(false);
                 dcf.getBtnDodaj().setVisible(true);
                 dcf.getBtnDodaj().setEnabled(true);
-
+                dcf.getTxtId().setVisible(false);
+                dcf.getLblId().setVisible(false);
                 break;
             case IZMENI:
                 dcf.getBtnAzuriraj().setVisible(true);

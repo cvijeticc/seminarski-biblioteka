@@ -8,6 +8,7 @@ import domen.Iznajmljivanje;
 import domen.Radnik;
 import forme.DodajCitaocaForma;
 import forme.DodajIznajmljivanjeForma;
+import forme.DodajRadnikaForma;
 import forme.DodajStavkuIznajmljivanjaForma;
 import forme.FormaMod;
 import kontroleri.GlavnaFormaController;
@@ -19,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import kontroleri.DodajCitaocaController;
 import kontroleri.DodajIznajmljivanjeController;
+import kontroleri.DodajRadnikaController;
 import kontroleri.DodajStavkuIznajmljivanjaController;
 import kontroleri.LoginController;
 import kontroleri.PrikazCitalacaController;
@@ -40,6 +42,8 @@ public class Cordinator {
     private PrikazIznajmljivanjaController piController;
     private DodajIznajmljivanjeController diController;
     private DodajStavkuIznajmljivanjaController dsiController;
+    private DodajRadnikaController drController;
+    
 
     private Cordinator() {
         parametri = new HashMap<>();
@@ -110,18 +114,13 @@ public class Cordinator {
         diController.otvoriFormu(FormaMod.IZMENI);
     }
 
-//        public void otvoriPrikazIznajmljivanjaFormu() {
-//        piController = new PrikazIznajmljivanjaController(new PrikazIznajmljivanjaForma());
-//        piController.otvoriFormu();
-//        }
     public void otvoriPrikazIznajmljivanjaFormu() {
-        PrikazIznajmljivanjaForma prikazForma = new PrikazIznajmljivanjaForma();
-        PrikazIznajmljivanjaController prikazController = new PrikazIznajmljivanjaController(prikazForma);
-        Cordinator.getInstance().dodajParam("prikazIznajmljivanjaController", prikazController);
-        prikazController.otvoriFormu();
+        piController = new PrikazIznajmljivanjaController(new PrikazIznajmljivanjaForma());
+        Cordinator.getInstance().dodajParam("prikazIznajmljivanjaController", piController);
+        //Dodao sam u hashmapu kljuc ovaj string gore i value je piController
+        //i posle u DodajIznajmljivanjeController uzimam value od toga kljuca i osveziFormu
+        piController.otvoriFormu();
 
-        // Ako hoćeš, i dalje možeš sačuvati referencu u polje piController
-        piController = prikazController;
     }
 
     public void osveziFormu() {
@@ -132,4 +131,15 @@ public class Cordinator {
         piController.osveziFormu();
     }
 
-}
+    public void otvoriDodajRadnikaFormu() {
+        drController = new DodajRadnikaController(new DodajRadnikaForma());
+        drController.otvoriFormu(FormaMod.DODAJ);
+    }
+    
+    public void otvoriAzurirajRadnikaFormu() {
+        drController = new DodajRadnikaController(new DodajRadnikaForma());
+        drController.otvoriFormu(FormaMod.IZMENI);
+    }
+    
+    
+    }

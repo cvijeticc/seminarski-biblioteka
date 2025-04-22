@@ -110,7 +110,7 @@ public class DodajIznajmljivanjeController {
                 Radnik radnik = (Radnik) dif.getCmbRadnici().getSelectedItem();
                 Citalac citalac = (Citalac) dif.getCmbCitaoci().getSelectedItem();
 
-                // Kreiranje objekta iznajmljivanje
+                
                 Iznajmljivanje i = new Iznajmljivanje(id, ukupanIznos, opisIznajmljivanja, radnik, citalac, null);
 
                 try {
@@ -122,7 +122,7 @@ public class DodajIznajmljivanjeController {
                     PrikazIznajmljivanjaController prikazController
                             = (PrikazIznajmljivanjaController) Cordinator.getInstance().vratiParam("prikazIznajmljivanjaController");
 
-                    prikazController.osveziFormu(); // ✅ Tvoje osvežavanje tabele
+                    prikazController.osveziFormu(); 
 
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(dif, "Neuspešno azurirano iznajmljivanje!", "Greška", JOptionPane.ERROR_MESSAGE);
@@ -168,8 +168,8 @@ public class DodajIznajmljivanjeController {
                 dif.getTxtId().setText(i.getIdIznajmljivanja() + "");
                 dif.getTxtUkupanIznos().setText(i.getUkupanIznos() + "");
                 dif.getTxtOpisIznajmljivanja().setText(i.getOpisIznajmljivanja());
-                dif.getCmbCitaoci().setEnabled(false);
-                dif.getCmbRadnici().setEnabled(false);
+//                dif.getCmbCitaoci().setEnabled(false);
+//                dif.getCmbRadnici().setEnabled(false);
                 break;
             case DODAJ:
                 dif.getBtnKreirajIznajmljivanje().setVisible(true);

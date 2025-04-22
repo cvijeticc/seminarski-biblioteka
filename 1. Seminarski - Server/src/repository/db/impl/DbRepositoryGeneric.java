@@ -54,29 +54,29 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
         ResultSet generatedKeys = st.getGeneratedKeys();
         if (generatedKeys.next()) {
             int id = generatedKeys.getInt(1);
-        st.close ();
+            st.close();
             return id;
-        }else{
-        st.close ();
-        
+        } else {
+            st.close();
+
 //        throw new Exception("Nije generisan id"); 
         }
         return 0;
-}
+    }
 
-@Override
-public void edit(ApstraktniDomenskiObjekat param) throws Exception {
+    @Override
+    public void edit(ApstraktniDomenskiObjekat param) throws Exception {
         String upit = "UPDATE " + param.vratiNazivTabele() + " SET "
                 + param.vratiVrednostiZaIzmenu() + " WHERE " + param.vratiPrimarnikljuc();
         System.out.println(upit);
         Statement st = DbConnectionFactory.getInstance().getConnection().createStatement();
         st.executeUpdate(upit);
         st.close();
-        
+
     }
 
     @Override
-public void delete(ApstraktniDomenskiObjekat param) throws Exception {
+    public void delete(ApstraktniDomenskiObjekat param) throws Exception {
         String upit = "DELETE FROM " + param.vratiNazivTabele() + " WHERE " + param.vratiPrimarnikljuc();
         System.out.println(upit);
         try {
@@ -85,7 +85,7 @@ public void delete(ApstraktniDomenskiObjekat param) throws Exception {
             st.close();
 
         } catch (java.sql.SQLIntegrityConstraintViolationException ex) {
-           
+
             throw new Exception("Ne možete obrisati objekat jer je referenciran u drugoj tabeli.");
         } catch (SQLException ex) {
             throw new Exception("SQL Greška pri brisanju: " + ex.getMessage());
@@ -93,11 +93,11 @@ public void delete(ApstraktniDomenskiObjekat param) throws Exception {
     }
 
     @Override
-public List<ApstraktniDomenskiObjekat> getAll() {
+    public List<ApstraktniDomenskiObjekat> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-     public void addStavkuIznajmljivanja(ApstraktniDomenskiObjekat param) throws Exception {
+
+    public void addStavkuIznajmljivanja(ApstraktniDomenskiObjekat param) throws Exception {
         //insert into pacijent (ime, prezime) values ('Marko','Markovic');
         String upit = "INSERT INTO " + param.vratiNazivTabele() + " (" + param.vratiKoloneZaUbacivanje()
                 + ") VALUES ( " + param.vratiVrednostiZaUbacivanje() + " )";

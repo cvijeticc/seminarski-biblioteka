@@ -213,4 +213,28 @@ public class Komunikacija {
         }
     }
 
+    public void dodajRadnika(Radnik r) {
+    Zahtev zahtev = new Zahtev(Operacija.DODAJ_RADNIKA, r);
+    posiljalac.posalji(zahtev);
+    Odgovor odg = (Odgovor) primalac.primi();
+    if (odg.getOdgovor() == null) {
+        System.out.println("Uspešno kreiran radnik");
+    } else {
+        System.out.println("Neuspešno kreiran radnik");
+    }
+}
+
+    public void azurirajRadnika(Radnik r) {
+    Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_RADNIKA, r);
+    posiljalac.posalji(zahtev);
+    Odgovor odg = (Odgovor) primalac.primi();
+    if (odg.getOdgovor() == null) {
+        System.out.println("Uspešno ažuriran radnik");
+        Cordinator.getInstance().osveziFormu();
+    } else {
+        System.out.println("Neuspešno ažuriran radnik");
+    }
+}
+
+
 }

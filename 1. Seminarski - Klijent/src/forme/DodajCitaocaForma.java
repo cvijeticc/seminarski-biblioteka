@@ -8,6 +8,7 @@ import domen.KategorijaCitaoca;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -45,7 +46,7 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
         btnDodaj = new javax.swing.JButton();
         cmbKategorijaCitaoca = new javax.swing.JComboBox<>();
         btnAzuriraj = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        lblId = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,7 +80,7 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
 
         btnAzuriraj.setText("Azuriraj");
 
-        jLabel5.setText("Id");
+        lblId.setText("Id");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,7 +99,7 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel5))
+                    .addComponent(lblId))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtPrezime)
@@ -113,7 +114,7 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(lblId)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -160,7 +161,7 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblId;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtIme;
@@ -215,6 +216,15 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
         this.txtId = txtId;
     }
 
+    public JLabel getLblId() {
+        return lblId;
+    }
+
+    public void setLblId(JLabel lblId) {
+        this.lblId = lblId;
+    }
+
+    
     
      
      
