@@ -4,6 +4,7 @@
  */
 package forme;
 
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -305,5 +306,23 @@ public class PrikazRadnikaForma extends javax.swing.JFrame {
     public void setTxtPrezime(JTextField txtPrezime) {
         this.txtPrezime = txtPrezime;
     }
+
+    public void addBtnObrisiActionListener(ActionListener actionListener) {
+        btnObrisi.addActionListener(actionListener);
+    }
+
+    public void addBtnAzurirajActionListener(ActionListener actionListener) {
+        btnAzuriraj.addActionListener(actionListener);
+    }
+
+    public void addBtnPretraziActionListener(ActionListener actionListener) {
+        btnPretrazi.addActionListener(actionListener);
+    }
+
+    public void addBtnResetujPretraguActionListener(ActionListener actionListener) {
+        btnResetujPretragu.addActionListener(actionListener);
+    }
+    
+    
     
 }

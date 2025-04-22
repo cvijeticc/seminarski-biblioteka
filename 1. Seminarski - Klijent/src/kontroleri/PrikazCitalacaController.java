@@ -67,7 +67,7 @@ public class PrikazCitalacaController {
                         JOptionPane.showMessageDialog(pcf, "Objekat klase Citalac je obrisan", "Uspesno", JOptionPane.INFORMATION_MESSAGE);
                         pripremiFormu();
                     } catch (Exception exc) {
-                        JOptionPane.showMessageDialog(pcf, "Citalac ne moze da bude obrisan", "Greska", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(pcf, "Citalac ne moze da bude obrisan, jer je referenciran u drugoj tabeli", "Greska", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }

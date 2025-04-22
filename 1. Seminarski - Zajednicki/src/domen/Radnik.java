@@ -156,8 +156,8 @@ public class Radnik implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiVrednostiZaIzmenu() {
-        return "ime = '" + ime + "', prezime ='" + prezime + "', email = '" + email
-                + "'korisnickoIme = '" + korisnickoIme + "'sifra = '" + sifra + "'";
+        return "ime = '" + ime + "', prezime = '" + prezime + "', email = '" + email
+                + "', korisnickoIme = '" + korisnickoIme + "', sifra = '" + sifra + "'";
     }
 
 }

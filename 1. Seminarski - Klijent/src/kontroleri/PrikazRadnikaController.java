@@ -24,7 +24,7 @@ public class PrikazRadnikaController {
 
     public PrikazRadnikaController(PrikazRadnikaForma prf) {
         this.prf = prf;
-       // addActionListeners();
+        addActionListeners();
     }
 
     public void otvoriFormu() {
@@ -40,17 +40,19 @@ public class PrikazRadnikaController {
         prf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    /*private void addActionListeners() {
+    private void addActionListeners() {
 
         prf.addBtnObrisiActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
                 int red = prf.getTblRadnici().getSelectedRow();
                 if (red == -1) {
                     JOptionPane.showMessageDialog(prf, "Sistem ne može da obriše radnika jer nijedan nije selektovan.", "Greška", JOptionPane.ERROR_MESSAGE);
                 } else {
                     ModelTabeleRadnik mtr = (ModelTabeleRadnik) prf.getTblRadnici().getModel();
                     Radnik r = mtr.getLista().get(red);
+//                    System.out.println("Radnik je " + r.getIme() +" " + r.getPrezime());
                     try {
                         Komunikacija.getInstance().obrisiRadnika(r);
                         JOptionPane.showMessageDialog(prf, "Radnik je uspešno obrisan.", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
@@ -72,7 +74,7 @@ public class PrikazRadnikaController {
                     ModelTabeleRadnik mtr = (ModelTabeleRadnik) prf.getTblRadnici().getModel();
                     Radnik r = mtr.getLista().get(red);
                     Cordinator.getInstance().dodajParam("radnik", r);
-                    Cordinator.getInstance().otvoriIzmeniRadnikaFormu();
+                    Cordinator.getInstance().otvoriAzurirajRadnikaFormu();
                 }
             }
         });
@@ -80,18 +82,19 @@ public class PrikazRadnikaController {
         prf.addBtnPretraziActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String id = prf.getTxtId().getText().trim();
                 String ime = prf.getTxtIme().getText().trim();
                 String prezime = prf.getTxtPrezime().getText().trim();
                 String email = prf.getTxtEmail().getText().trim();
                 String korisnickoIme = prf.getTxtKorisnickoIme().getText().trim();
 
-                if (ime.isEmpty() && prezime.isEmpty() && email.isEmpty() && korisnickoIme.isEmpty()) {
+                if (id.isEmpty() && ime.isEmpty() && prezime.isEmpty() && email.isEmpty() && korisnickoIme.isEmpty()) {
                     JOptionPane.showMessageDialog(prf, "Unesi bar jedan kriterijum za pretragu.", "Informacija", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
 
                 ModelTabeleRadnik mtr = (ModelTabeleRadnik) prf.getTblRadnici().getModel();
-                mtr.pretrazi(ime, prezime, email, korisnickoIme);
+                mtr.pretrazi(id, ime, prezime, email, korisnickoIme);
             }
         });
 
@@ -101,7 +104,7 @@ public class PrikazRadnikaController {
                 pripremiFormu();
             }
         });
-    } */
+    } 
 
     public void osveziFormu() {
         pripremiFormu();

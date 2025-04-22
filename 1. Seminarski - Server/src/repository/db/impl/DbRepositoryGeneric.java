@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import repository.db.DbConnectionFactory;
 
 import repository.db.DbRepository;
@@ -85,7 +86,6 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
             st.close();
 
         } catch (java.sql.SQLIntegrityConstraintViolationException ex) {
-
             throw new Exception("Ne možete obrisati objekat jer je referenciran u drugoj tabeli.");
         } catch (SQLException ex) {
             throw new Exception("SQL Greška pri brisanju: " + ex.getMessage());

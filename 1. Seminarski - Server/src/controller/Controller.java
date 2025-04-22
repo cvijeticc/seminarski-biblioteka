@@ -25,6 +25,7 @@ import operacija.knjige.UcitajKnjigeSO;
 import operacija.login.LoginOperacija;
 import operacija.radnici.AzurirajRadnikaSO;
 import operacija.radnici.KreirajRadnikaSO;
+import operacija.radnici.ObrisiRadnikaSO;
 import operacija.radnici.UcitajRadnikeSO;
 
 /**
@@ -145,6 +146,11 @@ public class Controller {
 
     public void azurirajRadnika(Radnik r) throws Exception {
         AzurirajRadnikaSO operacija = new AzurirajRadnikaSO();
+        operacija.izvrsi(r, null);
+    }
+
+    public void obrisiRadnika(Radnik r) throws Exception {
+        ObrisiRadnikaSO operacija = new ObrisiRadnikaSO();
         operacija.izvrsi(r, null);
     }
     

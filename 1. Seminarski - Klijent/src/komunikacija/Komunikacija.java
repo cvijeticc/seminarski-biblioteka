@@ -236,5 +236,20 @@ public class Komunikacija {
     }
 }
 
+    public void obrisiRadnika(Radnik r) throws Exception {
+        Zahtev zahtev = new Zahtev(Operacija.OBRISI_RADNIKA, r);
+
+        posiljalac.posalji(zahtev);
+
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspesno obrisano");
+        } else {
+            System.out.println("Neuspesno obrisano");
+            ((Exception) odg.getOdgovor()).printStackTrace();
+            throw new Exception("Greska");
+        }
+    }
+
 
 }

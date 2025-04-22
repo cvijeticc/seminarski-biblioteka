@@ -16,6 +16,7 @@ import forme.GlavnaForma;
 import forme.LoginForma;
 import forme.PrikazCitalacaForma;
 import forme.PrikazIznajmljivanjaForma;
+import forme.PrikazRadnikaForma;
 import java.util.HashMap;
 import java.util.Map;
 import kontroleri.DodajCitaocaController;
@@ -25,6 +26,7 @@ import kontroleri.DodajStavkuIznajmljivanjaController;
 import kontroleri.LoginController;
 import kontroleri.PrikazCitalacaController;
 import kontroleri.PrikazIznajmljivanjaController;
+import kontroleri.PrikazRadnikaController;
 
 /**
  *
@@ -43,6 +45,7 @@ public class Cordinator {
     private DodajIznajmljivanjeController diController;
     private DodajStavkuIznajmljivanjaController dsiController;
     private DodajRadnikaController drController;
+    private PrikazRadnikaController prController;
     
 
     private Cordinator() {
@@ -139,6 +142,11 @@ public class Cordinator {
     public void otvoriAzurirajRadnikaFormu() {
         drController = new DodajRadnikaController(new DodajRadnikaForma());
         drController.otvoriFormu(FormaMod.IZMENI);
+    }
+
+    public void otvoriPrikazRadnikaFormu() {
+        prController = new PrikazRadnikaController(new PrikazRadnikaForma());
+        prController.otvoriFormu();
     }
     
     

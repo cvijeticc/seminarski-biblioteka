@@ -60,15 +60,17 @@ public class ModelTabeleRadnik extends AbstractTableModel {
         return lista;
     }
 
-    public void pretrazi(String ime, String prezime, String email, String korisnickoIme) {
-        List<Radnik> filtrirano = lista.stream()
-                .filter(r -> (ime == null || ime.isEmpty() || r.getIme().toLowerCase().contains(ime.toLowerCase())))
-                .filter(r -> (prezime == null || prezime.isEmpty() || r.getPrezime().toLowerCase().contains(prezime.toLowerCase())))
-                .filter(r -> (email == null || email.isEmpty() || r.getEmail().toLowerCase().contains(email.toLowerCase())))
-                .filter(r -> (korisnickoIme == null || korisnickoIme.isEmpty() || r.getKorisnickoIme().toLowerCase().contains(korisnickoIme.toLowerCase())))
-                .collect(Collectors.toList());
+    public void pretrazi(String id, String ime, String prezime, String email, String korisnickoIme) {
+    List<Radnik> filtrirano = lista.stream()
+            .filter(r -> (id == null || id.isEmpty() || String.valueOf(r.getIdRadnik()).contains(id)))
+            .filter(r -> (ime == null || ime.isEmpty() || r.getIme().toLowerCase().contains(ime.toLowerCase())))
+            .filter(r -> (prezime == null || prezime.isEmpty() || r.getPrezime().toLowerCase().contains(prezime.toLowerCase())))
+            .filter(r -> (email == null || email.isEmpty() || r.getEmail().toLowerCase().contains(email.toLowerCase())))
+            .filter(r -> (korisnickoIme == null || korisnickoIme.isEmpty() || r.getKorisnickoIme().toLowerCase().contains(korisnickoIme.toLowerCase())))
+            .collect(Collectors.toList());
 
-        this.lista = filtrirano;
-        fireTableDataChanged();
-    }
+    this.lista = filtrirano;
+    fireTableDataChanged();
+}
+
 }

@@ -77,14 +77,13 @@ public class ObradaKlijentskihZahteva extends Thread {
                     case AZURIRAJ_CITAOCA:
                         Citalac c1 = (Citalac) zahtev.getParametar();
                         Controller.getInstance().azurirajCitaoca(c1);
-                        odgovor.setOdgovor(null);
+                        odgovor.setOdgovor(odgovor);
                         break;
                     case AZURIRAJ_IZNAJMLJIVANJE:
                         Iznajmljivanje i = (Iznajmljivanje) zahtev.getParametar();
                         Controller.getInstance().azurirajIznajmljivanje(i);
                         odgovor.setOdgovor(odgovor);
-                        
-                        
+
                         break;
                     case UCITAJ_IZNAJMLJIVANJA:
                         List<Iznajmljivanje> iznajmljivanja = Controller.getInstance().ucitajIznajmljivanja();
@@ -93,7 +92,7 @@ public class ObradaKlijentskihZahteva extends Thread {
                         odgovor.setOdgovor(iznajmljivanja);
                         break;
                     case UCITAJ_STAVKU_IZNAJMLJIVANJA:
-                        List<StavkaIznajmljivanja> stavkaIznajmljivanja = Controller.getInstance().ucitajStavkuIznajmljivanja((int)zahtev.getParametar());
+                        List<StavkaIznajmljivanja> stavkaIznajmljivanja = Controller.getInstance().ucitajStavkuIznajmljivanja((int) zahtev.getParametar());
                         System.out.println("Klasa obrada klijentskih zahteva: ");
                         System.out.println(stavkaIznajmljivanja);
                         odgovor.setOdgovor(stavkaIznajmljivanja);
@@ -107,7 +106,7 @@ public class ObradaKlijentskihZahteva extends Thread {
                         odgovor.setOdgovor(knjige);
                         break;
                     case UCITAJ_IZNOS_PO_DANU:
-                        int iznosPoDanu = Controller.getInstance().ucitajIznosPoDanu((int)zahtev.getParametar());
+                        int iznosPoDanu = Controller.getInstance().ucitajIznosPoDanu((int) zahtev.getParametar());
                         odgovor.setOdgovor(iznosPoDanu);
                         break;
                     case DODAJ_IZNAJMLJIVANJE:
@@ -118,14 +117,32 @@ public class ObradaKlijentskihZahteva extends Thread {
                     case DODAJ_RADNIKA:
                         Radnik radnik = (Radnik) zahtev.getParametar();
                         Controller.getInstance().dodajRadnika(radnik);
+                        odgovor.setOdgovor(null);
+                        break;
+                    case AZURIRAJ_RADNIKA:
+                        Radnik ra = (Radnik) zahtev.getParametar();
+                        Controller.getInstance().azurirajRadnika(ra);
                         odgovor.setOdgovor(odgovor);
+                        break;
                         
+                    case OBRISI_RADNIKA:
+                        try {
+                        Radnik rad = (Radnik) zahtev.getParametar();
+                        Controller.getInstance().obrisiRadnika(rad);
+                        odgovor.setOdgovor(null);
+                        
+                    } catch (Exception e) {
+                        odgovor.setOdgovor(e);
+                    }
+                        break;
+
                     default:
                         System.out.println("Greska ta operacija ne postoji");
 //                    throw new AssertionError();
                 }
                 posiljalac.posalji(odgovor);
             } catch (Exception ex) {
+                ex.printStackTrace();
                 Logger.getLogger(ObradaKlijentskihZahteva.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
