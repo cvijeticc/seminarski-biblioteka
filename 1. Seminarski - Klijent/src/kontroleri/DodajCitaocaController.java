@@ -74,6 +74,7 @@ public class DodajCitaocaController {
                     Komunikacija.getInstance().dodajCitaoca(c);
                     JOptionPane.showMessageDialog(dcf, "Uspešno kreiran čitalac!", "Obaveštenje", JOptionPane.INFORMATION_MESSAGE);
                     dcf.dispose(); // Zatvaramo prozor nakon uspešnog dodavanja
+                    
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(dcf, "Neuspešno kreiranje čitaoca!", "Greška", JOptionPane.ERROR_MESSAGE);
                 }
@@ -101,6 +102,9 @@ public class DodajCitaocaController {
                     Komunikacija.getInstance().azurirajCitaoca(c);
                     JOptionPane.showMessageDialog(dcf, "Uspešno azuriran čitalac!", "Obaveštenje", JOptionPane.INFORMATION_MESSAGE);
                     dcf.dispose(); // Zatvaramo prozor nakon uspešnog dodavanja
+                    PrikazCitalacaController prikazController =
+                            (PrikazCitalacaController) Cordinator.getInstance().vratiParam("prikazCitalacaController");
+                    prikazController.osveziFormu();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(dcf, "Neuspešno azuriran čitalac!", "Greška", JOptionPane.ERROR_MESSAGE);
                 }

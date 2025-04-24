@@ -72,6 +72,8 @@ public class Cordinator {
 
     public void otvoriPrikazCitalacaFormu() {
         pcController = new PrikazCitalacaController(new PrikazCitalacaForma());
+        Cordinator.getInstance().dodajParam("prikazCitalacaController", pcController);
+        //
         pcController.otvoriFormu();
     }
 
@@ -146,8 +148,11 @@ public class Cordinator {
 
     public void otvoriPrikazRadnikaFormu() {
         prController = new PrikazRadnikaController(new PrikazRadnikaForma());
+        Cordinator.getInstance().dodajParam("prikazRadnikaController", prController);
         prController.otvoriFormu();
     }
+
+    
     
     
     }

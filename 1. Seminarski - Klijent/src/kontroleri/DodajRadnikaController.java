@@ -86,6 +86,9 @@ public class DodajRadnikaController {
                 Komunikacija.getInstance().azurirajRadnika(r);
                 JOptionPane.showMessageDialog(drf, "Uspešno ažuriran radnik!", "Obaveštenje", JOptionPane.INFORMATION_MESSAGE);
                 drf.dispose();
+                PrikazRadnikaController prikazController =
+                        (PrikazRadnikaController) Cordinator.getInstance().vratiParam("prikazRadnikaController");
+                prikazController.osveziFormu();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(drf, "Neuspešno ažuriranje radnika!", "Greška", JOptionPane.ERROR_MESSAGE);
             }

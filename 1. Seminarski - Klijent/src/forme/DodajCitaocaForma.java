@@ -79,6 +79,11 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
         });
 
         btnAzuriraj.setText("Azuriraj");
+        btnAzuriraj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAzurirajActionPerformed(evt);
+            }
+        });
 
         lblId.setText("Id");
 
@@ -149,6 +154,10 @@ public class DodajCitaocaForma extends javax.swing.JFrame {
     private void cmbKategorijaCitaocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbKategorijaCitaocaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbKategorijaCitaocaActionPerformed
+
+    private void btnAzurirajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAzurirajActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAzurirajActionPerformed
 
    
 

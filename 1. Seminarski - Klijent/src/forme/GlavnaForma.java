@@ -109,7 +109,7 @@ public class GlavnaForma extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem10);
 
-        jMenuItem9.setText("Pretraži i Promeni");
+        jMenuItem9.setText("Pretraži, Promeni, Obriši");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem9ActionPerformed(evt);
