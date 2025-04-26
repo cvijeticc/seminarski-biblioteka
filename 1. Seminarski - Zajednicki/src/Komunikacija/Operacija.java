@@ -26,5 +26,8 @@ public enum Operacija implements Serializable {
     AZURIRAJ_IZNAJMLJIVANJE, 
     DODAJ_RADNIKA, 
     AZURIRAJ_RADNIKA, 
-    OBRISI_RADNIKA
+    OBRISI_RADNIKA,
+    DODAJ_KNJIGU, 
+    OBRISI_KNJIGU, 
+    AZURIRAJ_KNJIGU
 }

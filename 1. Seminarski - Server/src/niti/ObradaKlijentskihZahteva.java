@@ -51,13 +51,19 @@ public class ObradaKlijentskihZahteva extends Thread {
                         r = Controller.getInstance().login(r);
                         odgovor.setOdgovor(r);
                         break;
-                    case UCITAJ_CITAOCE:
-                        List<Citalac> citaoci = Controller.getInstance().ucitajCitaoce();
-                        odgovor.setOdgovor(citaoci);
+                    case DODAJ_CITAOCA:
+                        Citalac c = (Citalac) zahtev.getParametar();
+                        Controller.getInstance().dodajCitaoca(c);
+                        odgovor.setOdgovor(null);
+                        break;
+                    case AZURIRAJ_CITAOCA:
+                        c = (Citalac) zahtev.getParametar();
+                        Controller.getInstance().azurirajCitaoca(c);
+                        odgovor.setOdgovor(odgovor);
                         break;
                     case OBRISI_CITAOCA:
                         try {
-                        Citalac c = (Citalac) zahtev.getParametar();
+                        c = (Citalac) zahtev.getParametar();
                         Controller.getInstance().obrisiCitaoca(c);
                         odgovor.setOdgovor(null);
 
@@ -65,20 +71,16 @@ public class ObradaKlijentskihZahteva extends Thread {
                         odgovor.setOdgovor(e);
                     }
                     break;
+                    case UCITAJ_CITAOCE:
+                        List<Citalac> citaoci = Controller.getInstance().ucitajCitaoce();
+                        odgovor.setOdgovor(citaoci);
+                        break;
+
                     case UCITAJ_KATEGORIJE_CITAOCA:
                         List<KategorijaCitaoca> kategorija = Controller.getInstance().ucitajKategorijeCitaoca();
                         odgovor.setOdgovor(kategorija);
                         break;
-                    case DODAJ_CITAOCA:
-                        Citalac c = (Citalac) zahtev.getParametar();
-                        Controller.getInstance().dodajCitaoca(c);
-                        odgovor.setOdgovor(null);
-                        break;
-                    case AZURIRAJ_CITAOCA:
-                        Citalac c1 = (Citalac) zahtev.getParametar();
-                        Controller.getInstance().azurirajCitaoca(c1);
-                        odgovor.setOdgovor(odgovor);
-                        break;
+
                     case AZURIRAJ_IZNAJMLJIVANJE:
                         Iznajmljivanje i = (Iznajmljivanje) zahtev.getParametar();
                         Controller.getInstance().azurirajIznajmljivanje(i);
@@ -119,23 +121,41 @@ public class ObradaKlijentskihZahteva extends Thread {
                         Controller.getInstance().dodajRadnika(radnik);
                         odgovor.setOdgovor(null);
                         break;
+                    case DODAJ_KNJIGU:
+                        Knjiga k = (Knjiga) zahtev.getParametar();
+                        Controller.getInstance().dodajKnjigu(k);
+                        odgovor.setOdgovor(odgovor);
+                        break;
                     case AZURIRAJ_RADNIKA:
                         Radnik ra = (Radnik) zahtev.getParametar();
                         Controller.getInstance().azurirajRadnika(ra);
                         odgovor.setOdgovor(odgovor);
                         break;
-                        
+
                     case OBRISI_RADNIKA:
                         try {
                         Radnik rad = (Radnik) zahtev.getParametar();
                         Controller.getInstance().obrisiRadnika(rad);
                         odgovor.setOdgovor(null);
-                        
+
                     } catch (Exception e) {
                         odgovor.setOdgovor(e);
                     }
+                    break;
+                    case OBRISI_KNJIGU:
+                    try {
+                        Knjiga knjiga = (Knjiga) zahtev.getParametar();
+                        Controller.getInstance().obrisiKnjigu(knjiga);
+                        odgovor.setOdgovor(null);
+                    } catch (Exception e) {
+                        odgovor.setOdgovor(e);
+                    }
+                    break;
+                    case AZURIRAJ_KNJIGU:
+                        Knjiga k1 = (Knjiga) zahtev.getParametar();
+                        Controller.getInstance().azurirajKnjigu(k1);
+                        odgovor.setOdgovor(odgovor);
                         break;
-
                     default:
                         System.out.println("Greska ta operacija ne postoji");
 //                    throw new AssertionError();

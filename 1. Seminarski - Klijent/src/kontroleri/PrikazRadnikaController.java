@@ -74,7 +74,7 @@ public class PrikazRadnikaController {
                     ModelTabeleRadnik mtr = (ModelTabeleRadnik) prf.getTblRadnici().getModel();
                     Radnik r = mtr.getLista().get(red);
                     Cordinator.getInstance().dodajParam("radnik", r);
-                    Cordinator.getInstance().otvoriAzurirajRadnikaFormu();
+                    Cordinator.getInstance().otvoriIzmeniRadnikaFormu();
                 }
             }
         });

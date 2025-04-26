@@ -251,5 +251,46 @@ public class Komunikacija {
         }
     }
 
+    public void dodajKnjigu(Knjiga k) {
+    Zahtev zahtev = new Zahtev(Operacija.DODAJ_KNJIGU, k);
+    posiljalac.posalji(zahtev);
+    Odgovor odg = (Odgovor) primalac.primi();
+    if (odg.getOdgovor() == null) {
+        System.out.println("Uspešno kreirana knjiga");
+    } else {
+        System.out.println("Neuspešno kreirana knjiga");
+    }
+}
+
+    public void obrisiKnjigu(Knjiga k) throws Exception {
+    Zahtev zahtev = new Zahtev(Operacija.OBRISI_KNJIGU, k);
+
+    posiljalac.posalji(zahtev);
+
+    Odgovor odg = (Odgovor) primalac.primi();
+    if (odg.getOdgovor() == null) {
+        System.out.println("Uspešno obrisana knjiga");
+    } else {
+        System.out.println("Neuspešno obrisana knjiga");
+        ((Exception) odg.getOdgovor()).printStackTrace();
+        throw new Exception("Greška prilikom brisanja knjige");
+    }
+}
+
+    public void azurirajKnjigu(Knjiga k) {
+    Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_KNJIGU, k);
+    posiljalac.posalji(zahtev);
+    Odgovor odg = (Odgovor) primalac.primi();
+    if (odg.getOdgovor() == null) {
+        System.out.println("Uspešno ažurirana knjiga");
+        Cordinator.getInstance().osveziFormu();
+    } else {
+        System.out.println("Neuspešno ažurirana knjiga");
+    }
+}
+
+
+
+
 
 }

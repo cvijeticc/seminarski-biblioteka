@@ -4,11 +4,9 @@
  */
 package forme;
 
-import domen.KategorijaCitaoca;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -16,15 +14,13 @@ import javax.swing.JTextField;
  *
  * @author andri
  */
-public class PrikazCitalacaForma extends javax.swing.JFrame {
+public class PrikazKnjigaForma extends javax.swing.JFrame {
 
     /**
-     * Creates new form PrikazCitalacaForma
+     * Creates new form PrikazKnjigaForma
      */
-    public PrikazCitalacaForma() {
+    public PrikazKnjigaForma() {
         initComponents();
-//        setLocationRelativeTo(null);
-//        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -37,8 +33,10 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCitaoci = new javax.swing.JTable();
+        tblKnjige = new javax.swing.JTable();
+        btnPretrazi = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
+        btnResetujPretragu = new javax.swing.JButton();
         btnAzuriraj = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtIme = new javax.swing.JTextField();
@@ -47,13 +45,11 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        btnPretrazi = new javax.swing.JButton();
-        btnResetujPretragu = new javax.swing.JButton();
-        cmbKategorijaCitaoca = new javax.swing.JComboBox<>();
+        txtIznosPoDanu = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tblCitaoci.setModel(new javax.swing.table.DefaultTableModel(
+        tblKnjige.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -64,9 +60,13 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblCitaoci);
+        jScrollPane1.setViewportView(tblKnjige);
+
+        btnPretrazi.setText("Pretraži");
 
         btnObrisi.setText("Obrisi");
+
+        btnResetujPretragu.setText("Resetuj pretragu");
 
         btnAzuriraj.setText("Azuriraj");
         btnAzuriraj.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +75,7 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Ime");
+        jLabel1.setText("Naziv");
 
         txtIme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,15 +83,11 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Prezime");
+        jLabel2.setText("Zanr");
 
-        jLabel3.setText("Email");
+        jLabel3.setText("Godina izdavanja");
 
-        jLabel4.setText("Kategorija citaoca");
-
-        btnPretrazi.setText("Pretraži");
-
-        btnResetujPretragu.setText("Resetuj pretragu");
+        jLabel4.setText("Iznos po danu");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,8 +110,8 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
-                        .addGap(26, 26, 26)
-                        .addComponent(cmbKategorijaCitaoca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtIznosPoDanu, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +125,7 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnObrisi)
                                     .addComponent(btnAzuriraj))))))
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +134,7 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
                 .addComponent(btnObrisi)
                 .addGap(36, 36, 36)
                 .addComponent(btnAzuriraj)
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -149,7 +145,7 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(cmbKategorijaCitaoca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIznosPoDanu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPretrazi)
@@ -162,80 +158,177 @@ public class PrikazCitalacaForma extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtImeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtImeActionPerformed
-
     private void btnAzurirajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAzurirajActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAzurirajActionPerformed
 
+    private void txtImeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtImeActionPerformed
+
     /**
      * @param args the command line arguments
      */
-   
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PrikazKnjigaForma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PrikazKnjigaForma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PrikazKnjigaForma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PrikazKnjigaForma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PrikazKnjigaForma().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAzuriraj;
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnPretrazi;
     private javax.swing.JButton btnResetujPretragu;
-    private javax.swing.JComboBox<KategorijaCitaoca> cmbKategorijaCitaoca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblCitaoci;
+    private javax.swing.JTable tblKnjige;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtIme;
+    private javax.swing.JTextField txtIznosPoDanu;
     private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables
 
-    public JTable getTblCitaoci() {
-        return tblCitaoci;
+    public JButton getBtnAzuriraj() {
+        return btnAzuriraj;
+    }
+
+    public void setBtnAzuriraj(JButton btnAzuriraj) {
+        this.btnAzuriraj = btnAzuriraj;
     }
 
     public JButton getBtnObrisi() {
         return btnObrisi;
     }
 
-    public JComboBox<KategorijaCitaoca> getCmbKategorijaCitaoca() {
-        return cmbKategorijaCitaoca;
+    public void setBtnObrisi(JButton btnObrisi) {
+        this.btnObrisi = btnObrisi;
     }
 
-    public void setCmbKategorijaCitaoca(JComboBox<KategorijaCitaoca> cmbKategorijaCitaoca) {
-        this.cmbKategorijaCitaoca = cmbKategorijaCitaoca;
+    public JButton getBtnPretrazi() {
+        return btnPretrazi;
     }
 
-    public void addBtnObrisiActionListener(ActionListener actionListener) {
-        btnObrisi.addActionListener(actionListener);
+    public void setBtnPretrazi(JButton btnPretrazi) {
+        this.btnPretrazi = btnPretrazi;
     }
 
-    public void addBtnAzurirajActionListener(ActionListener actionListener) {
-        btnAzuriraj.addActionListener(actionListener);
+    public JButton getBtnResetujPretragu() {
+        return btnResetujPretragu;
     }
 
-    public void addBtnPretraziActionListener(ActionListener actionListener) {
-        btnPretrazi.addActionListener(actionListener);
+    public void setBtnResetujPretragu(JButton btnResetujPretragu) {
+        this.btnResetujPretragu = btnResetujPretragu;
     }
-    
-    public void addBtnResetujPretraguActionListener(ActionListener actionListener) {
-        btnResetujPretragu.addActionListener(actionListener);
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JTable getTblKnjige() {
+        return tblKnjige;
+    }
+
+    public void setTblKnjige(JTable tblKnjige) {
+        this.tblKnjige = tblKnjige;
     }
 
     public JTextField getTxtEmail() {
         return txtEmail;
     }
 
+    public void setTxtEmail(JTextField txtEmail) {
+        this.txtEmail = txtEmail;
+    }
+
     public JTextField getTxtIme() {
         return txtIme;
+    }
+
+    public void setTxtIme(JTextField txtIme) {
+        this.txtIme = txtIme;
+    }
+
+    public JTextField getTxtIznosPoDanu() {
+        return txtIznosPoDanu;
+    }
+
+    public void setTxtIznosPoDanu(JTextField txtIznosPoDanu) {
+        this.txtIznosPoDanu = txtIznosPoDanu;
     }
 
     public JTextField getTxtPrezime() {
         return txtPrezime;
     }
-    
-    
 
+    public void setTxtPrezime(JTextField txtPrezime) {
+        this.txtPrezime = txtPrezime;
+    }
+
+    
 }

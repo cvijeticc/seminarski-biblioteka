@@ -20,6 +20,9 @@ import operacija.citaoci.UcitajKategorijeCitaocaSO;
 import operacija.iznajmljivanja.AzurirajIznajmljivanjeSO;
 import operacija.iznajmljivanja.stavke.UcitajStavkuIznajmljivanjaSO;
 import operacija.iznajmljivanja.KreirajIznajmljivanjeSO;
+import operacija.knjige.AzurirajKnjiguSO;
+import operacija.knjige.KreirajKnjiguSO;
+import operacija.knjige.ObrisiKnjiguSO;
 import operacija.knjige.UcitajIznosPoDanuSO;
 import operacija.knjige.UcitajKnjigeSO;
 import operacija.login.LoginOperacija;
@@ -152,6 +155,22 @@ public class Controller {
     public void obrisiRadnika(Radnik r) throws Exception {
         ObrisiRadnikaSO operacija = new ObrisiRadnikaSO();
         operacija.izvrsi(r, null);
+    }
+
+    public void dodajKnjigu(Knjiga k) throws Exception {
+        KreirajKnjiguSO operacija = new KreirajKnjiguSO();
+        operacija.izvrsi(k,null);
+        
+    }
+
+    public void obrisiKnjigu(Knjiga knjiga) throws Exception {
+        ObrisiKnjiguSO operacija = new ObrisiKnjiguSO();
+        operacija.izvrsi(knjiga,null);
+    }
+
+    public void azurirajKnjigu(Knjiga k) throws Exception {
+        AzurirajKnjiguSO operacija = new AzurirajKnjiguSO();
+        operacija.izvrsi(k, null);
     }
     
     

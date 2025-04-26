@@ -13,7 +13,8 @@ import java.util.Objects;
  *
  * @author andri
  */
-public class Knjiga implements ApstraktniDomenskiObjekat{
+public class Knjiga implements ApstraktniDomenskiObjekat {
+
     private int idKnjiga;
     private String naziv;
     private String zanrKnjige;
@@ -109,22 +110,21 @@ public class Knjiga implements ApstraktniDomenskiObjekat{
     }
 
     @Override
-public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
-    List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
-    while (rs.next()) {
-        int idKnjiga = rs.getInt("knjiga.idKnjiga");
-        String naziv = rs.getString("knjiga.naziv");
-        String zanrKnjige = rs.getString("knjiga.zanrKnjige");
-        int godinaIzdavanja = rs.getInt("knjiga.godinaIzdavanja");
-        double iznosPoDanu = rs.getDouble("knjiga.iznosPoDanu");
+    public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
+        List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
+        while (rs.next()) {
+            int idKnjiga = rs.getInt("knjiga.idKnjiga");
+            String naziv = rs.getString("knjiga.naziv");
+            String zanrKnjige = rs.getString("knjiga.zanrKnjige");
+            int godinaIzdavanja = rs.getInt("knjiga.godinaIzdavanja");
+            double iznosPoDanu = rs.getDouble("knjiga.iznosPoDanu");
 
-        Knjiga k = new Knjiga(idKnjiga, naziv, zanrKnjige, godinaIzdavanja, iznosPoDanu);
-        lista.add(k);
+            Knjiga k = new Knjiga(idKnjiga, naziv, zanrKnjige, godinaIzdavanja, iznosPoDanu);
+            lista.add(k);
+        }
+
+        return lista;
     }
-
-    return lista;
-}
-
 
     @Override
     public String vratiKoloneZaUbacivanje() {
@@ -133,12 +133,12 @@ public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        return "'" + naziv + "','" + zanrKnjige + "," + godinaIzdavanja + "," + iznosPoDanu ;
+        return "'" + naziv + "','" + zanrKnjige + "'," + godinaIzdavanja + "," + iznosPoDanu;
     }
 
     @Override
     public String vratiPrimarnikljuc() {
-        return "knjiga.idknjiga= "+idKnjiga;
+        return "knjiga.idknjiga= " + idKnjiga;
     }
 
     @Override
@@ -148,9 +148,8 @@ public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception
 
     @Override
     public String vratiVrednostiZaIzmenu() {
-        return "naziv = '"+naziv+"', zanrKnjige ='"+zanrKnjige+"', godinaIzdavanja = "+godinaIzdavanja
-                + "iznosPoDanu" + iznosPoDanu;
+        return "naziv = '" + naziv + "', zanrKnjige = '" + zanrKnjige + "', godinaIzdavanja = " + godinaIzdavanja
+                + ", iznosPoDanu = " + iznosPoDanu;
     }
-    
-    
+
 }

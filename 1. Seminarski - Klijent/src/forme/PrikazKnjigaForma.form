@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -40,29 +40,29 @@
                       <Component id="txtEmail" min="-2" pref="71" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="cmbKategorijaCitaoca" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtIznosPoDanu" min="-2" pref="71" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="btnPretrazi" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                               <Component id="btnResetujPretragu" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnObrisi" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnAzuriraj" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnObrisi" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnAzuriraj" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="118" max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,7 +73,7 @@
               <Component id="btnObrisi" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="btnAzuriraj" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="245" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
@@ -85,7 +85,7 @@
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmbKategorijaCitaoca" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtIznosPoDanu" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -107,7 +107,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tblCitaoci">
+        <Component class="javax.swing.JTable" name="tblKnjige">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
@@ -121,9 +121,19 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btnPretrazi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pretra&#x17e;i"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JButton" name="btnObrisi">
       <Properties>
         <Property name="text" type="java.lang.String" value="Obrisi"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnResetujPretragu">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Resetuj pretragu"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnAzuriraj">
@@ -136,7 +146,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ime"/>
+        <Property name="text" type="java.lang.String" value="Naziv"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtIme">
@@ -146,42 +156,24 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Prezime"/>
+        <Property name="text" type="java.lang.String" value="Zanr"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPrezime">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Email"/>
+        <Property name="text" type="java.lang.String" value="Godina izdavanja"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Kategorija citaoca"/>
+        <Property name="text" type="java.lang.String" value="Iznos po danu"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnPretrazi">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Pretra&#x17e;i"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnResetujPretragu">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Resetuj pretragu"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbKategorijaCitaoca">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;KategorijaCitaoca&gt;"/>
-      </AuxValues>
+    <Component class="javax.swing.JTextField" name="txtIznosPoDanu">
     </Component>
   </SubComponents>
 </Form>

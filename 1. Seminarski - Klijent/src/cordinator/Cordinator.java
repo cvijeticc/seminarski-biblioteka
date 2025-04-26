@@ -8,6 +8,7 @@ import domen.Iznajmljivanje;
 import domen.Radnik;
 import forme.DodajCitaocaForma;
 import forme.DodajIznajmljivanjeForma;
+import forme.DodajKnjiguForma;
 import forme.DodajRadnikaForma;
 import forme.DodajStavkuIznajmljivanjaForma;
 import forme.FormaMod;
@@ -16,16 +17,19 @@ import forme.GlavnaForma;
 import forme.LoginForma;
 import forme.PrikazCitalacaForma;
 import forme.PrikazIznajmljivanjaForma;
+import forme.PrikazKnjigaForma;
 import forme.PrikazRadnikaForma;
 import java.util.HashMap;
 import java.util.Map;
 import kontroleri.DodajCitaocaController;
 import kontroleri.DodajIznajmljivanjeController;
+import kontroleri.DodajKnjiguController;
 import kontroleri.DodajRadnikaController;
 import kontroleri.DodajStavkuIznajmljivanjaController;
 import kontroleri.LoginController;
 import kontroleri.PrikazCitalacaController;
 import kontroleri.PrikazIznajmljivanjaController;
+import kontroleri.PrikazKnjigaController;
 import kontroleri.PrikazRadnikaController;
 
 /**
@@ -46,6 +50,9 @@ public class Cordinator {
     private DodajStavkuIznajmljivanjaController dsiController;
     private DodajRadnikaController drController;
     private PrikazRadnikaController prController;
+    private DodajKnjiguController dkController;
+    private PrikazKnjigaController pkController;
+    
     
 
     private Cordinator() {
@@ -141,7 +148,7 @@ public class Cordinator {
         drController.otvoriFormu(FormaMod.DODAJ);
     }
     
-    public void otvoriAzurirajRadnikaFormu() {
+    public void otvoriIzmeniRadnikaFormu() {
         drController = new DodajRadnikaController(new DodajRadnikaForma());
         drController.otvoriFormu(FormaMod.IZMENI);
     }
@@ -150,6 +157,22 @@ public class Cordinator {
         prController = new PrikazRadnikaController(new PrikazRadnikaForma());
         Cordinator.getInstance().dodajParam("prikazRadnikaController", prController);
         prController.otvoriFormu();
+    }
+
+    public void otvoriDodajKnjiguFormu() {
+        dkController = new DodajKnjiguController(new DodajKnjiguForma());
+        dkController.otvoriFormu(FormaMod.DODAJ);
+    }
+
+    public void otvoriIzmeniKnjiguFormu() {
+        dkController = new DodajKnjiguController(new DodajKnjiguForma());
+        dkController.otvoriFormu(FormaMod.IZMENI);
+    }
+
+    public void otvoriPrikaziKnjigeFormu() {
+        pkController = new PrikazKnjigaController(new PrikazKnjigaForma());
+        Cordinator.getInstance().dodajParam("prikazKnjigaController", pkController);
+        pkController.otvoriFormu();
     }
 
     
