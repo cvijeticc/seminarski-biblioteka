@@ -214,27 +214,27 @@ public class Komunikacija {
     }
 
     public void dodajRadnika(Radnik r) {
-    Zahtev zahtev = new Zahtev(Operacija.DODAJ_RADNIKA, r);
-    posiljalac.posalji(zahtev);
-    Odgovor odg = (Odgovor) primalac.primi();
-    if (odg.getOdgovor() == null) {
-        System.out.println("Uspešno kreiran radnik");
-    } else {
-        System.out.println("Neuspešno kreiran radnik");
+        Zahtev zahtev = new Zahtev(Operacija.DODAJ_RADNIKA, r);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspešno kreiran radnik");
+        } else {
+            System.out.println("Neuspešno kreiran radnik");
+        }
     }
-}
 
     public void azurirajRadnika(Radnik r) {
-    Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_RADNIKA, r);
-    posiljalac.posalji(zahtev);
-    Odgovor odg = (Odgovor) primalac.primi();
-    if (odg.getOdgovor() == null) {
-        System.out.println("Uspešno ažuriran radnik");
-        Cordinator.getInstance().osveziFormu();
-    } else {
-        System.out.println("Neuspešno ažuriran radnik");
+        Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_RADNIKA, r);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspešno ažuriran radnik");
+            Cordinator.getInstance().osveziFormu();
+        } else {
+            System.out.println("Neuspešno ažuriran radnik");
+        }
     }
-}
 
     public void obrisiRadnika(Radnik r) throws Exception {
         Zahtev zahtev = new Zahtev(Operacija.OBRISI_RADNIKA, r);
@@ -252,45 +252,79 @@ public class Komunikacija {
     }
 
     public void dodajKnjigu(Knjiga k) {
-    Zahtev zahtev = new Zahtev(Operacija.DODAJ_KNJIGU, k);
-    posiljalac.posalji(zahtev);
-    Odgovor odg = (Odgovor) primalac.primi();
-    if (odg.getOdgovor() == null) {
-        System.out.println("Uspešno kreirana knjiga");
-    } else {
-        System.out.println("Neuspešno kreirana knjiga");
+        Zahtev zahtev = new Zahtev(Operacija.DODAJ_KNJIGU, k);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspešno kreirana knjiga");
+        } else {
+            System.out.println("Neuspešno kreirana knjiga");
+        }
     }
-}
 
     public void obrisiKnjigu(Knjiga k) throws Exception {
-    Zahtev zahtev = new Zahtev(Operacija.OBRISI_KNJIGU, k);
+        Zahtev zahtev = new Zahtev(Operacija.OBRISI_KNJIGU, k);
 
-    posiljalac.posalji(zahtev);
+        posiljalac.posalji(zahtev);
 
-    Odgovor odg = (Odgovor) primalac.primi();
-    if (odg.getOdgovor() == null) {
-        System.out.println("Uspešno obrisana knjiga");
-    } else {
-        System.out.println("Neuspešno obrisana knjiga");
-        ((Exception) odg.getOdgovor()).printStackTrace();
-        throw new Exception("Greška prilikom brisanja knjige");
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspešno obrisana knjiga");
+        } else {
+            System.out.println("Neuspešno obrisana knjiga");
+            ((Exception) odg.getOdgovor()).printStackTrace();
+            throw new Exception("Greška prilikom brisanja knjige");
+        }
     }
-}
 
     public void azurirajKnjigu(Knjiga k) {
-    Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_KNJIGU, k);
-    posiljalac.posalji(zahtev);
-    Odgovor odg = (Odgovor) primalac.primi();
-    if (odg.getOdgovor() == null) {
-        System.out.println("Uspešno ažurirana knjiga");
-        Cordinator.getInstance().osveziFormu();
-    } else {
-        System.out.println("Neuspešno ažurirana knjiga");
+        Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_KNJIGU, k);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspešno ažurirana knjiga");
+            Cordinator.getInstance().osveziFormu();
+        } else {
+            System.out.println("Neuspešno ažurirana knjiga");
+        }
     }
-}
 
+    public void dodajKategorijuCitaoca(KategorijaCitaoca kategorija) {
+        Zahtev zahtev = new Zahtev(Operacija.DODAJ_KATEGORIJU_CITAOCA, kategorija);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspešno kreirana kategorija čitaoca");
+        } else {
+            System.out.println("Neuspešno kreirana kategorija čitaoca");
+        }
+    }
 
+    public void azurirajKategorijuCitaoca(KategorijaCitaoca kc) {
+        Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_KATEGORIJU_CITAOCA, kc);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspešno ažurirana kategorija čitaoca");
+            Cordinator.getInstance().osveziFormuKategorijeCitalaca();
+        } else {
+            System.out.println("Neuspešno ažurirana kategorija čitaoca");
+        }
+    }
 
+    public void obrisiKategorijuCitaoca(KategorijaCitaoca kc) throws Exception {
+        Zahtev zahtev = new Zahtev(Operacija.OBRISI_KATEGORIJU_CITAOCA, kc);
 
+        posiljalac.posalji(zahtev);
+
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspešno obrisana kategorija čitaoca");
+        } else {
+            System.out.println("Neuspešno obrisana kategorija čitaoca");
+            ((Exception) odg.getOdgovor()).printStackTrace();
+            throw new Exception("Greška prilikom brisanja kategorije čitaoca");
+        }
+    }
 
 }

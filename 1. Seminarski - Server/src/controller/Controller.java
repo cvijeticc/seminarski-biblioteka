@@ -20,6 +20,9 @@ import operacija.citaoci.UcitajKategorijeCitaocaSO;
 import operacija.iznajmljivanja.AzurirajIznajmljivanjeSO;
 import operacija.iznajmljivanja.stavke.UcitajStavkuIznajmljivanjaSO;
 import operacija.iznajmljivanja.KreirajIznajmljivanjeSO;
+import operacija.kategorijaCitaoca.AzurirajKategorijuCitaocaSO;
+import operacija.kategorijaCitaoca.KreirajKategorijuCitaocaSO;
+import operacija.kategorijaCitaoca.ObrisiKategorijuCitaocaSO;
 import operacija.knjige.AzurirajKnjiguSO;
 import operacija.knjige.KreirajKnjiguSO;
 import operacija.knjige.ObrisiKnjiguSO;
@@ -68,9 +71,9 @@ public class Controller {
     }
 
     public void obrisiCitaoca(Citalac c) throws Exception {
-        
+
         ObrisiCitaocaSO operacija = new ObrisiCitaocaSO();
-        operacija.izvrsi(c, null); 
+        operacija.izvrsi(c, null);
     }
 
     public List<KategorijaCitaoca> ucitajKategorijeCitaoca() throws Exception {
@@ -83,7 +86,7 @@ public class Controller {
     public void dodajCitaoca(Citalac c) throws Exception {
         KreirajCitaocaSO operacija = new KreirajCitaocaSO();
         operacija.izvrsi(c, null);
-        
+
     }
 
     public void azurirajCitaoca(Citalac c) throws Exception {
@@ -117,7 +120,6 @@ public class Controller {
 //        System.out.println("Klasa Controller " + operacija.getCitaoci());
 //        return operacija.getCitaoci();
 //    }
-
     public List<Knjiga> ucitajKnjige() throws Exception {
         UcitajKnjigeSO operacija = new UcitajKnjigeSO();
         operacija.izvrsi(null, null);
@@ -134,7 +136,7 @@ public class Controller {
 
     public void dodajIznajmljivanje(Iznajmljivanje i) throws Exception {
         KreirajIznajmljivanjeSO operacija = new KreirajIznajmljivanjeSO();
-        operacija.izvrsi(i,null);
+        operacija.izvrsi(i, null);
     }
 
     public void azurirajIznajmljivanje(Iznajmljivanje i) throws Exception {
@@ -159,20 +161,35 @@ public class Controller {
 
     public void dodajKnjigu(Knjiga k) throws Exception {
         KreirajKnjiguSO operacija = new KreirajKnjiguSO();
-        operacija.izvrsi(k,null);
-        
+        operacija.izvrsi(k, null);
+
     }
 
     public void obrisiKnjigu(Knjiga knjiga) throws Exception {
         ObrisiKnjiguSO operacija = new ObrisiKnjiguSO();
-        operacija.izvrsi(knjiga,null);
+        operacija.izvrsi(knjiga, null);
     }
 
     public void azurirajKnjigu(Knjiga k) throws Exception {
         AzurirajKnjiguSO operacija = new AzurirajKnjiguSO();
         operacija.izvrsi(k, null);
     }
-    
-    
+
+    public void dodajKategorijuCitaoca(KategorijaCitaoca kc) throws Exception {
+        KreirajKategorijuCitaocaSO operacija = new KreirajKategorijuCitaocaSO();
+        operacija.izvrsi(kc, null);
+    }
+
+    public void azurirajKategorijuCitaoca(KategorijaCitaoca kc) throws Exception {
+    AzurirajKategorijuCitaocaSO operacija = new AzurirajKategorijuCitaocaSO();
+    operacija.izvrsi(kc, null);
+}
+
+    public void obrisiKategorijuCitaoca(KategorijaCitaoca kategorija) throws Exception {
+    ObrisiKategorijuCitaocaSO operacija = new ObrisiKategorijuCitaocaSO();
+    operacija.izvrsi(kategorija, null);
+}
+
+
 
 }

@@ -8,6 +8,7 @@ import domen.Iznajmljivanje;
 import domen.Radnik;
 import forme.DodajCitaocaForma;
 import forme.DodajIznajmljivanjeForma;
+import forme.DodajKategorijuCitaocaForma;
 import forme.DodajKnjiguForma;
 import forme.DodajRadnikaForma;
 import forme.DodajStavkuIznajmljivanjaForma;
@@ -17,18 +18,21 @@ import forme.GlavnaForma;
 import forme.LoginForma;
 import forme.PrikazCitalacaForma;
 import forme.PrikazIznajmljivanjaForma;
+import forme.PrikazKategorijaCitaocaForma;
 import forme.PrikazKnjigaForma;
 import forme.PrikazRadnikaForma;
 import java.util.HashMap;
 import java.util.Map;
 import kontroleri.DodajCitaocaController;
 import kontroleri.DodajIznajmljivanjeController;
+import kontroleri.DodajKategorijuCitaocaController;
 import kontroleri.DodajKnjiguController;
 import kontroleri.DodajRadnikaController;
 import kontroleri.DodajStavkuIznajmljivanjaController;
 import kontroleri.LoginController;
 import kontroleri.PrikazCitalacaController;
 import kontroleri.PrikazIznajmljivanjaController;
+import kontroleri.PrikazKategorijaCitaocaController;
 import kontroleri.PrikazKnjigaController;
 import kontroleri.PrikazRadnikaController;
 
@@ -52,8 +56,8 @@ public class Cordinator {
     private PrikazRadnikaController prController;
     private DodajKnjiguController dkController;
     private PrikazKnjigaController pkController;
-    
-    
+    private DodajKategorijuCitaocaController dkcController;
+    private PrikazKategorijaCitaocaController pkcController;
 
     private Cordinator() {
         parametri = new HashMap<>();
@@ -135,8 +139,12 @@ public class Cordinator {
 
     }
 
-    public void osveziFormu() {
+        public void osveziFormu() {
         pcController.osveziFormu();
+    }
+        
+        public void osveziFormuKategorijeCitalaca() {
+            pkcController.osveziFormu();
     }
 
     public void osveziFormuIznajmljivanja() {
@@ -147,7 +155,7 @@ public class Cordinator {
         drController = new DodajRadnikaController(new DodajRadnikaForma());
         drController.otvoriFormu(FormaMod.DODAJ);
     }
-    
+
     public void otvoriIzmeniRadnikaFormu() {
         drController = new DodajRadnikaController(new DodajRadnikaForma());
         drController.otvoriFormu(FormaMod.IZMENI);
@@ -175,7 +183,22 @@ public class Cordinator {
         pkController.otvoriFormu();
     }
 
-    
-    
-    
+    public void otvoriDodajKategorijuCitaocaFormu() {
+        dkcController = new DodajKategorijuCitaocaController(new DodajKategorijuCitaocaForma());
+        dkcController.otvoriFormu(FormaMod.DODAJ);
     }
+
+    public void otvoriIzmeniKategorijuCitaocaFormu() {
+        dkcController = new DodajKategorijuCitaocaController(new DodajKategorijuCitaocaForma());
+        dkcController.otvoriFormu(FormaMod.IZMENI);
+    }
+
+    public void otvoriPrikaziKategorijuCitalacaForma() {
+        pkcController = new PrikazKategorijaCitaocaController(new PrikazKategorijaCitaocaForma());
+        Cordinator.getInstance().dodajParam("prikazKategorijaCitaocaController", pkcController);
+        pkcController.otvoriFormu();
+    }
+
+    
+
+}

@@ -109,7 +109,7 @@ public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        return "'" + nazivKategorije + "','" + beneficije + "','";
+        return "'" + nazivKategorije + "','" + beneficije + "'";
     }
 
     @Override

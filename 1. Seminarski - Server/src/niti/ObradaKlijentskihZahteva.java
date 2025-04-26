@@ -156,6 +156,26 @@ public class ObradaKlijentskihZahteva extends Thread {
                         Controller.getInstance().azurirajKnjigu(k1);
                         odgovor.setOdgovor(odgovor);
                         break;
+                    case DODAJ_KATEGORIJU_CITAOCA:
+                        KategorijaCitaoca kc = (KategorijaCitaoca) zahtev.getParametar();
+                        Controller.getInstance().dodajKategorijuCitaoca(kc);
+                        odgovor.setOdgovor(null);
+                        break;
+                    case AZURIRAJ_KATEGORIJU_CITAOCA:
+                        KategorijaCitaoca kc1 = (KategorijaCitaoca) zahtev.getParametar();
+                        Controller.getInstance().azurirajKategorijuCitaoca(kc1);
+                        odgovor.setOdgovor(null);
+                        break;
+                    case OBRISI_KATEGORIJU_CITAOCA:
+                    try {
+                        KategorijaCitaoca kategorija1 = (KategorijaCitaoca) zahtev.getParametar();
+                        Controller.getInstance().obrisiKategorijuCitaoca(kategorija1);
+                        odgovor.setOdgovor(null);
+                    } catch (Exception e) {
+                        odgovor.setOdgovor(e);
+                    }
+                    break;
+
                     default:
                         System.out.println("Greska ta operacija ne postoji");
 //                    throw new AssertionError();
