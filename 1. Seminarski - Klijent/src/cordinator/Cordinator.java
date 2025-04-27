@@ -12,6 +12,7 @@ import forme.DodajKategorijuCitaocaForma;
 import forme.DodajKnjiguForma;
 import forme.DodajRadnikaForma;
 import forme.DodajStavkuIznajmljivanjaForma;
+import forme.DodajTerminSmeneForma;
 import forme.FormaMod;
 import kontroleri.GlavnaFormaController;
 import forme.GlavnaForma;
@@ -21,6 +22,7 @@ import forme.PrikazIznajmljivanjaForma;
 import forme.PrikazKategorijaCitaocaForma;
 import forme.PrikazKnjigaForma;
 import forme.PrikazRadnikaForma;
+import forme.PrikazTerminaSmenaForma;
 import java.util.HashMap;
 import java.util.Map;
 import kontroleri.DodajCitaocaController;
@@ -29,12 +31,14 @@ import kontroleri.DodajKategorijuCitaocaController;
 import kontroleri.DodajKnjiguController;
 import kontroleri.DodajRadnikaController;
 import kontroleri.DodajStavkuIznajmljivanjaController;
+import kontroleri.DodajTerminSmeneController;
 import kontroleri.LoginController;
 import kontroleri.PrikazCitalacaController;
 import kontroleri.PrikazIznajmljivanjaController;
 import kontroleri.PrikazKategorijaCitaocaController;
 import kontroleri.PrikazKnjigaController;
 import kontroleri.PrikazRadnikaController;
+import kontroleri.PrikazTerminaSmenaController;
 
 /**
  *
@@ -58,7 +62,10 @@ public class Cordinator {
     private PrikazKnjigaController pkController;
     private DodajKategorijuCitaocaController dkcController;
     private PrikazKategorijaCitaocaController pkcController;
-
+    private DodajTerminSmeneController dtsController;
+    private PrikazTerminaSmenaController ptsController;
+    
+    
     private Cordinator() {
         parametri = new HashMap<>();
     }
@@ -198,6 +205,24 @@ public class Cordinator {
         Cordinator.getInstance().dodajParam("prikazKategorijaCitaocaController", pkcController);
         pkcController.otvoriFormu();
     }
+
+    public void оtvoriDodajTerminSmeneFormu() {
+        dtsController = new DodajTerminSmeneController(new DodajTerminSmeneForma());
+        dtsController.otvoriFormu(FormaMod.DODAJ);
+    }
+    
+
+    public void otvoriIzmeniTerminSmeneFormu() {
+        dtsController = new DodajTerminSmeneController(new DodajTerminSmeneForma());
+        dtsController.otvoriFormu(FormaMod.IZMENI);
+    }
+
+    public void otvoriPrikazTerminaSmenaFormu() {
+    ptsController = new PrikazTerminaSmenaController(new PrikazTerminaSmenaForma());
+    Cordinator.getInstance().dodajParam("prikazTerminSmeneController", ptsController);
+    ptsController.otvoriFormu();
+}
+
 
     
 

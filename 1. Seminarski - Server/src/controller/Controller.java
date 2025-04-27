@@ -11,6 +11,7 @@ import domen.KategorijaCitaoca;
 import domen.Knjiga;
 import domen.Radnik;
 import domen.StavkaIznajmljivanja;
+import domen.TerminSmene;
 import java.util.List;
 import operacija.citaoci.AzurirajCitaocaSO;
 import operacija.citaoci.KreirajCitaocaSO;
@@ -33,6 +34,10 @@ import operacija.radnici.AzurirajRadnikaSO;
 import operacija.radnici.KreirajRadnikaSO;
 import operacija.radnici.ObrisiRadnikaSO;
 import operacija.radnici.UcitajRadnikeSO;
+import operacija.terminsmene.AzurirajTerminSmeneSO;
+import operacija.terminsmene.KreirajTerminSmeneSO;
+import operacija.terminsmene.ObrisiTerminSmeneSO;
+import operacija.terminsmene.UcitajTermineSmeneSO;
 
 /**
  *
@@ -189,6 +194,33 @@ public class Controller {
     ObrisiKategorijuCitaocaSO operacija = new ObrisiKategorijuCitaocaSO();
     operacija.izvrsi(kategorija, null);
 }
+
+    public void dodajTerminSmene(TerminSmene ts) throws Exception {
+    KreirajTerminSmeneSO operacija = new KreirajTerminSmeneSO();
+    operacija.izvrsi(ts, null);
+}
+
+    
+
+    public List<TerminSmene> ucitajTermineSmene() throws Exception {
+        UcitajTermineSmeneSO operacija = new UcitajTermineSmeneSO();
+    operacija.izvrsi(null, null);
+    return operacija.getTerminiSmene();
+    }
+
+    public void obrisiTerminSmene(TerminSmene termin) throws Exception {
+    ObrisiTerminSmeneSO operacija = new ObrisiTerminSmeneSO();
+    operacija.izvrsi(termin, null);
+}
+
+    public void azurirajTerminSmene(TerminSmene ts) throws Exception {
+    AzurirajTerminSmeneSO operacija = new AzurirajTerminSmeneSO();
+    operacija.izvrsi(ts, null);
+}
+
+
+
+
 
 
 

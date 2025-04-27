@@ -18,6 +18,7 @@ import domen.Knjiga;
 
 import domen.Radnik;
 import domen.StavkaIznajmljivanja;
+import domen.TerminSmene;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -324,6 +325,55 @@ public class Komunikacija {
             System.out.println("Neuspešno obrisana kategorija čitaoca");
             ((Exception) odg.getOdgovor()).printStackTrace();
             throw new Exception("Greška prilikom brisanja kategorije čitaoca");
+        }
+    }
+
+    public void dodajTerminSmene(TerminSmene termin) {
+        Zahtev zahtev = new Zahtev(Operacija.DODAJ_TERMIN_SMENE, termin);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspešno kreiran termin smene");
+        } else {
+            System.out.println("Neuspešno kreiran termin smene");
+        }
+    }
+
+    public List<TerminSmene> ucitajTermineSmena() {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_TERMINE_SMENE, null);
+        List<TerminSmene> termini;
+
+        posiljalac.posalji(zahtev);
+        Odgovor odgovor = (Odgovor) primalac.primi();
+        termini = (List<TerminSmene>) odgovor.getOdgovor();
+
+        return termini;
+    }
+
+    public void obrisiTerminSmene(TerminSmene ts) throws Exception {
+        Zahtev zahtev = new Zahtev(Operacija.OBRISI_TERMIN_SMENE, ts);
+
+        posiljalac.posalji(zahtev);
+
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspešno obrisan termin smene");
+        } else {
+            System.out.println("Neuspešno obrisan termin smene");
+            ((Exception) odg.getOdgovor()).printStackTrace();
+            throw new Exception("Greška prilikom brisanja termina smene");
+        }
+    }
+
+    public void azurirajTerminSmene(TerminSmene termin) {
+        Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_TERMIN_SMENE, termin);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspešno ažuriran termin smene");
+            Cordinator.getInstance().osveziFormuTerminaSmena();
+        } else {
+            System.out.println("Neuspešno ažuriran termin smene");
         }
     }
 

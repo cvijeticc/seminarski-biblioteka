@@ -326,11 +326,11 @@ public class GlavnaForma extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem29ActionPerformed
 
     private void jMenuItem44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem44ActionPerformed
-        // TODO add your handling code here:
+        Cordinator.getInstance().оtvoriDodajTerminSmeneFormu();
     }//GEN-LAST:event_jMenuItem44ActionPerformed
 
     private void jMenuItem45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem45ActionPerformed
-        // TODO add your handling code here:
+        Cordinator.getInstance().otvoriPrikazTerminaSmenaFormu();
     }//GEN-LAST:event_jMenuItem45ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed

@@ -12,7 +12,8 @@ import java.util.List;
  *
  * @author andri
  */
-public class TerminSmene implements ApstraktniDomenskiObjekat{
+public class TerminSmene implements ApstraktniDomenskiObjekat {
+
     private int idTerminSmene;
     private int trajanjeSmene;
     private int brojSmene;
@@ -31,8 +32,6 @@ public class TerminSmene implements ApstraktniDomenskiObjekat{
         this.brojSmene = brojSmene;
     }
 
-    
-    
     public int getIdTerminSmene() {
         return idTerminSmene;
     }
@@ -56,7 +55,7 @@ public class TerminSmene implements ApstraktniDomenskiObjekat{
     public void setBrojSmene(int brojSmene) {
         this.brojSmene = brojSmene;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -87,20 +86,19 @@ public class TerminSmene implements ApstraktniDomenskiObjekat{
     }
 
     @Override
-public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
-    List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
-    while (rs.next()) {
-        int idTerminSmene = rs.getInt("terminsmene.idTerminSmene");
-        int trajanjeSmene = rs.getInt("terminsmene.trajanjeSmene");
-        int brojSmene = rs.getInt("terminsmene.brojSmene");
+    public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
+        List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
+        while (rs.next()) {
+            int idTerminSmene = rs.getInt("terminsmene.idTerminSmene");
+            int trajanjeSmene = rs.getInt("terminsmene.trajanjeSmene");
+            int brojSmene = rs.getInt("terminsmene.brojSmene");
 
-        TerminSmene termin = new TerminSmene(idTerminSmene, trajanjeSmene, brojSmene);
-        lista.add(termin);
+            TerminSmene termin = new TerminSmene(idTerminSmene, trajanjeSmene, brojSmene);
+            lista.add(termin);
+        }
+
+        return lista;
     }
-
-    return lista;
-}
-
 
     @Override
     public String vratiKoloneZaUbacivanje() {
@@ -109,7 +107,7 @@ public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return trajanjeSmene + ", " + brojSmene;
     }
 
     @Override
@@ -123,11 +121,9 @@ public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception
     }
 
     @Override
-public String vratiVrednostiZaIzmenu() {
-    return "trajanjeSmene = " + trajanjeSmene + ", " +
-           "brojSmene = " + brojSmene;
-}
+    public String vratiVrednostiZaIzmenu() {
+        return "trajanjeSmene = " + trajanjeSmene + ", "
+                + "brojSmene = " + brojSmene;
+    }
 
-    
-    
 }

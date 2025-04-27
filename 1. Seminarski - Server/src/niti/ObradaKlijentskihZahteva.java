@@ -15,6 +15,7 @@ import domen.KategorijaCitaoca;
 import domen.Knjiga;
 import domen.Radnik;
 import domen.StavkaIznajmljivanja;
+import domen.TerminSmene;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.List;
@@ -175,6 +176,29 @@ public class ObradaKlijentskihZahteva extends Thread {
                         odgovor.setOdgovor(e);
                     }
                     break;
+                    case DODAJ_TERMIN_SMENE:
+                        TerminSmene ts = (TerminSmene) zahtev.getParametar();
+                        Controller.getInstance().dodajTerminSmene(ts);
+                        odgovor.setOdgovor(null);
+                        break;
+                    case UCITAJ_TERMINE_SMENE:
+                        List<TerminSmene> termini = Controller.getInstance().ucitajTermineSmene();
+                        odgovor.setOdgovor(termini);
+                        break;
+                    case OBRISI_TERMIN_SMENE:
+    try {
+                        TerminSmene ts1 = (TerminSmene) zahtev.getParametar();
+                        Controller.getInstance().obrisiTerminSmene(ts1);
+                        odgovor.setOdgovor(null);
+                    } catch (Exception e) {
+                        odgovor.setOdgovor(e);
+                    }
+                    break;
+                    case AZURIRAJ_TERMIN_SMENE:
+                        TerminSmene ts2 = (TerminSmene) zahtev.getParametar();
+                        Controller.getInstance().azurirajTerminSmene(ts2);
+                        odgovor.setOdgovor(null);
+                        break;
 
                     default:
                         System.out.println("Greska ta operacija ne postoji");
