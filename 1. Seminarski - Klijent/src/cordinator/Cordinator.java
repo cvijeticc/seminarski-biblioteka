@@ -157,6 +157,10 @@ public class Cordinator {
     public void osveziFormuIznajmljivanja() {
         piController.osveziFormu();
     }
+    
+    public void osveziFormuTerminSmene(){
+        ptsController.osveziFormu();
+    }
 
     public void otvoriDodajRadnikaFormu() {
         drController = new DodajRadnikaController(new DodajRadnikaForma());

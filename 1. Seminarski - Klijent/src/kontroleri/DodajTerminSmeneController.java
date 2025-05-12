@@ -72,27 +72,32 @@ public class DodajTerminSmeneController {
             }
 
             private void izmeni(ActionEvent e) {
-                try {
-                    int id = Integer.parseInt(dtsf.getTxtId().getText().trim());
-                    int trajanje = Integer.parseInt(dtsf.getTxtTrajanjeSmene().getText().trim());
-                    int brojSmene = Integer.parseInt((String) dtsf.getCmbBrojSmene().getSelectedItem());
+    try {
+        int id = Integer.parseInt(dtsf.getTxtId().getText().trim());
+        int trajanje = Integer.parseInt(dtsf.getTxtTrajanjeSmene().getText().trim());
+        int brojSmene = Integer.parseInt((String) dtsf.getCmbBrojSmene().getSelectedItem());
 
-                    TerminSmene termin = new TerminSmene(id, trajanje, brojSmene);
+        TerminSmene termin = new TerminSmene(id, trajanje, brojSmene);
 
-                    Komunikacija.getInstance().azurirajTerminSmene(termin);
-                    JOptionPane.showMessageDialog(dtsf, "Uspešno ažuriran termin smene!", "Obaveštenje", JOptionPane.INFORMATION_MESSAGE);
-                    dtsf.dispose();
+        Komunikacija.getInstance().azurirajTerminSmene(termin);
 
-                    // Osveži tabelu termina smena
-                    PrikazTerminaSmenaController prikazController =
-                            (PrikazTerminaSmenaController) Cordinator.getInstance().vratiParam("prikazTerminaSmenaController");
-                    prikazController.osveziFormu();
+        // Proveri da li kontroler postoji
+        PrikazTerminaSmenaController prikazController =
+                (PrikazTerminaSmenaController) Cordinator.getInstance().vratiParam("prikazTerminaSmenaController");
+        if (prikazController != null) {
+            prikazController.osveziFormu();
+        }
 
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(dtsf, "Neuspešno ažuriranje termina smene!", "Greška", JOptionPane.ERROR_MESSAGE);
-                    ex.printStackTrace();
-                }
-            }
+        // Ako sve prođe bez izuzetka, onda tek obavesti korisnika
+        JOptionPane.showMessageDialog(dtsf, "Uspešno ažuriran termin smene!", "Obaveštenje", JOptionPane.INFORMATION_MESSAGE);
+        dtsf.dispose();
+
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(dtsf, "Neuspešno ažuriranje termina smene!", "Greška", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
+}
+
         });
     }
 

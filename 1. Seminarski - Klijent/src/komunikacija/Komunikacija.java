@@ -371,7 +371,7 @@ public class Komunikacija {
         Odgovor odg = (Odgovor) primalac.primi();
         if (odg.getOdgovor() == null) {
             System.out.println("Uspešno ažuriran termin smene");
-            Cordinator.getInstance().osveziFormuTerminaSmena();
+            Cordinator.getInstance().osveziFormuTerminSmene();
         } else {
             System.out.println("Neuspešno ažuriran termin smene");
         }
