@@ -95,7 +95,7 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat {
 
     public String getOpisStavke() {
         return opisStavke;
-       
+
     }
 
     public void setOpisStavke(String opisStavke) {
@@ -205,10 +205,7 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiPrimarnikljuc() {
-        //tavkaiznajmljivanja.idiznajmljivanje =3 AND stavkaiznajmljivanja.rb = 2
-//        return "stavkaiznajmljivanja.idiznajmljivanje ="+idIznajmljivanje+" AND " +
-//"stavkaiznajmljivanja.rb = "+rb;
-        return ""; //kao treba kasnije da se sredi
+        return "idIznajmljivanje = " + idIznajmljivanje + " AND rb = " + rb;
     }
 
     @Override
@@ -224,7 +221,7 @@ public class StavkaIznajmljivanja implements ApstraktniDomenskiObjekat {
                 + "brojDana = " + brojDana + ", "
                 + "iznosPoDanu = " + iznosPoDanu + ", "
                 + "ukupanIznosStavke = " + ukupanIznosStavke + ", "
-                + "stavkaiznajmljivanja.idKnjiga = " + idKnjiga;
+                + "idKnjiga = " + idKnjiga.getIdKnjiga();
     }
 
 }

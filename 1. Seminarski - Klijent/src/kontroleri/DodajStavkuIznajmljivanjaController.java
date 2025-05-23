@@ -4,10 +4,13 @@
  */
 package kontroleri;
 
+import cordinator.Cordinator;
 import domen.Iznajmljivanje;
 import domen.Knjiga;
 import domen.StavkaIznajmljivanja;
 import forme.DodajStavkuIznajmljivanjaForma;
+import forme.FormaMod;
+import forme.model.ModelTabeleIznajmljivanje;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -30,7 +33,7 @@ import komunikacija.Komunikacija;
  */
 public class DodajStavkuIznajmljivanjaController {
 
-    private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d.M.yyyy"); // Prilagodi format ako treba
+    private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private int brojDana;
     private double iznosPoDanu;
     private LocalDate datumOd;
@@ -42,19 +45,24 @@ public class DodajStavkuIznajmljivanjaController {
     private final DodajStavkuIznajmljivanjaForma dsif;
     private DodajIznajmljivanjeController dic;
 //    iznajmljivanje.setStavke(listaStavkiIznajmljivanja); zasto ovo ne moze
+    private FormaMod mod;
+    private ModelTabeleIznajmljivanje modelTabeleIznajmljivanje;
 
-    public DodajStavkuIznajmljivanjaController(DodajStavkuIznajmljivanjaForma dsif, Iznajmljivanje iznajmljivanje, DodajIznajmljivanjeController dic) {
+    public DodajStavkuIznajmljivanjaController(DodajStavkuIznajmljivanjaForma dsif, Iznajmljivanje iznajmljivanje, DodajIznajmljivanjeController dic, ModelTabeleIznajmljivanje modelTabeleIznajmljivanje) {
         this.dic = dic;
         this.iznajmljivanje = iznajmljivanje;
         this.dsif = dsif;
+        this.modelTabeleIznajmljivanje = modelTabeleIznajmljivanje;
         addActionListeners();
         addItemListeners();
         addListenerForDate();
         addWindowsListener();
     }
 
-    public void otvoriFormu() {
+    public void otvoriFormu(FormaMod mod) {
+        this.mod = mod;
         pripremiFormu();
+        pripremiFormu(mod);
         dsif.setVisible(true);
 
     }
@@ -72,6 +80,49 @@ public class DodajStavkuIznajmljivanjaController {
         }
         zabraniPromenuPolja();
 
+    }
+
+    private void pripremiFormu(FormaMod mod) {
+        switch (mod) {
+            case IZMENI:
+                dsif.getBtnDodaj().setVisible(false);
+                dsif.getTxtIdIznajmljivanja().setEditable(false);
+                StavkaIznajmljivanja si = (StavkaIznajmljivanja) Cordinator.getInstance()
+                        .vratiParam("stavkaIznajmljivanja");
+
+                if (si != null) {
+                    dsif.getTxtIdIznajmljivanja().setText(String.valueOf(si.getIdIznajmljivanje()));
+                    dsif.getTxtOpisStakve().setText(si.getOpisStavke());
+                    dsif.getTxtDatumOd().setText(si.getDatumOd().toString());
+                    dsif.getTxtDatumDo().setText(si.getDatumDo().toString());
+                    dsif.getTxtBrojDana().setText(String.valueOf(si.getBrojDana()));
+                    dsif.getTxtIznosPoDanu().setText(String.valueOf(si.getIznosPoDanu()));
+                    dsif.getTxtUkupanIznosStavke().setText(String.valueOf(si.getUkupanIznosStavke()));
+                    dsif.getCmbKnjige().setSelectedItem(si.getIdKnjiga());
+
+                    // Postavi interne vrednosti
+                    datumOd = si.getDatumOd();
+                    datumDo = si.getDatumDo();
+                    brojDana = si.getBrojDana();
+                    iznosPoDanu = si.getIznosPoDanu();
+                    //ukupanIznos = si.getUkupanIznosStavke();
+                    selektovanaKnjiga = si.getIdKnjiga();
+
+                    // Osveži izračunate vrednosti u slučaju promene
+                    izracunajUkupanIznos();
+                    //ta funkcija ce sada da koristi nove vrednosti za 
+                    //brojDana i iznosPoDanu
+
+                }
+                break;
+
+            case DODAJ:
+                dsif.getBtnAzuriraj().setVisible(false);
+                dsif.getLblIdIznajmljivanje().setVisible(false);
+                dsif.getTxtIdIznajmljivanja().setVisible(false);
+                break;
+
+        }
     }
 
     private void zabraniPromenuPolja() {
@@ -151,6 +202,79 @@ public class DodajStavkuIznajmljivanjaController {
 
         });
 
+        dsif.addBtnAzurirajActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                izmeni(e);
+//                modelTabeleIznajmljivanje.osvezi();
+            }
+
+            private void izmeni(ActionEvent e) {
+                System.out.println("▶ Pokrenuta izmena stavke iznajmljivanja");
+                try {
+
+//                     Prikupljanje podataka iz forme
+                    int id = Integer.parseInt(dsif.getTxtIdIznajmljivanja().getText().trim());
+                    String opis = dsif.getTxtOpisStakve().getText().trim();
+                    datumOd = LocalDate.parse(dsif.getTxtDatumOd().getText().trim(), dtf);
+                    datumDo = LocalDate.parse(dsif.getTxtDatumDo().getText().trim(), dtf);
+                    brojDana = Integer.parseInt(dsif.getTxtBrojDana().getText().trim());
+                    iznosPoDanu = Double.parseDouble(dsif.getTxtIznosPoDanu().getText().trim());
+                    ukupanIznos = Double.parseDouble(dsif.getTxtUkupanIznosStavke().getText().trim());
+                    selektovanaKnjiga = (Knjiga) dsif.getCmbKnjige().getSelectedItem();
+
+                    // Uzimanje objekta koji se menja
+                    StavkaIznajmljivanja si = (StavkaIznajmljivanja) Cordinator.getInstance().vratiParam("stavkaIznajmljivanja");
+
+                    if (si != null) {
+//                        // Ažuriranje vrednosti
+                        si.setOpisStavke(opis);
+                        si.setDatumOd(datumOd);
+                        si.setDatumDo(datumDo);
+                        si.setBrojDana(brojDana);
+                        si.setIznosPoDanu(iznosPoDanu);
+                        si.setUkupanIznosStavke(ukupanIznos);
+                        si.setIdKnjiga(selektovanaKnjiga);
+
+                        // Poziv ka serveru za ažuriranje
+                        Komunikacija.getInstance().azurirajStavkuIznajmljivanja(si);
+                        System.out.println("✔ Stavka iznajmljivanja azurirana u bazi: " + si);
+
+                        JOptionPane.showMessageDialog(dsif, "Uspešno izmenjena stavka iznajmljivanja!", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                        dsif.dispose();
+
+                        PrikazIznajmljivanjaController prikazController
+                                = (PrikazIznajmljivanjaController) Cordinator.getInstance().vratiParam("prikazIznajmljivanjaController");
+
+                        int red = prikazController.getSelektovaniRed();
+                        if (red != -1) {
+
+                            Iznajmljivanje iznajmljivanje = prikazController.getSelektovanoIznajmljivanje();
+                            List<StavkaIznajmljivanja> stavke = Komunikacija.getInstance()
+                                    .ucitajStavkuIznajmljivanja(iznajmljivanje.getIdIznajmljivanja());
+                            System.out.println("🔁 Računam novi ukupan iznos za iznajmljivanje ID: " + iznajmljivanje.getIdIznajmljivanja());
+
+                            double noviUkupan = stavke.stream()
+                                    .mapToDouble(StavkaIznajmljivanja::getUkupanIznosStavke)
+                                    .sum();
+                            iznajmljivanje.setUkupanIznos(noviUkupan);
+                            Komunikacija.getInstance().azurirajIznajmljivanje(iznajmljivanje);
+                            System.out.println("✅ Iznajmljivanje ažurirano u bazi: Novi ukupan iznos = " + iznajmljivanje.getUkupanIznos());
+                            System.out.println("📋 UI: Ažuriram red " + red + " u tabeli sa: " + iznajmljivanje);
+
+                            prikazController.azurirajRedUTabeli(red, iznajmljivanje);
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(dsif, "Greška: stavka iznajmljivanja nije pronađena.", "Greška", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(dsif, "Neuspešna izmena stavke iznajmljivanja!", "Greška", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
     }
 
     private void addItemListeners() {
@@ -226,6 +350,10 @@ public class DodajStavkuIznajmljivanjaController {
         dsif.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if (mod == FormaMod.IZMENI) {
+                    dsif.dispose();
+                    return;
+                }
                 int odgovor = JOptionPane.showConfirmDialog(dsif,
                         "Ako sada izađete iz ove forme, kasnije nećete moći da dodajete stavke u ovo iznajmljivanje.\nDa li ste sigurni da želite da zatvorite formu?",
                         "Potvrda zatvaranja",

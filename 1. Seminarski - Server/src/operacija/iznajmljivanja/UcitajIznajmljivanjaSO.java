@@ -28,7 +28,8 @@ public class UcitajIznajmljivanjaSO extends ApstraktnaGenerickaOperacija{
 //            String uslov = " JOIN knjiga ON knjiga.idKnjiga = stavkaiznajmljivanja.idKnjiga"
 //                + " WHERE idIznajmljivanje = "+(int)param + " " ;
             String uslov = " JOIN radnik ON iznajmljivanje.idRadnik = radnik.idRadnik "
-                + "JOIN citalac ON iznajmljivanje.idCitalac = citalac.idCitalac";
+                + "JOIN citalac ON iznajmljivanje.idCitalac = citalac.idCitalac"
+                    + " ORDER BY iznajmljivanje.idIznajmljivanja ASC";
         iznajmljivanja = broker.getAll(new Iznajmljivanje(), uslov);
     }
 

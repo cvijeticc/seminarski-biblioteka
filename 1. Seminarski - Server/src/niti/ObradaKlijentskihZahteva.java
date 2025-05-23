@@ -86,6 +86,7 @@ public class ObradaKlijentskihZahteva extends Thread {
                         Iznajmljivanje i = (Iznajmljivanje) zahtev.getParametar();
                         Controller.getInstance().azurirajIznajmljivanje(i);
                         odgovor.setOdgovor(odgovor);
+                        System.out.println("✔ Server: primljen zahtev za azuriranje: " + i);
 
                         break;
                     case UCITAJ_IZNAJMLJIVANJA:
@@ -186,7 +187,7 @@ public class ObradaKlijentskihZahteva extends Thread {
                         odgovor.setOdgovor(termini);
                         break;
                     case OBRISI_TERMIN_SMENE:
-    try {
+                        try {
                         TerminSmene ts1 = (TerminSmene) zahtev.getParametar();
                         Controller.getInstance().obrisiTerminSmene(ts1);
                         odgovor.setOdgovor(null);
@@ -199,8 +200,23 @@ public class ObradaKlijentskihZahteva extends Thread {
                         Controller.getInstance().azurirajTerminSmene(ts2);
                         odgovor.setOdgovor(null);
                         break;
+                    case AZURIRAJ_STAVKU_IZNAJMLJIVANJA:
+                        StavkaIznajmljivanja si = (StavkaIznajmljivanja) zahtev.getParametar();
+                        Controller.getInstance().azurirajStavkuIznajmljivanja(si);
+                        odgovor.setOdgovor(null);
+                        break;
+                    case OBRISI_STAVKU_IZNAJMLJIVANJA:
+                        try {
+                        StavkaIznajmljivanja stavka = (StavkaIznajmljivanja) zahtev.getParametar();
+                        Controller.getInstance().obrisiStavkuIznajmljivanja(stavka);
+                        odgovor.setOdgovor(null);
+                    } catch (Exception e) {
+                        odgovor.setOdgovor(e);
+                    }
+                    break;
 
                     default:
+
                         System.out.println("Greska ta operacija ne postoji");
 //                    throw new AssertionError();
                 }

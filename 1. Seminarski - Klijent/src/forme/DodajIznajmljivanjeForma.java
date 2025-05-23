@@ -9,6 +9,7 @@ import domen.Radnik;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -43,7 +44,7 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
         cmbCitaoci = new javax.swing.JComboBox<>();
         btnDodajStavkuIznajmljivanja = new javax.swing.JButton();
         btnKreirajIznajmljivanje = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblId = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         btnAzuriraj = new javax.swing.JButton();
 
@@ -66,7 +67,7 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
 
         btnKreirajIznajmljivanje.setText("Kreiraj Iznajmljivanje");
 
-        jLabel1.setText("Id ");
+        lblId.setText("Id ");
 
         btnAzuriraj.setText("Azuriraj");
 
@@ -90,7 +91,7 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
                                     .addComponent(btnDodajStavkuIznajmljivanja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                    .addComponent(lblId))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -115,7 +116,7 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
                         .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1)))
+                        .addComponent(lblId)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -174,11 +175,11 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
     private javax.swing.JButton btnKreirajIznajmljivanje;
     private javax.swing.JComboBox<Citalac> cmbCitaoci;
     private javax.swing.JComboBox<Radnik> cmbRadnici;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblId;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtOpisIznajmljivanja;
     private javax.swing.JTextField txtUkupanIznos;
@@ -236,5 +237,15 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
     public void setBtnAzuriraj(JButton btnAzuriraj) {
         this.btnAzuriraj = btnAzuriraj;
     }
+
+    public JLabel getLblId() {
+        return lblId;
+    }
+
+    public void setLblId(JLabel lblId) {
+        this.lblId = lblId;
+    }
+    
+    
 
 }

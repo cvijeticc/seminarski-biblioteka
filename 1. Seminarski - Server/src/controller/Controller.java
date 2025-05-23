@@ -21,6 +21,8 @@ import operacija.citaoci.UcitajKategorijeCitaocaSO;
 import operacija.iznajmljivanja.AzurirajIznajmljivanjeSO;
 import operacija.iznajmljivanja.stavke.UcitajStavkuIznajmljivanjaSO;
 import operacija.iznajmljivanja.KreirajIznajmljivanjeSO;
+import operacija.iznajmljivanja.stavke.AzurirajStavkuIznajmljivanjaSO;
+import operacija.iznajmljivanja.stavke.ObrisiStavkuIznajmljivanjaSO;
 import operacija.kategorijaCitaoca.AzurirajKategorijuCitaocaSO;
 import operacija.kategorijaCitaoca.KreirajKategorijuCitaocaSO;
 import operacija.kategorijaCitaoca.ObrisiKategorijuCitaocaSO;
@@ -186,41 +188,48 @@ public class Controller {
     }
 
     public void azurirajKategorijuCitaoca(KategorijaCitaoca kc) throws Exception {
-    AzurirajKategorijuCitaocaSO operacija = new AzurirajKategorijuCitaocaSO();
-    operacija.izvrsi(kc, null);
-}
+        AzurirajKategorijuCitaocaSO operacija = new AzurirajKategorijuCitaocaSO();
+        operacija.izvrsi(kc, null);
+    }
 
     public void obrisiKategorijuCitaoca(KategorijaCitaoca kategorija) throws Exception {
-    ObrisiKategorijuCitaocaSO operacija = new ObrisiKategorijuCitaocaSO();
-    operacija.izvrsi(kategorija, null);
-}
+        ObrisiKategorijuCitaocaSO operacija = new ObrisiKategorijuCitaocaSO();
+        operacija.izvrsi(kategorija, null);
+    }
 
     public void dodajTerminSmene(TerminSmene ts) throws Exception {
-    KreirajTerminSmeneSO operacija = new KreirajTerminSmeneSO();
-    operacija.izvrsi(ts, null);
-}
-
-    
+        KreirajTerminSmeneSO operacija = new KreirajTerminSmeneSO();
+        operacija.izvrsi(ts, null);
+    }
 
     public List<TerminSmene> ucitajTermineSmene() throws Exception {
         UcitajTermineSmeneSO operacija = new UcitajTermineSmeneSO();
-    operacija.izvrsi(null, null);
-    return operacija.getTerminiSmene();
+        operacija.izvrsi(null, null);
+        return operacija.getTerminiSmene();
     }
 
     public void obrisiTerminSmene(TerminSmene termin) throws Exception {
-    ObrisiTerminSmeneSO operacija = new ObrisiTerminSmeneSO();
-    operacija.izvrsi(termin, null);
-}
+        ObrisiTerminSmeneSO operacija = new ObrisiTerminSmeneSO();
+        operacija.izvrsi(termin, null);
+    }
 
     public void azurirajTerminSmene(TerminSmene ts) throws Exception {
-    AzurirajTerminSmeneSO operacija = new AzurirajTerminSmeneSO();
-    operacija.izvrsi(ts, null);
+        AzurirajTerminSmeneSO operacija = new AzurirajTerminSmeneSO();
+        operacija.izvrsi(ts, null);
+    }
+
+    public void azurirajStavkuIznajmljivanja(StavkaIznajmljivanja si) throws Exception {
+        AzurirajStavkuIznajmljivanjaSO operacija = new AzurirajStavkuIznajmljivanjaSO();
+        operacija.izvrsi(si, null);
+    }
+
+    public void obrisiStavkuIznajmljivanja(StavkaIznajmljivanja stavka) throws Exception {
+    ObrisiStavkuIznajmljivanjaSO operacija = new ObrisiStavkuIznajmljivanjaSO();
+    operacija.izvrsi(stavka, null);
 }
 
 
-
-
+   
 
 
 

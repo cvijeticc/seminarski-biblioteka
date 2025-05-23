@@ -7,7 +7,6 @@ package domen;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  *
@@ -79,7 +78,8 @@ public class Knjiga implements ApstraktniDomenskiObjekat {
 
     @Override
     public int hashCode() {
-        int hash = 5;
+        int hash = 3;
+        hash = 79 * hash + this.idKnjiga;
         return hash;
     }
 
@@ -95,14 +95,10 @@ public class Knjiga implements ApstraktniDomenskiObjekat {
             return false;
         }
         final Knjiga other = (Knjiga) obj;
-        if (this.godinaIzdavanja != other.godinaIzdavanja) {
-            return false;
-        }
-        if (!Objects.equals(this.naziv, other.naziv)) {
-            return false;
-        }
-        return Objects.equals(this.zanrKnjige, other.zanrKnjige);
+        return this.idKnjiga == other.idKnjiga;
     }
+
+    
 
     @Override
     public String vratiNazivTabele() {

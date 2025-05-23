@@ -39,8 +39,8 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblStavke = new javax.swing.JTable();
         btnAzurirajIznajmljivanje = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnObrisiStavku = new javax.swing.JButton();
+        btnAzurirajStavku = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtUkupanIznos = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -53,6 +53,7 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
         btnResetujPretragu = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        btnOsveziTabeluIznajmljivanja = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,9 +85,14 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
 
         btnAzurirajIznajmljivanje.setText("Azuriraj");
 
-        jButton3.setText("Obrisi stavku");
+        btnObrisiStavku.setText("Obrisi stavku");
 
-        jButton4.setText("Azuriraj stavku");
+        btnAzurirajStavku.setText("Azuriraj stavku");
+        btnAzurirajStavku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAzurirajStavkuActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Ukupan iznos");
 
@@ -110,6 +116,8 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
 
         txtId.setText("jTextField1");
 
+        btnOsveziTabeluIznajmljivanja.setText("Osvezi tabelu iznajmljivanja");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,16 +129,18 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton3)
+                                .addComponent(btnObrisiStavku)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4))
+                                .addComponent(btnAzurirajStavku))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(12, 12, 12)
-                                        .addComponent(btnAzurirajIznajmljivanje)))
-                                .addGap(43, 43, 43)
+                                        .addComponent(btnAzurirajIznajmljivanje)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(btnOsveziTabeluIznajmljivanja)))
+                                .addGap(55, 55, 55)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3)
@@ -159,7 +169,9 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addComponent(btnAzurirajIznajmljivanje))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAzurirajIznajmljivanje)
+                            .addComponent(btnOsveziTabeluIznajmljivanja)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,8 +187,8 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4)))
+                            .addComponent(btnObrisiStavku)
+                            .addComponent(btnAzurirajStavku)))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -208,6 +220,10 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbCitalacActionPerformed
 
+    private void btnAzurirajStavkuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAzurirajStavkuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAzurirajStavkuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -215,12 +231,13 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAzurirajIznajmljivanje;
+    private javax.swing.JButton btnAzurirajStavku;
+    private javax.swing.JButton btnObrisiStavku;
+    private javax.swing.JButton btnOsveziTabeluIznajmljivanja;
     private javax.swing.JButton btnPretraziIznajmljivanje;
     private javax.swing.JButton btnResetujPretragu;
     private javax.swing.JComboBox<Citalac> cmbCitalac;
     private javax.swing.JComboBox<Radnik> cmbRadnik;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -309,6 +326,42 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
 
     public void setBtnAzurirajIznajmljivanje(JButton btnAzurirajIznajmljivanje) {
         this.btnAzurirajIznajmljivanje = btnAzurirajIznajmljivanje;
+    }
+
+    public JButton getBtnAzurirajStavku() {
+        return btnAzurirajStavku;
+    }
+
+    public void setBtnAzurirajStavku(JButton btnAzurirajStavku) {
+        this.btnAzurirajStavku = btnAzurirajStavku;
+    }
+
+    public JButton getBtnObrisiStavku() {
+        return btnObrisiStavku;
+    }
+
+    public void setBtnObrisiStavku(JButton btnObrisiStavku) {
+        this.btnObrisiStavku = btnObrisiStavku;
+    }
+
+    public void addBtnObrisiStavkuIznajmljivanjaActionListener(ActionListener actionListener) {
+        btnObrisiStavku.addActionListener(actionListener);
+    }
+
+    public void addBtnAzurirajStavkuIznajmljivanjaActionListener(ActionListener actionListener) {
+        btnAzurirajStavku.addActionListener(actionListener);
+    }
+
+    public JButton getBtnOsveziTabeluIznajmljivanja() {
+        return btnOsveziTabeluIznajmljivanja;
+    }
+
+    public void setBtnOsveziTabeluIznajmljivanja(JButton btnOsveziTabeluIznajmljivanja) {
+        this.btnOsveziTabeluIznajmljivanja = btnOsveziTabeluIznajmljivanja;
+    }
+
+    public void addBtnOsveziTabeluIznajmljivanjaActionListener(ActionListener actionListener) {
+        btnOsveziTabeluIznajmljivanja.addActionListener(actionListener);
     }
 
     

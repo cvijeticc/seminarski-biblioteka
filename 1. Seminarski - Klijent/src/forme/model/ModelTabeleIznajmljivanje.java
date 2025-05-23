@@ -17,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ModelTabeleIznajmljivanje extends AbstractTableModel {
 
-        List<Iznajmljivanje> lista;
+    List<Iznajmljivanje> lista;
 //    private int idIznajmljivanja;
 //    private double ukupanIznos;
 //    private String opisIznajmljivanja;
@@ -43,9 +43,6 @@ public class ModelTabeleIznajmljivanje extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         //ovo je kao petlja koja prolazi kroz matricu
         Iznajmljivanje i = lista.get(rowIndex);
-        System.out.println("Provera prikaza u tabeli:");
-        System.out.println("Radnik: " + i.getIdRadnik());
-        System.out.println("Čitalac: " + i.getIdCitalac());
 
         switch (columnIndex) {
             case 0:
@@ -91,6 +88,24 @@ public class ModelTabeleIznajmljivanje extends AbstractTableModel {
 
         this.lista = filteredList;
         fireTableDataChanged();
+    }
+
+    public void azurirajRed(int red, Iznajmljivanje novo) {
+        if (red >= 0 && red < lista.size()) {
+            lista.set(red, novo);
+            fireTableRowsUpdated(red, red);
+            fireTableDataChanged();
+        }
+    }
+    
+    public void osvezi(){
+        fireTableDataChanged();
+        fireTableRowsUpdated(0, lista.size()-1);
+    }
+    
+    public void osvezi(List<Iznajmljivanje> lista){
+        this.lista = lista;
+        osvezi();
     }
 
 }

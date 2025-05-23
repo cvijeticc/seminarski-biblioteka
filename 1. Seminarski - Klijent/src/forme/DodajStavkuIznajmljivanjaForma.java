@@ -4,13 +4,10 @@
  */
 package forme;
 
-import domen.Iznajmljivanje;
 import domen.Knjiga;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -49,10 +46,11 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
         txtUkupanIznosStavke = new javax.swing.JTextField();
         btnDodaj = new javax.swing.JButton();
         cmbKnjige = new javax.swing.JComboBox<>();
-        txtDatumOd = new javax.swing.JFormattedTextField();
-        txtDatumDo = new javax.swing.JFormattedTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblIdIznajmljivanje = new javax.swing.JLabel();
         txtIdIznajmljivanja = new javax.swing.JTextField();
+        btnAzuriraj = new javax.swing.JButton();
+        txtDatumOd = new javax.swing.JTextField();
+        txtDatumDo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,9 +58,9 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
 
         jLabel3.setText("Opis Stavke");
 
-        jLabel4.setText("Datum od(dd.MM.yyyy)");
+        jLabel4.setText("Datum od(yyyy-MM-dd)");
 
-        jLabel5.setText("Datum do(dd.MM.yyyy)");
+        jLabel5.setText("Datum do(yyyy-MM-dd)");
 
         txtBrojDana.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +74,7 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
 
         jLabel8.setText("Iznos po danu");
 
-        jLabel9.setText("Id Knjiga");
+        jLabel9.setText("Knjiga");
 
         btnDodaj.setText("Dodaj");
 
@@ -86,19 +84,19 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
             }
         });
 
-        txtDatumOd.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d.M.yyyy"))));
-        txtDatumOd.setText("03.05.2023");
-
-        txtDatumDo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d.M.yyyy"))));
-        txtDatumDo.setText("07.08.2023");
-
-        jLabel1.setText("Id Iznajmljivanje");
+        lblIdIznajmljivanje.setText("Id Iznajmljivanje");
 
         txtIdIznajmljivanja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdIznajmljivanjaActionPerformed(evt);
             }
         });
+
+        btnAzuriraj.setText("Azuriraj");
+
+        txtDatumOd.setText("2023-10-11");
+
+        txtDatumDo.setText("2023-11-11");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,34 +105,29 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(62, 62, 62))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel9)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel8))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(86, 86, 86)))
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8)
+                    .addComponent(lblIdIznajmljivanje)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtDatumOd)
                     .addComponent(txtOpisStakve)
-                    .addComponent(txtDatumDo)
                     .addComponent(txtBrojDana)
                     .addComponent(txtIznosPoDanu)
                     .addComponent(txtUkupanIznosStavke)
                     .addComponent(cmbKnjige, 0, 86, Short.MAX_VALUE)
-                    .addComponent(txtIdIznajmljivanja))
-                .addGap(84, 84, 84)
-                .addComponent(btnDodaj)
-                .addContainerGap(170, Short.MAX_VALUE))
+                    .addComponent(txtIdIznajmljivanja)
+                    .addComponent(txtDatumOd)
+                    .addComponent(txtDatumDo))
+                .addGap(127, 127, 127)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDodaj)
+                    .addComponent(btnAzuriraj))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,11 +135,13 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(133, 133, 133)
-                        .addComponent(btnDodaj))
+                        .addComponent(btnDodaj)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnAzuriraj))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
+                            .addComponent(lblIdIznajmljivanje)
                             .addComponent(txtIdIznajmljivanja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -200,9 +195,9 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAzuriraj;
     private javax.swing.JButton btnDodaj;
     private javax.swing.JComboBox<Knjiga> cmbKnjige;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -210,9 +205,10 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblIdIznajmljivanje;
     private javax.swing.JTextField txtBrojDana;
-    private javax.swing.JFormattedTextField txtDatumDo;
-    private javax.swing.JFormattedTextField txtDatumOd;
+    private javax.swing.JTextField txtDatumDo;
+    private javax.swing.JTextField txtDatumOd;
     private javax.swing.JTextField txtIdIznajmljivanja;
     private javax.swing.JTextField txtIznosPoDanu;
     private javax.swing.JTextField txtOpisStakve;
@@ -267,13 +263,25 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
         return txtBrojDana;
     }
 
-    public JFormattedTextField getTxtDatumDo() {
+    public JTextField getTxtDatumDo() {
         return txtDatumDo;
     }
 
-    public JFormattedTextField getTxtDatumOd() {
+    public void setTxtDatumDo(JTextField txtDatumDo) {
+        this.txtDatumDo = txtDatumDo;
+    }
+
+    public JTextField getTxtDatumOd() {
         return txtDatumOd;
     }
+
+    public void setTxtDatumOd(JTextField txtDatumOd) {
+        this.txtDatumOd = txtDatumOd;
+    }
+
+   
+
+    
 
     public JTextField getTxtOpisStakve() {
         return txtOpisStakve;
@@ -290,6 +298,28 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
     public void setTxtIdIznajmljivanja(JTextField txtIdIznajmljivanja) {
         this.txtIdIznajmljivanja = txtIdIznajmljivanja;
     }
+
+    public JButton getBtnAzuriraj() {
+        return btnAzuriraj;
+    }
+
+    public void setBtnAzuriraj(JButton btnAzuriraj) {
+        this.btnAzuriraj = btnAzuriraj;
+    }
+
+    public JLabel getLblIdIznajmljivanje() {
+        return lblIdIznajmljivanje;
+    }
+
+    public void setLblIdIznajmljivanje(JLabel lblIdIznajmljivanje) {
+        this.lblIdIznajmljivanje = lblIdIznajmljivanje;
+    }
+
+    public void addBtnAzurirajActionListener(ActionListener actionListener) {
+        btnAzuriraj.addActionListener(actionListener);
+    }
+
+    
     
     
     

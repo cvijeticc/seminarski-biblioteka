@@ -29,6 +29,7 @@ import komunikacija.Komunikacija;
 public class PrikazIznajmljivanjaController {
 
     private final PrikazIznajmljivanjaForma pif;
+    private List<Iznajmljivanje> iznajmljivanja;
 
     public PrikazIznajmljivanjaController(PrikazIznajmljivanjaForma pif) {
         this.pif = pif;
@@ -49,7 +50,7 @@ public class PrikazIznajmljivanjaController {
         pif.getTxtId().setText("");
         pif.setLocationRelativeTo(null);
         pif.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        List<Iznajmljivanje> iznajmljivanja = Komunikacija.getInstance().ucitajIznajmljivanja();
+        iznajmljivanja = Komunikacija.getInstance().ucitajIznajmljivanja();
         ModelTabeleIznajmljivanje mti = new ModelTabeleIznajmljivanje(iznajmljivanja);
         pif.getTblIznajmljivanja().setModel(mti);
 
@@ -100,25 +101,87 @@ public class PrikazIznajmljivanjaController {
                 pripremiFormu();
             }
         });
-        
+
         pif.addBtnAzurirajIznajmljivanjeActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //otvori formu dodaj Iznajmljivanje 
                 int red = pif.getTblIznajmljivanja().getSelectedRow();
+                System.out.println("📌 Selektovani red u tabeli je: " + red);
+
                 if (red == -1) {
                     JOptionPane.showMessageDialog(pif, "Mora da bude selektovano neko iznajmljivanje", "Greska", JOptionPane.ERROR_MESSAGE);
                 } else {
                     ModelTabeleIznajmljivanje mti = (ModelTabeleIznajmljivanje) pif.getTblIznajmljivanja().getModel();
                     Iznajmljivanje i = mti.getLista().get(red); // uzimamo onaj red selektovani
-                    
+
                     Cordinator.getInstance().dodajParam("iznajmljivanje", i);
+                    //ovde hvatamo to iznajmljivanje koje cemo kasnije da koristimo 
+                    //da popunimo formu za dodavanje ili azuriranje
                     Cordinator.getInstance().otvoriIzmeniIznajmljivanjeFormu();
-                    
+
                 }
-                
+
             }
         });
+
+        pif.addBtnObrisiStavkuIznajmljivanjaActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int red = pif.getTblStavke().getSelectedRow();
+                System.out.println("🗑️ Selektovani red stavke za brisanje: " + red);
+
+                if (red == -1) {
+                    JOptionPane.showMessageDialog(pif, "Morate selektovati stavku iznajmljivanja koju želite da obrišete.", "Greška", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    int potvrda = JOptionPane.showConfirmDialog(pif, "Da li ste sigurni da želite da obrišete izabranu stavku?", "Potvrda brisanja", JOptionPane.YES_NO_OPTION);
+
+                    if (potvrda == JOptionPane.YES_OPTION) {
+                        ModelTabeleStavkaIznajmljivanja mtsi = (ModelTabeleStavkaIznajmljivanja) pif.getTblStavke().getModel();
+                        StavkaIznajmljivanja stavka = mtsi.getLista().get(red);
+
+                        boolean uspesno = Komunikacija.getInstance().obrisiStavkuIznajmljivanja(stavka);
+
+                        if (uspesno) {
+                            mtsi.getLista().remove(red);
+                            mtsi.fireTableDataChanged();
+                            JOptionPane.showMessageDialog(pif, "Stavka iznajmljivanja je uspešno obrisana.");
+                        } else {
+                            JOptionPane.showMessageDialog(pif, "Brisanje stavke iznajmljivanja nije uspelo.", "Greška", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }
+            }
+        });
+
+        pif.addBtnAzurirajStavkuIznajmljivanjaActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int red = pif.getTblStavke().getSelectedRow();
+                if (red == -1) {
+                    JOptionPane.showMessageDialog(pif, "Mora da bude selektovana neka stavka iznajmljivanja", "Greska", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    ModelTabeleStavkaIznajmljivanja mtsi = (ModelTabeleStavkaIznajmljivanja) pif.getTblStavke().getModel();
+                    StavkaIznajmljivanja si = mtsi.getLista().get(red);
+                    Cordinator.getInstance().dodajParam("stavkaIznajmljivanja", si);
+                    //sada se u hashmapi nalazi si pod kljucem "stavkaIznajmljivanja"
+                    Cordinator.getInstance().otvoriIzmeniStavkuIznajmljivanjeFormu();
+
+                }
+            }
+        });
+
+        pif.addBtnOsveziTabeluIznajmljivanjaActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                iznajmljivanja = Komunikacija.getInstance().ucitajIznajmljivanja(); // 🔄 novo učitavanje!
+                ModelTabeleIznajmljivanje modelIzn = (ModelTabeleIznajmljivanje) pif.getTblIznajmljivanja().getModel();
+                modelIzn.setLista(iznajmljivanja); // ažuriraj listu u modelu
+                modelIzn.fireTableDataChanged();   // obavesti tabelu
+                System.out.println("✅ Tabela uspešno osvežena");
+            }
+        });
+
     }
 
     public void osveziFormu() {
@@ -135,12 +198,44 @@ public class PrikazIznajmljivanjaController {
                     ModelTabeleIznajmljivanje mti = (ModelTabeleIznajmljivanje) pif.getTblIznajmljivanja().getModel();
                     Iznajmljivanje iznajmljivanje = mti.getLista().get(red);
                     //uzimamo bas to iznajmljivanje na tom selektovanom redu
-                    List<StavkaIznajmljivanja> stavkeIznajmljivanja = Komunikacija.getInstance().ucitajStavkuIznajmljivanja(iznajmljivanje.getIdIznajmljivanja());
+                    List<StavkaIznajmljivanja> stavkeIznajmljivanja = Komunikacija.getInstance().
+                            ucitajStavkuIznajmljivanja(iznajmljivanje.getIdIznajmljivanja());
                     ModelTabeleStavkaIznajmljivanja mtsi = new ModelTabeleStavkaIznajmljivanja(stavkeIznajmljivanja);
                     pif.getTblStavke().setModel(mtsi);
+
+                    double noviUkupanIznos = stavkeIznajmljivanja.stream()
+                            .mapToDouble(StavkaIznajmljivanja::getUkupanIznosStavke)
+                            .sum();
+                    iznajmljivanje.setUkupanIznos(noviUkupanIznos);
+
+                    Komunikacija.getInstance().azurirajIznajmljivanje(iznajmljivanje);
+
+                    pif.getTxtUkupanIznos().setText(String.valueOf(noviUkupanIznos));
+
                 }
             }
         });
+    }
+
+    public int getSelektovaniRed() {
+        return pif.getTblIznajmljivanja().getSelectedRow();
+    }
+
+    public Iznajmljivanje getSelektovanoIznajmljivanje() {
+        int red = getSelektovaniRed();
+        if (red == -1) {
+            return null;
+        }
+        ModelTabeleIznajmljivanje mti = (ModelTabeleIznajmljivanje) pif.getTblIznajmljivanja().getModel();
+        return mti.getLista().get(red);
+    }
+
+    public void azurirajRedUTabeli(int red, Iznajmljivanje novo) {
+        System.out.println("📋 UI: Ažuriram red " + red + " u tabeli sa: " + novo);
+
+        ModelTabeleIznajmljivanje mti = (ModelTabeleIznajmljivanje) pif.getTblIznajmljivanja().getModel();
+        mti.azurirajRed(red, novo);
+        pif.getTxtUkupanIznos().setText(String.valueOf(novo.getUkupanIznos()));
     }
 
 }

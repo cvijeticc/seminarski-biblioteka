@@ -44,8 +44,6 @@ public class ModelTabeleStavkaIznajmljivanja extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         //ovo je kao petlja koja prolazi kroz matricu
         StavkaIznajmljivanja si = lista.get(rowIndex);
-        System.out.println("Provera prikaza u tabeli:");
-        System.out.println("Knjiga: NE NAZIV NEGO ID " + si.getIdKnjiga());
 
         switch (columnIndex) {
             case 0:

@@ -4,7 +4,6 @@
  */
 package operacija.iznajmljivanja;
 
-import domen.Citalac;
 import domen.Iznajmljivanje;
 import operacija.ApstraktnaGenerickaOperacija;
 
@@ -27,6 +26,7 @@ public class AzurirajIznajmljivanjeSO extends ApstraktnaGenerickaOperacija{
 
     @Override
     protected void izvrsiOperaciju(Object param, String kljuc) throws Exception {
+        System.out.println("🛠️ IzmeniIznajmljivanjeSO: pozvano sa " + param);
         broker.edit((Iznajmljivanje)param);
     }
     

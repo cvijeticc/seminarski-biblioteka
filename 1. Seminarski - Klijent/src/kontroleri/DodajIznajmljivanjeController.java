@@ -12,7 +12,6 @@ import domen.StavkaIznajmljivanja;
 import forme.DodajIznajmljivanjeForma;
 import forme.DodajStavkuIznajmljivanjaForma;
 import forme.FormaMod;
-import forme.PrikazIznajmljivanjaForma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -52,7 +51,7 @@ public class DodajIznajmljivanjeController {
         dif.getCmbRadnici().removeAllItems();
         List<Radnik> radnici = Komunikacija.getInstance().ucitajRadnike();
         List<Citalac> citaoci = Komunikacija.getInstance().ucitajCitaoce();
-
+        
         for (Citalac c : citaoci) {
             dif.getCmbCitaoci().addItem(c);
         }
@@ -82,7 +81,14 @@ public class DodajIznajmljivanjeController {
             }
 
             private void kreiraj(ActionEvent e) {
-                DodajStavkuIznajmljivanjaController dsiController = new DodajStavkuIznajmljivanjaController(new DodajStavkuIznajmljivanjaForma(), iznajmljivanje, DodajIznajmljivanjeController.this);
+                
+//                ModelTabeleIznajmljivanje mti = (ModelTabeleIznajmljivanje) pif.getTblStavke().getModel();
+                //jer je pif null
+                DodajStavkuIznajmljivanjaController dsiController = new DodajStavkuIznajmljivanjaController(
+                        new DodajStavkuIznajmljivanjaForma(),
+                        iznajmljivanje,
+                        DodajIznajmljivanjeController.this,
+                        null);
 
                 if (validacija()) {
                     iznajmljivanje.setIdCitalac((Citalac) dif.getCmbCitaoci().getSelectedItem());
@@ -165,6 +171,8 @@ public class DodajIznajmljivanjeController {
                 dif.getBtnKreirajIznajmljivanje().setVisible(false);
                 dif.getBtnDodajStavkuIznajmljivanja().setVisible(false);
                 Iznajmljivanje i = (Iznajmljivanje) Cordinator.getInstance().vratiParam("iznajmljivanje");
+                //ako je case izmeni onda sigurno mora forma vec da bude popunjena sa necim
+                //e pa samo vracamo ono iznajmljivanje koje smo uhvatili u hashmapu od ranije
                 dif.getTxtId().setText(i.getIdIznajmljivanja() + "");
                 dif.getTxtUkupanIznos().setText(i.getUkupanIznos() + "");
                 dif.getTxtOpisIznajmljivanja().setText(i.getOpisIznajmljivanja());
@@ -175,6 +183,8 @@ public class DodajIznajmljivanjeController {
                 dif.getBtnKreirajIznajmljivanje().setVisible(true);
                 dif.getBtnDodajStavkuIznajmljivanja().setVisible(true);
                 dif.getBtnAzuriraj().setVisible(false);
+                dif.getTxtId().setVisible(false);
+                dif.getLblId().setVisible(false);
                 break;
             default:
                 throw new AssertionError();

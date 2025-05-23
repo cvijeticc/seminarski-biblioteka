@@ -6,6 +6,7 @@ package cordinator;
 
 import domen.Iznajmljivanje;
 import domen.Radnik;
+import domen.StavkaIznajmljivanja;
 import forme.DodajCitaocaForma;
 import forme.DodajIznajmljivanjeForma;
 import forme.DodajKategorijuCitaocaForma;
@@ -23,6 +24,7 @@ import forme.PrikazKategorijaCitaocaForma;
 import forme.PrikazKnjigaForma;
 import forme.PrikazRadnikaForma;
 import forme.PrikazTerminaSmenaForma;
+import forme.model.ModelTabeleIznajmljivanje;
 import java.util.HashMap;
 import java.util.Map;
 import kontroleri.DodajCitaocaController;
@@ -70,6 +72,8 @@ public class Cordinator {
         parametri = new HashMap<>();
     }
 
+    
+
     public static Cordinator getInstance() {
         if (instance == null) {
             instance = new Cordinator();
@@ -106,8 +110,8 @@ public class Cordinator {
     }
 
     public void otvoriDodajStavkuIznajmljivanjaFormu(Iznajmljivanje iznajmljivnaje, DodajIznajmljivanjeController dic) {
-        dsiController = new DodajStavkuIznajmljivanjaController(new DodajStavkuIznajmljivanjaForma(), iznajmljivnaje, dic);
-        dsiController.otvoriFormu();
+        dsiController = new DodajStavkuIznajmljivanjaController(new DodajStavkuIznajmljivanjaForma(), iznajmljivnaje, dic, new ModelTabeleIznajmljivanje(null));
+        dsiController.otvoriFormu(FormaMod.DODAJ);
     }
 
     public Radnik getUlogovani() {
@@ -161,6 +165,8 @@ public class Cordinator {
     public void osveziFormuTerminSmene(){
         ptsController.osveziFormu();
     }
+    
+    
 
     public void otvoriDodajRadnikaFormu() {
         drController = new DodajRadnikaController(new DodajRadnikaForma());
@@ -226,6 +232,18 @@ public class Cordinator {
     Cordinator.getInstance().dodajParam("prikazTerminSmeneController", ptsController);
     ptsController.otvoriFormu();
 }
+
+    public void otvoriIzmeniStavkuIznajmljivanjeFormu() {
+        StavkaIznajmljivanja si =  (StavkaIznajmljivanja) 
+                Cordinator.getInstance().vratiParam("stavkaIznajmljivanja");
+        Iznajmljivanje i = new Iznajmljivanje();
+        i.setIdIznajmljivanja(si.getIdIznajmljivanje());
+        dsiController = new DodajStavkuIznajmljivanjaController(new DodajStavkuIznajmljivanjaForma(), 
+                i, null,null);
+        dsiController.otvoriFormu(FormaMod.IZMENI);
+    }
+
+    
 
 
     

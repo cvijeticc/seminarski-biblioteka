@@ -22,8 +22,6 @@ import domen.TerminSmene;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -204,6 +202,8 @@ public class Komunikacija {
 
     public void azurirajIznajmljivanje(Iznajmljivanje i) {
         Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_IZNAJMLJIVANJE, i);
+        System.out.println("📤 Šaljem zahtev za AZURIRAJ_IZNAJMLJIVANJE sa podacima: " + i);
+
         posiljalac.posalji(zahtev);
         Odgovor odg = (Odgovor) primalac.primi();
         if (odg.getOdgovor() == null) {
@@ -376,5 +376,43 @@ public class Komunikacija {
             System.out.println("Neuspešno ažuriran termin smene");
         }
     }
+
+    public void azurirajStavkuIznajmljivanja(StavkaIznajmljivanja si) {
+    Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_STAVKU_IZNAJMLJIVANJA, si);
+    posiljalac.posalji(zahtev);
+    Odgovor odg = (Odgovor) primalac.primi();
+
+    if (odg.getOdgovor() == null) {
+        System.out.println("Uspešno ažurirana stavka iznajmljivanja");
+        Cordinator.getInstance().osveziFormuIznajmljivanja(); 
+    } else {
+        System.out.println("Neuspešno ažurirana stavka iznajmljivanja");
+    }
+}
+
+    public boolean obrisiStavkuIznajmljivanja(StavkaIznajmljivanja stavka) {
+   
+        Zahtev zahtev = new Zahtev(Operacija.OBRISI_STAVKU_IZNAJMLJIVANJA, stavka);
+        posiljalac.posalji(zahtev);
+
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("✔ Stavka iznajmljivanja uspešno obrisana.");
+            return true;
+        } else {
+            System.out.println("❌ Brisanje stavke iznajmljivanja nije uspelo.");
+            ((Exception) odg.getOdgovor()).printStackTrace();
+            return false;
+        }
+    
+}
+
+
+    
+
+    
+
+    
+
 
 }
