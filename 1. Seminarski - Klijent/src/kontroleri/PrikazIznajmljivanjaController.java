@@ -210,7 +210,7 @@ public class PrikazIznajmljivanjaController {
 
                     Komunikacija.getInstance().azurirajIznajmljivanje(iznajmljivanje);
 
-                    pif.getTxtUkupanIznos().setText(String.valueOf(noviUkupanIznos));
+//                    pif.getTxtUkupanIznos().setText(String.valueOf(noviUkupanIznos));
 
                 }
             }
