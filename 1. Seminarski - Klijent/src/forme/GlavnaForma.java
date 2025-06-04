@@ -65,6 +65,7 @@ public class GlavnaForma extends javax.swing.JFrame {
         jMenuItem45 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         jMenuItem28 = new javax.swing.JMenuItem();
+        jMenuItem30 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem32 = new javax.swing.JMenuItem();
 
@@ -235,13 +236,21 @@ public class GlavnaForma extends javax.swing.JFrame {
 
         jMenu9.setText("Podešavanja softverskog sistema");
 
-        jMenuItem28.setText("Podešavanja");
+        jMenuItem28.setText("Baza");
         jMenuItem28.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem28ActionPerformed(evt);
             }
         });
         jMenu9.add(jMenuItem28);
+
+        jMenuItem30.setText("Port");
+        jMenuItem30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem30ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem30);
 
         jMenuBar1.add(jMenu9);
 
@@ -292,6 +301,8 @@ public class GlavnaForma extends javax.swing.JFrame {
 
     private void jMenuItem28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem28ActionPerformed
         // TODO add your handling code here:
+//        FormaKonfBaza baza = new FormaKonfBaza(this, false);
+//        baza.setVisible(true);
     }//GEN-LAST:event_jMenuItem28ActionPerformed
 
     private void jMenuItem32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem32ActionPerformed
@@ -349,6 +360,10 @@ public class GlavnaForma extends javax.swing.JFrame {
         Cordinator.getInstance().otvoriDodajIznajmljivanjeFormu();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void jMenuItem30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem30ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem30ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -380,6 +395,7 @@ public class GlavnaForma extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem28;
     private javax.swing.JMenuItem jMenuItem29;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem30;
     private javax.swing.JMenuItem jMenuItem32;
     private javax.swing.JMenuItem jMenuItem33;
     private javax.swing.JMenuItem jMenuItem34;

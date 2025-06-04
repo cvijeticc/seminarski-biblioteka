@@ -234,18 +234,18 @@ public class Cordinator {
 }
 
     public void otvoriIzmeniStavkuIznajmljivanjeFormu() {
-        StavkaIznajmljivanja si =  (StavkaIznajmljivanja) 
-                Cordinator.getInstance().vratiParam("stavkaIznajmljivanja");
-        Iznajmljivanje i = new Iznajmljivanje();
-        i.setIdIznajmljivanja(si.getIdIznajmljivanje());
-        dsiController = new DodajStavkuIznajmljivanjaController(new DodajStavkuIznajmljivanjaForma(), 
-                i, null,null);
-        dsiController.otvoriFormu(FormaMod.IZMENI);
-    }
-
-    
+    StavkaIznajmljivanja si = (StavkaIznajmljivanja)
+            Cordinator.getInstance().vratiParam("stavkaIznajmljivanja");
+    Iznajmljivanje i = new Iznajmljivanje();
+    i.setIdIznajmljivanja(si.getIdIznajmljivanje());
+    dsiController = new DodajStavkuIznajmljivanjaController(new DodajStavkuIznajmljivanjaForma(),
+            i,        null,null);
+    dsiController.otvoriFormu(FormaMod.IZMENI);
+}
 
 
     
 
+
+    
 }

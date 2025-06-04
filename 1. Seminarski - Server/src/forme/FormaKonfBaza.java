@@ -143,11 +143,12 @@ public class FormaKonfBaza extends javax.swing.JDialog {
         konfiguracija.Konfiguracija.getInstance().setProperty("password", password);
         
         konfiguracija.Konfiguracija.getInstance().sacuvajIzmene();
-        } catch (Exception e) {
-            e.printStackTrace();
+        
             JOptionPane.showMessageDialog(this, "Parametri su sacuvani", 
                     "Uspeh", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
+        } catch (Exception e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Greska, parametri nisu sacuvani", 
                     "Greska", JOptionPane.ERROR_MESSAGE);
         }

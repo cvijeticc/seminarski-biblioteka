@@ -24,9 +24,9 @@ public class Posiljalac {
     public void posalji(Object obj){//ne znamo da li ce da bude Zahtev ili Odg
         try {
         
-        ObjectOutputStream ois = new ObjectOutputStream(socket.getOutputStream());
-        ois.writeObject(obj);
-        ois.flush();
+        ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+        oos.writeObject(obj);
+        oos.flush();
         
         } catch (IOException ex) {
             ex.printStackTrace();

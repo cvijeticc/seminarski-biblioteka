@@ -22,6 +22,7 @@ import domen.TerminSmene;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import konfiguracija.Konfiguracija;
 
 /**
  *
@@ -47,7 +48,10 @@ public class Komunikacija {
 
     public void Konekcija() {
         try {
-            socket = new Socket("localhost", 9000);
+            int port = Integer.parseInt(Konfiguracija.getInstance().getProperty("port"));
+            System.out.println("Klijent pokrenut na portu " + port);
+            socket = new Socket("localhost", port);
+
             posiljalac = new Posiljalac(socket);
             primalac = new Primalac(socket);
         } catch (IOException ex) {
@@ -378,20 +382,20 @@ public class Komunikacija {
     }
 
     public void azurirajStavkuIznajmljivanja(StavkaIznajmljivanja si) {
-    Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_STAVKU_IZNAJMLJIVANJA, si);
-    posiljalac.posalji(zahtev);
-    Odgovor odg = (Odgovor) primalac.primi();
+        Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_STAVKU_IZNAJMLJIVANJA, si);
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
 
-    if (odg.getOdgovor() == null) {
-        System.out.println("Uspešno ažurirana stavka iznajmljivanja");
-        Cordinator.getInstance().osveziFormuIznajmljivanja(); 
-    } else {
-        System.out.println("Neuspešno ažurirana stavka iznajmljivanja");
+        if (odg.getOdgovor() == null) {
+            System.out.println("Uspešno ažurirana stavka iznajmljivanja");
+            Cordinator.getInstance().osveziFormuIznajmljivanja();
+        } else {
+            System.out.println("Neuspešno ažurirana stavka iznajmljivanja");
+        }
     }
-}
 
     public boolean obrisiStavkuIznajmljivanja(StavkaIznajmljivanja stavka) {
-   
+
         Zahtev zahtev = new Zahtev(Operacija.OBRISI_STAVKU_IZNAJMLJIVANJA, stavka);
         posiljalac.posalji(zahtev);
 
@@ -404,15 +408,7 @@ public class Komunikacija {
             ((Exception) odg.getOdgovor()).printStackTrace();
             return false;
         }
-    
-}
 
-
-    
-
-    
-
-    
-
+    }
 
 }

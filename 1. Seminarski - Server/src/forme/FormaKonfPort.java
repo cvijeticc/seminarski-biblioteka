@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author andri
  */
 public class FormaKonfPort extends javax.swing.JDialog {
-
+    private int port;
     /**
      * Creates new form FormaKonfPort
      */
@@ -76,7 +76,7 @@ public class FormaKonfPort extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSacuvajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacuvajActionPerformed
-        int port;
+       
         try {
             port = Integer.parseInt(txtPort.getText());
             
@@ -101,6 +101,17 @@ public class FormaKonfPort extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+
+    public int getPort() {
+        return port;
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public void setPort(int port) {
+        this.port = port;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

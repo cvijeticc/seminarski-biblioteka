@@ -43,6 +43,7 @@ public class PrikazIznajmljivanjaController {
     }
 
     public void pripremiFormu() {
+        pif.getBtnOsveziTabeluIznajmljivanja().setVisible(false);
         pif.getCmbCitalac().removeAllItems();
         pif.getCmbRadnik().removeAllItems();
         pif.getTxtOpisIznajmljivanja().setText("");
@@ -211,7 +212,6 @@ public class PrikazIznajmljivanjaController {
                     Komunikacija.getInstance().azurirajIznajmljivanje(iznajmljivanje);
 
 //                    pif.getTxtUkupanIznos().setText(String.valueOf(noviUkupanIznos));
-
                 }
             }
         });
@@ -238,4 +238,4 @@ public class PrikazIznajmljivanjaController {
         pif.getTxtUkupanIznos().setText(String.valueOf(novo.getUkupanIznos()));
     }
 
-}
+    }

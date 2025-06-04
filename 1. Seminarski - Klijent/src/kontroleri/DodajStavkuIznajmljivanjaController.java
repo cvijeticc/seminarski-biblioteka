@@ -252,18 +252,18 @@ public class DodajStavkuIznajmljivanjaController {
                             Iznajmljivanje iznajmljivanje = prikazController.getSelektovanoIznajmljivanje();
                             List<StavkaIznajmljivanja> stavke = Komunikacija.getInstance()
                                     .ucitajStavkuIznajmljivanja(iznajmljivanje.getIdIznajmljivanja());
-                            System.out.println("🔁 Računam novi ukupan iznos za iznajmljivanje ID: " + iznajmljivanje.getIdIznajmljivanja());
+                            System.out.println("Računam novi ukupan iznos za iznajmljivanje ID: " + iznajmljivanje.getIdIznajmljivanja());
 
                             double noviUkupan = stavke.stream()
                                     .mapToDouble(StavkaIznajmljivanja::getUkupanIznosStavke)
                                     .sum();
                             iznajmljivanje.setUkupanIznos(noviUkupan);
                             Komunikacija.getInstance().azurirajIznajmljivanje(iznajmljivanje);
-                            System.out.println("✅ Iznajmljivanje ažurirano u bazi: Novi ukupan iznos = " + iznajmljivanje.getUkupanIznos());
-                            System.out.println("📋 UI: Ažuriram red " + red + " u tabeli sa: " + iznajmljivanje);
+                            System.out.println("Iznajmljivanje ažurirano u bazi: Novi ukupan iznos = " + iznajmljivanje.getUkupanIznos());
+                            System.out.println("UI: Ažuriram red " + red + " u tabeli sa: " + iznajmljivanje);
 
                             prikazController.azurirajRedUTabeli(red, iznajmljivanje);
-                        }
+                            }
 
                     } else {
                         JOptionPane.showMessageDialog(dsif, "Greška: stavka iznajmljivanja nije pronađena.", "Greška", JOptionPane.ERROR_MESSAGE);

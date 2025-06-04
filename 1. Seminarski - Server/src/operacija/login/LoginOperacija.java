@@ -20,7 +20,7 @@ public class LoginOperacija extends ApstraktnaGenerickaOperacija {
     @Override
     protected void preduslovi(Object param) throws Exception {
         if (param == null || !(param instanceof Radnik)) {//param nije instance klase Citalac
-            throw new Exception("Sistem ne moze da obrise citaoca");
+            throw new Exception("Sistem ne moze da uloguje citaoca");
         }
     }
 
@@ -32,7 +32,7 @@ public class LoginOperacija extends ApstraktnaGenerickaOperacija {
         if (sviRadnici.contains((Radnik) param)) {
             for (Radnik r : sviRadnici) {
                 if (r.equals((Radnik) param)) {
-                    radnik = r;// to je radnik koji je inicijalizovan na pocetku metode
+                    radnik = r;// to je radnik koji je inicijalizovan na pocetku klase
                     return;
                 }
             }

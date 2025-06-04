@@ -211,10 +211,18 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem28">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pode&#x161;avanja"/>
+                <Property name="text" type="java.lang.String" value="Baza"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem28ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem30">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Port"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem30ActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

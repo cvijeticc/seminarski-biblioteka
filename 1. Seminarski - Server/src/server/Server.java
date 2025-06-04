@@ -9,6 +9,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import konfiguracija.Konfiguracija;
 import niti.ObradaKlijentskihZahteva;
 
 /**
@@ -24,7 +25,9 @@ public class Server extends Thread{
     public void run() {//pokreniServer
         
         try {
-            serverSoket = new ServerSocket(9000);
+            int port = Integer.parseInt( Konfiguracija.getInstance().getProperty("port"));
+            System.out.println("Server pokrenut na portu " + port);
+            serverSoket = new ServerSocket(port);
             while (!kraj) {
                 Socket s = serverSoket.accept();
                 System.out.println("Klijent je povezan");
