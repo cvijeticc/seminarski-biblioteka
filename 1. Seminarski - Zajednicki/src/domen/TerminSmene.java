@@ -57,7 +57,7 @@ public class TerminSmene implements ApstraktniDomenskiObjekat {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode() { //obaveza u javi ako redefeinisem equals onda moram i hascode
         int hash = 7;
         return hash;
     }

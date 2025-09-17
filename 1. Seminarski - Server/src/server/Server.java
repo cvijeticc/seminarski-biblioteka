@@ -27,9 +27,11 @@ public class Server extends Thread{
         try {
             int port = Integer.parseInt( Konfiguracija.getInstance().getProperty("port"));
             System.out.println("Server pokrenut na portu " + port);
-            serverSoket = new ServerSocket(port);
+            serverSoket = new ServerSocket(port);//kreira se serversocket na tom portu
+            //znaci na top portu da li ce se klijent povezati
             while (!kraj) {
-                Socket s = serverSoket.accept();
+                Socket s = serverSoket.accept();//ovde server stane i ceka da se klijent poveze
+                //dok se klijent ne poveze nista se nece desiti i tek kada se poveze onda idemo dalje
                 System.out.println("Klijent je povezan");
 
                 ObradaKlijentskihZahteva okz = new ObradaKlijentskihZahteva(s);
@@ -39,10 +41,6 @@ public class Server extends Thread{
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
     
-    
-    
-    
-        
 
     }
 

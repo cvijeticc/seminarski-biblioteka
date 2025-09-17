@@ -12,7 +12,8 @@ import repository.Repository;
  * @author andri
  */
 public interface DbRepository<T> extends Repository<T>{
-    default public void connect() throws Exception {
+    
+default public void connect() throws Exception {
     DbConnectionFactory.getInstance().getConnection();
 }
 

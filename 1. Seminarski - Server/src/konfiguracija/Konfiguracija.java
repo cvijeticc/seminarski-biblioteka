@@ -24,7 +24,12 @@ public class Konfiguracija {
         konfiguracija = new Properties();
 
         try {
-            konfiguracija.load(new FileInputStream("C:\\Users\\andri\\Documents\\NetBeansProjects\\3. Seminarski\\1. Seminarski - Server\\config\\config.properties"));
+//            konfiguracija.load(new FileInputStream(
+//                    "C:\\Users\\andri\\Documents\\Andrija\\NetBeansProjects\\4. Seminarski\\1. Seminarski - Server\\config\\config.properties"
+//            ));
+              konfiguracija.load(new FileInputStream("config/config.properties"));
+              //samo trazi tamo gde se nalazi folder config u kome se nalazi config.properties
+
         } catch (IOException ex) {
             ex.printStackTrace();
             Logger.getLogger(Konfiguracija.class.getName()).log(Level.SEVERE, null, ex);

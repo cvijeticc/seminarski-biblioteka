@@ -14,8 +14,11 @@ public class Konfiguracija {
     private Konfiguracija() {
         konfiguracija = new Properties();
         try {
-            konfiguracija.load(new FileInputStream("C:\\Users\\andri\\Documents\\"
-                    + "NetBeansProjects\\3. Seminarski\\1. Seminarski - Klijent\\config\\config.properties.txt"));
+//            konfiguracija.load(new FileInputStream(
+//                    "C:\\Users\\andri\\Documents\\Andrija\\NetBeansProjects\\4. Seminarski\\1. Seminarski - Klijent\\config\\config.properties.txt"
+//));
+        konfiguracija.load(new FileInputStream("config/config.properties.txt"));
+
         } catch (IOException ex) {
             ex.printStackTrace();
             Logger.getLogger(Konfiguracija.class.getName()).log(Level.SEVERE, null, ex);
