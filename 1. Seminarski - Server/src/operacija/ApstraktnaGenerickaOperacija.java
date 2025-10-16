@@ -19,6 +19,7 @@ public abstract class ApstraktnaGenerickaOperacija {
         this.broker = new DbRepositoryGeneric();
     }
 
+    /// ////////POCETAK TRNAKSCIJE
     public final void izvrsi(Object objekat, String kljuc) throws Exception {
     try {
         preduslovi(objekat);
@@ -26,6 +27,8 @@ public abstract class ApstraktnaGenerickaOperacija {
         izvrsiOperaciju(objekat, kljuc);
         potvrdiTransakciju();
     } catch (Exception e) {
+
+        /////////////AKO TRNAKSAICIJE FAIL ONDA ROLLBACK
         ponistiTransakciju();
         throw e;
     } finally {
