@@ -28,10 +28,11 @@ public class DodajIznajmljivanjeController {
 
     private final DodajIznajmljivanjeForma dif;
 //    private final DodajStavkuIznajmljivanjaForma dsif;
-    private Iznajmljivanje iznajmljivanje = new Iznajmljivanje();
+    private final Iznajmljivanje iznajmljivanje;
 
-    public DodajIznajmljivanjeController(DodajIznajmljivanjeForma dif) {
+    public DodajIznajmljivanjeController(DodajIznajmljivanjeForma dif, Iznajmljivanje iznajmljivanje) {
         this.dif = dif;
+        this.iznajmljivanje = iznajmljivanje;
         addActionListener();
     }
 
@@ -73,13 +74,12 @@ public class DodajIznajmljivanjeController {
             case IZMENI:
                 dif.getBtnKreirajIznajmljivanje().setVisible(false);
                 dif.getBtnDodajStavkuIznajmljivanja().setVisible(false);
-                Iznajmljivanje i = (Iznajmljivanje) Cordinator.getInstance().vratiParam("iznajmljivanje");
                 //ako je case izmeni onda sigurno mora forma vec da bude popunjena sa necim
                 //e pa samo vracamo ono iznajmljivanje koje smo uhvatili u hashmapu od ranije
-                dif.getTxtId().setText(i.getIdIznajmljivanja() + "");
-                dif.getTxtUkupanIznos().setText(i.getUkupanIznos() + "");
-                dif.getTxtOpisIznajmljivanja().setText(i.getOpisIznajmljivanja());
-                ModelTabeleStavkaIznajmljivanja mtsi = new ModelTabeleStavkaIznajmljivanja(i.getStavke());
+                dif.getTxtId().setText(iznajmljivanje.getIdIznajmljivanja() + "");
+                dif.getTxtUkupanIznos().setText(iznajmljivanje.getUkupanIznos() + "");
+                dif.getTxtOpisIznajmljivanja().setText(iznajmljivanje.getOpisIznajmljivanja());
+                ModelTabeleStavkaIznajmljivanja mtsi = new ModelTabeleStavkaIznajmljivanja(iznajmljivanje.getStavke());
                 dif.getTblStavkeIznajmljivanja().setModel(mtsi);
                 break;
             case DODAJ:

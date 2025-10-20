@@ -118,10 +118,10 @@ public class PrikazIznajmljivanjaController {
                     List<StavkaIznajmljivanja> stavkeIznajmljivanja = Komunikacija.getInstance().
                             ucitajStavkuIznajmljivanja(i.getIdIznajmljivanja());
                     i.setStavke(stavkeIznajmljivanja);
-                    Cordinator.getInstance().dodajParam("iznajmljivanje", i);
+//                    Cordinator.getInstance().dodajParam("iznajmljivanje", i);
                     //ovde hvatamo to iznajmljivanje koje cemo kasnije da koristimo 
                     //da popunimo formu za dodavanje ili azuriranje
-                    Cordinator.getInstance().otvoriIzmeniIznajmljivanjeFormu();
+                    Cordinator.getInstance().otvoriIzmeniIznajmljivanjeFormu(i);
 
                 }
 

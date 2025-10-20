@@ -105,7 +105,7 @@ public class Cordinator {
     }
 
     public void otvoriDodajIznajmljivanjeFormu() {
-        diController = new DodajIznajmljivanjeController(new DodajIznajmljivanjeForma());
+        diController = new DodajIznajmljivanjeController(new DodajIznajmljivanjeForma(), new Iznajmljivanje());
         diController.otvoriFormu(FormaMod.DODAJ);
     }
 
@@ -136,8 +136,8 @@ public class Cordinator {
         dcController.otvoriFormu(FormaMod.IZMENI);
     }
 
-    public void otvoriIzmeniIznajmljivanjeFormu() {
-        diController = new DodajIznajmljivanjeController(new DodajIznajmljivanjeForma());
+    public void otvoriIzmeniIznajmljivanjeFormu(Iznajmljivanje iznajmljivanje) {
+        diController = new DodajIznajmljivanjeController(new DodajIznajmljivanjeForma(), iznajmljivanje);
         diController.otvoriFormu(FormaMod.IZMENI);
     }
 
