@@ -31,23 +31,27 @@ public class AzurirajIznajmljivanjeSO extends ApstraktnaGenerickaOperacija {
         System.out.println("SERVER RECV: iznajmljivanjeId=" + i.getIdIznajmljivanja() + ", stavki=" + (i.getStavke()==null? "null" : i.getStavke().size()));
 
         // 1) UPDATE roditelja
+        double ukupanIznos = i.getStavke().stream().mapToDouble(StavkaIznajmljivanja::getUkupanIznosStavke).sum();
+        i.setUkupanIznos(ukupanIznos);
         broker.edit(i);
 
         // 2) OBRIŠI SVE STAVKE za tog roditelja (po FK)
         System.out.println("DELETE stavke for id=" + i.getIdIznajmljivanja());
-        
-        ((repository.db.impl.DbRepositoryGeneric) broker)
-                .deleteStavkeByIznajmljivanjeId(i.getIdIznajmljivanja());
 
         // 3) INSERT SVE TRENUTNE STAVKE iz objekta
         if (i.getStavke() != null) {
             for (StavkaIznajmljivanja si : i.getStavke()) {
+                ///DELETE
+                
+                broker.delete(si);
+                
+//                REINSERT
                 System.out.println("INSERT stavka: idIznaj=" + si.getIdIznajmljivanje() + ", rb=" + si.getRb() + ", total=" + si.getUkupanIznosStavke());
                 si.setIdIznajmljivanje(i.getIdIznajmljivanja());
                 if (si.getRb() == 0) {
                     si.setRb(1); // ako ti se desi nula, postavi nešto
                 }
-                ((repository.db.impl.DbRepositoryGeneric) broker).addStavkuIznajmljivanja(si);
+                broker.add(si);
             }
         }
     }

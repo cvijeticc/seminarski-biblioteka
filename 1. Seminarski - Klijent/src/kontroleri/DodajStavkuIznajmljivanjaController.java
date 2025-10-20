@@ -246,7 +246,6 @@ public class DodajStavkuIznajmljivanjaController {
 
                         // Poziv ka serveru za ažuriranje
 //                        Komunikacija.getInstance().azurirajStavkuIznajmljivanja(si);
-                        System.out.println(" Stavka iznajmljivanja azurirana u bazi: " + si);
 
                         JOptionPane.showMessageDialog(dsif, "Uspešno izmenjena stavka iznajmljivanja!", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                         dsif.dispose();
@@ -258,19 +257,19 @@ public class DodajStavkuIznajmljivanjaController {
                         if (red != -1) {
 
                             Iznajmljivanje iznajmljivanje = prikazController.getSelektovanoIznajmljivanje();
-                            List<StavkaIznajmljivanja> stavke = Komunikacija.getInstance()
-                                    .ucitajStavkuIznajmljivanja(iznajmljivanje.getIdIznajmljivanja());
-                            System.out.println("Računam novi ukupan iznos za iznajmljivanje ID: " + iznajmljivanje.getIdIznajmljivanja());
+//                            List<StavkaIznajmljivanja> stavke = Komunikacija.getInstance()
+//                                    .ucitajStavkuIznajmljivanja(iznajmljivanje.getIdIznajmljivanja());
+//                            System.out.println("Računam novi ukupan iznos za iznajmljivanje ID: " + iznajmljivanje.getIdIznajmljivanja());
 
-                            double noviUkupan = stavke.stream()
-                                    .mapToDouble(StavkaIznajmljivanja::getUkupanIznosStavke)
-                                    .sum();
-                            iznajmljivanje.setUkupanIznos(noviUkupan);//ove ja upisujem ukupan iznos u ekran DodajIznajmljivanjeForma
-                            iznajmljivanje.setStavke(stavke);
-                            iznajmljivanje.setUkupanIznos(noviUkupan);
-                            Komunikacija.getInstance().azurirajIznajmljivanje(iznajmljivanje);
-                            System.out.println("Iznajmljivanje ažurirano u bazi: Novi ukupan iznos = " + iznajmljivanje.getUkupanIznos());
-                            System.out.println("UI: Ažuriram red " + red + " u tabeli sa: " + iznajmljivanje);
+//                            double noviUkupan = stavke.stream()
+//                                    .mapToDouble(StavkaIznajmljivanja::getUkupanIznosStavke)
+//                                    .sum();
+//                            iznajmljivanje.setUkupanIznos(noviUkupan);//ove ja upisujem ukupan iznos u ekran DodajIznajmljivanjeForma
+//                            iznajmljivanje.setStavke(stavke);
+//                            iznajmljivanje.setUkupanIznos(noviUkupan);
+                            //Komunikacija.getInstance().azurirajIznajmljivanje(iznajmljivanje);
+//                            System.out.println("Iznajmljivanje ažurirano u bazi: Novi ukupan iznos = " + iznajmljivanje.getUkupanIznos());
+//                            System.out.println("UI: Ažuriram red " + red + " u tabeli sa: " + iznajmljivanje);
 
                             prikazController.azurirajRedUTabeli(red, iznajmljivanje);
                         }

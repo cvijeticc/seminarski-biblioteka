@@ -97,22 +97,5 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void addStavkuIznajmljivanja(ApstraktniDomenskiObjekat param) throws Exception {
-        //insert into pacijent (ime, prezime) values ('Marko','Markovic');
-        String upit = "INSERT INTO " + param.vratiNazivTabele() + " (" + param.vratiKoloneZaUbacivanje()
-                + ") VALUES ( " + param.vratiVrednostiZaUbacivanje() + " )";
-        System.out.println(upit);
-        Statement st = DbConnectionFactory.getInstance().getConnection().createStatement();
-        st.executeUpdate(upit);
-        st.close();
-    }
-    
-    public void deleteStavkeByIznajmljivanjeId(int idIznajmljivanja) throws Exception {
-    String upit = "DELETE FROM stavkaiznajmljivanja WHERE idIznajmljivanje=" + idIznajmljivanja;
-    Statement st = DbConnectionFactory.getInstance().getConnection().createStatement();
-    st.executeUpdate(upit);
-    st.close();
-}
-
 
 }
