@@ -38,8 +38,6 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblIznajmljivanja = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblStavke = new javax.swing.JTable();
         btnAzurirajIznajmljivanje = new javax.swing.JButton();
         btnObrisiStavku = new javax.swing.JButton();
         btnAzurirajStavku = new javax.swing.JButton();
@@ -71,19 +69,6 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(tblIznajmljivanja);
-
-        tblStavke.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(tblStavke);
 
         btnAzurirajIznajmljivanje.setText("Azuriraj");
 
@@ -125,44 +110,41 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(btnObrisiStavku)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAzurirajStavku))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(btnAzurirajIznajmljivanje)
+                                .addGap(40, 40, 40)
+                                .addComponent(btnOsveziTabeluIznajmljivanja)))
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(btnPretraziIznajmljivanje)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel5))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnObrisiStavku)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAzurirajStavku))
+                                .addGap(8, 8, 8)
+                                .addComponent(btnResetujPretragu)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(btnAzurirajIznajmljivanje)
-                                        .addGap(40, 40, 40)
-                                        .addComponent(btnOsveziTabeluIznajmljivanja)))
-                                .addGap(55, 55, 55)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(btnPretraziIznajmljivanje)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel5))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
-                                        .addComponent(btnResetujPretragu)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(38, 38, 38)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtUkupanIznos)
-                                            .addComponent(txtOpisIznajmljivanja)
-                                            .addComponent(cmbRadnik, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(cmbCitalac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtId))))))))
+                                    .addComponent(txtUkupanIznos)
+                                    .addComponent(txtOpisIznajmljivanja)
+                                    .addComponent(cmbRadnik, 0, 97, Short.MAX_VALUE)
+                                    .addComponent(cmbCitalac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtId))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -185,9 +167,7 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(135, 135, 135)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnObrisiStavku)
                             .addComponent(btnAzurirajStavku)))
@@ -246,9 +226,7 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblIznajmljivanja;
-    private javax.swing.JTable tblStavke;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtOpisIznajmljivanja;
     private javax.swing.JTextField txtUkupanIznos;
@@ -260,14 +238,6 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
 
     public void setTblIznajmljivanja(JTable tblIznajmljivanja) {
         this.tblIznajmljivanja = tblIznajmljivanja;
-    }
-
-    public JTable getTblStavke() {
-        return tblStavke;
-    }
-
-    public void setTblStavke(JTable tblStavke) {
-        this.tblStavke = tblStavke;
     }
 
     public JComboBox<Citalac> getCmbCitalac() {
