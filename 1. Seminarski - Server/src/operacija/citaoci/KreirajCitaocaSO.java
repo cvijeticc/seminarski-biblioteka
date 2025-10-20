@@ -16,7 +16,7 @@ public class KreirajCitaocaSO extends ApstraktnaGenerickaOperacija {
     @Override
     protected void preduslovi(Object param) throws Exception {
         if (param == null || !(param instanceof Citalac)) {//param nije instance(objekat) klase Citalac
-            throw new Exception("Sistem ne moze da obrise citaoca");
+            throw new Exception("Sistem ne moze da kreira citaoca");
         }
         
         Citalac c = (Citalac) param;

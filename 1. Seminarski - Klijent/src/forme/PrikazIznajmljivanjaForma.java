@@ -23,6 +23,8 @@ public class PrikazIznajmljivanjaForma extends javax.swing.JFrame {
      */
     public PrikazIznajmljivanjaForma() {
         initComponents();
+        btnObrisiStavku.setVisible(false);
+        btnAzurirajStavku.setVisible(false);
     }
 
     /**

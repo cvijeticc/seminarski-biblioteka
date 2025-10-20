@@ -24,7 +24,7 @@ public class ModelTabeleStavkaIznajmljivanja extends AbstractTableModel {
 //    private double iznosPoDanu;
 //    private double ukupanIznosStavke;
 //    private Knjiga idKnjiga;
-    String[] kolone = {"idIznajmljivanje", "rb", "opis stavke", "datumOd", "datumDo", "brojDana", "iznosPoDanu", "ukupanIznosStavke", "idKnjiga"};
+    String[] kolone = {"idIznajmljivanje", "rb", "opis stavke", "datumOd", "datumDo", "brojDana", "iznosPoDanu", "ukupanIznosStavke", "Knjiga"};
 
     public ModelTabeleStavkaIznajmljivanja(List<StavkaIznajmljivanja> lista) {
         this.lista = lista;

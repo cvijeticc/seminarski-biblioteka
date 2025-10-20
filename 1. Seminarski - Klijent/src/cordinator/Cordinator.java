@@ -54,7 +54,7 @@ public class Cordinator {
     private GlavnaFormaController glavnaFormaController;
     private PrikazCitalacaController pcController;
     private DodajCitaocaController dcController;
-    private Map<String, Object> parametri;
+    private Map<String, Object> parametri; //hashmapa kao lista vrenosti gde svaka vrednost ima svoj kljuc
     private PrikazIznajmljivanjaController piController;
     private DodajIznajmljivanjeController diController;
     private DodajStavkuIznajmljivanjaController dsiController;

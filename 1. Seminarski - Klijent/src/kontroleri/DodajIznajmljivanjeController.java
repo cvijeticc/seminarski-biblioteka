@@ -12,6 +12,7 @@ import domen.StavkaIznajmljivanja;
 import forme.DodajIznajmljivanjeForma;
 import forme.DodajStavkuIznajmljivanjaForma;
 import forme.FormaMod;
+import forme.model.ModelTabeleStavkaIznajmljivanja;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -51,7 +52,7 @@ public class DodajIznajmljivanjeController {
         dif.getCmbRadnici().removeAllItems();
         List<Radnik> radnici = Komunikacija.getInstance().ucitajRadnike();
         List<Citalac> citaoci = Komunikacija.getInstance().ucitajCitaoce();
-        
+
         for (Citalac c : citaoci) {
             dif.getCmbCitaoci().addItem(c);
         }
@@ -59,6 +60,38 @@ public class DodajIznajmljivanjeController {
             dif.getCmbRadnici().addItem(r);
         }
 
+//        List<StavkaIznajmljivanja> izvor
+//                = (iznajmljivanjeZaAzuriranje != null && iznajmljivanjeZaAzuriranje.getStavke() != null)
+//                ? iznajmljivanjeZaAzuriranje.getStavke()
+//                : iznajmljivanje.getStavke();
+//
+//        dif.getTblStavkeIznajmljivanja().setModel(new ModelTabeleStavkaIznajmljivanja(izvor));
+    }
+
+    private void pripremiFormu(FormaMod mod) {
+        switch (mod) {
+            case IZMENI:
+                dif.getBtnKreirajIznajmljivanje().setVisible(false);
+                dif.getBtnDodajStavkuIznajmljivanja().setVisible(false);
+                Iznajmljivanje i = (Iznajmljivanje) Cordinator.getInstance().vratiParam("iznajmljivanje");
+                //ako je case izmeni onda sigurno mora forma vec da bude popunjena sa necim
+                //e pa samo vracamo ono iznajmljivanje koje smo uhvatili u hashmapu od ranije
+                dif.getTxtId().setText(i.getIdIznajmljivanja() + "");
+                dif.getTxtUkupanIznos().setText(i.getUkupanIznos() + "");
+                dif.getTxtOpisIznajmljivanja().setText(i.getOpisIznajmljivanja());
+                ModelTabeleStavkaIznajmljivanja mtsi = new ModelTabeleStavkaIznajmljivanja(i.getStavke());
+                dif.getTblStavkeIznajmljivanja().setModel(mtsi);
+                break;
+            case DODAJ:
+                dif.getBtnKreirajIznajmljivanje().setVisible(true);
+                dif.getBtnDodajStavkuIznajmljivanja().setVisible(true);
+                dif.getBtnAzuriraj().setVisible(false);
+                dif.getTxtId().setVisible(false);
+                dif.getLblId().setVisible(false);
+                break;
+            default:
+                throw new AssertionError();
+        }
     }
 
     private void addActionListener() {
@@ -81,13 +114,13 @@ public class DodajIznajmljivanjeController {
             }
 
             private void kreiraj(ActionEvent e) {
-                
+
 //                ModelTabeleIznajmljivanje mti = (ModelTabeleIznajmljivanje) pif.getTblStavke().getModel();
                 //jer je pif null
                 DodajStavkuIznajmljivanjaController dsiController = new DodajStavkuIznajmljivanjaController(
                         new DodajStavkuIznajmljivanjaForma(),
-                        iznajmljivanje,
-                        DodajIznajmljivanjeController.this,
+                        iznajmljivanje,//ovde prosledjujemo objekat iznajmljivanje koji smo napravili
+                        DodajIznajmljivanjeController.this,//i prosledjujemo referencu na roditeljski kontroler
                         null);
 
                 if (validacija()) {
@@ -100,6 +133,24 @@ public class DodajIznajmljivanjeController {
                             "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                 }
 
+            }
+        });
+        
+        dif.addBtnAzurirajStavkuIznajmljivanjaActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int red = dif.getTblStavkeIznajmljivanja().getSelectedRow();
+                if (red == -1) {
+                    JOptionPane.showMessageDialog(dif, "Mora da bude selektovana neka stavka iznajmljivanja", "Greska", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    ModelTabeleStavkaIznajmljivanja mtsi = (ModelTabeleStavkaIznajmljivanja) dif.getTblStavkeIznajmljivanja().getModel();
+                    StavkaIznajmljivanja si = mtsi.getLista().get(red);
+                    Cordinator.getInstance().dodajParam("stavkaIznajmljivanja", si);
+                    //sada se u hashmapi nalazi si pod kljucem "stavkaIznajmljivanja"
+                    Cordinator.getInstance().otvoriIzmeniStavkuIznajmljivanjeFormu();
+
+
+                }
             }
         });
 
@@ -116,10 +167,11 @@ public class DodajIznajmljivanjeController {
                 Radnik radnik = (Radnik) dif.getCmbRadnici().getSelectedItem();
                 Citalac citalac = (Citalac) dif.getCmbCitaoci().getSelectedItem();
 
-                
                 Iznajmljivanje i = new Iznajmljivanje(id, ukupanIznos, opisIznajmljivanja, radnik, citalac, null);
+                i.setStavke(((ModelTabeleStavkaIznajmljivanja) dif.getTblStavkeIznajmljivanja().getModel()).getLista());
 
                 try {
+                    System.out.println("CLIENT SEND: iznajmljivanjeId=" + i.getIdIznajmljivanja() + ", stavki=" + (i.getStavke()==null? "null" : i.getStavke().size()));
                     Komunikacija.getInstance().azurirajIznajmljivanje(i);
                     JOptionPane.showMessageDialog(dif, "Uspešno azurirao iznajmljivanje!", "Obaveštenje", JOptionPane.INFORMATION_MESSAGE);
 
@@ -128,7 +180,7 @@ public class DodajIznajmljivanjeController {
                     PrikazIznajmljivanjaController prikazController
                             = (PrikazIznajmljivanjaController) Cordinator.getInstance().vratiParam("prikazIznajmljivanjaController");
 
-                    prikazController.osveziFormu(); 
+                    prikazController.osveziFormu();
 
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(dif, "Neuspešno azurirano iznajmljivanje!", "Greška", JOptionPane.ERROR_MESSAGE);
@@ -165,30 +217,8 @@ public class DodajIznajmljivanjeController {
 
     }
 
-    private void pripremiFormu(FormaMod mod) {
-        switch (mod) {
-            case IZMENI:
-                dif.getBtnKreirajIznajmljivanje().setVisible(false);
-                dif.getBtnDodajStavkuIznajmljivanja().setVisible(false);
-                Iznajmljivanje i = (Iznajmljivanje) Cordinator.getInstance().vratiParam("iznajmljivanje");
-                //ako je case izmeni onda sigurno mora forma vec da bude popunjena sa necim
-                //e pa samo vracamo ono iznajmljivanje koje smo uhvatili u hashmapu od ranije
-                dif.getTxtId().setText(i.getIdIznajmljivanja() + "");
-                dif.getTxtUkupanIznos().setText(i.getUkupanIznos() + "");
-                dif.getTxtOpisIznajmljivanja().setText(i.getOpisIznajmljivanja());
-//                dif.getCmbCitaoci().setEnabled(false);
-//                dif.getCmbRadnici().setEnabled(false);
-                break;
-            case DODAJ:
-                dif.getBtnKreirajIznajmljivanje().setVisible(true);
-                dif.getBtnDodajStavkuIznajmljivanja().setVisible(true);
-                dif.getBtnAzuriraj().setVisible(false);
-                dif.getTxtId().setVisible(false);
-                dif.getLblId().setVisible(false);
-                break;
-            default:
-                throw new AssertionError();
-        }
+    void popuniTabeluStavkama(ModelTabeleStavkaIznajmljivanja mtsi) {
+        dif.getTblStavkeIznajmljivanja().setModel(mtsi);
     }
 
 }

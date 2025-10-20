@@ -108,14 +108,16 @@ public class PrikazIznajmljivanjaController {
             public void actionPerformed(ActionEvent e) {
                 //otvori formu dodaj Iznajmljivanje 
                 int red = pif.getTblIznajmljivanja().getSelectedRow();
-                System.out.println("📌 Selektovani red u tabeli je: " + red);
+                System.out.println(" Selektovani red u tabeli je: " + red);
 
                 if (red == -1) {
                     JOptionPane.showMessageDialog(pif, "Mora da bude selektovano neko iznajmljivanje", "Greska", JOptionPane.ERROR_MESSAGE);
                 } else {
                     ModelTabeleIznajmljivanje mti = (ModelTabeleIznajmljivanje) pif.getTblIznajmljivanja().getModel();
                     Iznajmljivanje i = mti.getLista().get(red); // uzimamo onaj red selektovani
-
+                    List<StavkaIznajmljivanja> stavkeIznajmljivanja = Komunikacija.getInstance().
+                            ucitajStavkuIznajmljivanja(i.getIdIznajmljivanja());
+                    i.setStavke(stavkeIznajmljivanja);
                     Cordinator.getInstance().dodajParam("iznajmljivanje", i);
                     //ovde hvatamo to iznajmljivanje koje cemo kasnije da koristimo 
                     //da popunimo formu za dodavanje ili azuriranje
@@ -179,7 +181,7 @@ public class PrikazIznajmljivanjaController {
                 ModelTabeleIznajmljivanje modelIzn = (ModelTabeleIznajmljivanje) pif.getTblIznajmljivanja().getModel();
                 modelIzn.setLista(iznajmljivanja); // ažuriraj listu u modelu
                 modelIzn.fireTableDataChanged();   // obavesti tabelu
-                System.out.println("✅ Tabela uspešno osvežena");
+                System.out.println(" Tabela uspešno osvežena");
             }
         });
 
@@ -209,7 +211,7 @@ public class PrikazIznajmljivanjaController {
                             .sum();
                     iznajmljivanje.setUkupanIznos(noviUkupanIznos);
 
-                    Komunikacija.getInstance().azurirajIznajmljivanje(iznajmljivanje);
+                    //Komunikacija.getInstance().azurirajIznajmljivanje(iznajmljivanje);
 
 //                    pif.getTxtUkupanIznos().setText(String.valueOf(noviUkupanIznos));
                 }
@@ -231,7 +233,7 @@ public class PrikazIznajmljivanjaController {
     }
 
     public void azurirajRedUTabeli(int red, Iznajmljivanje novo) {
-        System.out.println("📋 UI: Ažuriram red " + red + " u tabeli sa: " + novo);
+        System.out.println("UI: Ažuriram red " + red + " u tabeli sa: " + novo);
 
         ModelTabeleIznajmljivanje mti = (ModelTabeleIznajmljivanje) pif.getTblIznajmljivanja().getModel();
         mti.azurirajRed(red, novo);

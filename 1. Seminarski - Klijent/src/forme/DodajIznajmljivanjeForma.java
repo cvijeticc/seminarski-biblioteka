@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -34,6 +35,7 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jLabel2 = new javax.swing.JLabel();
         txtUkupanIznos = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -47,6 +49,12 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
         lblId = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         btnAzuriraj = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblStavkeIznajmljivanja = new javax.swing.JTable();
+        btnAzurirajStavku = new javax.swing.JButton();
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,7 +77,22 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
 
         lblId.setText("Id ");
 
-        btnAzuriraj.setText("Azuriraj");
+        btnAzuriraj.setText("Azuriraj Iznajmljivanje");
+
+        tblStavkeIznajmljivanja.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblStavkeIznajmljivanja);
+
+        btnAzurirajStavku.setText("Izmeni Stavku");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,31 +104,34 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addGap(209, 209, 209)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbRadnici, 0, 1, Short.MAX_VALUE)
+                                    .addComponent(txtUkupanIznos)
+                                    .addComponent(txtOpisIznajmljivanja)
+                                    .addComponent(cmbCitaoci, 0, 1, Short.MAX_VALUE)
+                                    .addComponent(txtId)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnKreirajIznajmljivanje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnDodajStavkuIznajmljivanja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnKreirajIznajmljivanje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnDodajStavkuIznajmljivanja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(lblId))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbRadnici, 0, 130, Short.MAX_VALUE)
-                            .addComponent(txtUkupanIznos)
-                            .addComponent(txtOpisIznajmljivanja)
-                            .addComponent(cmbCitaoci, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtId))
-                        .addGap(216, 216, 216))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(btnAzuriraj)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(btnAzurirajStavku)
+                .addGap(333, 333, 333)
+                .addComponent(btnAzuriraj)
+                .addGap(0, 235, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,12 +160,16 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(cmbCitaoci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDodajStavkuIznajmljivanja)
-                    .addComponent(btnAzuriraj))
+                .addComponent(btnDodajStavkuIznajmljivanja)
                 .addGap(18, 18, 18)
                 .addComponent(btnKreirajIznajmljivanje)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAzurirajStavku)
+                    .addComponent(btnAzuriraj))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         pack();
@@ -171,15 +201,19 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAzuriraj;
+    private javax.swing.JButton btnAzurirajStavku;
     private javax.swing.JButton btnDodajStavkuIznajmljivanja;
     private javax.swing.JButton btnKreirajIznajmljivanje;
     private javax.swing.JComboBox<Citalac> cmbCitaoci;
     private javax.swing.JComboBox<Radnik> cmbRadnici;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblId;
+    private javax.swing.JTable tblStavkeIznajmljivanja;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtOpisIznajmljivanja;
     private javax.swing.JTextField txtUkupanIznos;
@@ -245,7 +279,25 @@ public class DodajIznajmljivanjeForma extends javax.swing.JFrame {
     public void setLblId(JLabel lblId) {
         this.lblId = lblId;
     }
-    
-    
+
+    public JTable getTblStavkeIznajmljivanja() {
+        return tblStavkeIznajmljivanja;
+    }
+
+    public void setTblStavkeIznajmljivanja(JTable tblStavkeIznajmljivanja) {
+        this.tblStavkeIznajmljivanja = tblStavkeIznajmljivanja;
+    }
+
+    public JButton getBtnAzurirajStavku() {
+        return btnAzurirajStavku;
+    }
+
+    public void setBtnAzurirajStavku(JButton btnAzurirajStavku) {
+        this.btnAzurirajStavku = btnAzurirajStavku;
+    }
+
+    public void addBtnAzurirajStavkuIznajmljivanjaActionListener(ActionListener al) {
+        btnAzurirajStavku.addActionListener(al);
+    }
 
 }

@@ -39,7 +39,7 @@ public class Konfiguracija {
 
     public static Konfiguracija getInstance() {
         if (instance == null) {
-            instance = new Konfiguracija();
+                instance = new Konfiguracija();
         }
         return instance;
     }
@@ -54,8 +54,10 @@ public class Konfiguracija {
 
     public void sacuvajIzmene() {
             try {
-            konfiguracija.store(new FileOutputStream("C:\\Users\\andri\\Documents\\NetBeansProjects\\3. Seminarski\\1. Seminarski - Server\\config\\config.properties"),null);
-        } catch (IOException ex) {
+//            konfiguracija.store(new FileOutputStream("C:\\Users\\andri\\Documents\\NetBeansProjects\\3. Seminarski\\1. Seminarski - Server\\config\\config.properties"),null);
+              konfiguracija.store(new FileOutputStream("config/config.properties"),null);
+            }     
+            catch (IOException ex) {
             ex.printStackTrace();
             Logger.getLogger(Konfiguracija.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -11,6 +11,7 @@ import domen.StavkaIznajmljivanja;
 import forme.DodajStavkuIznajmljivanjaForma;
 import forme.FormaMod;
 import forme.model.ModelTabeleIznajmljivanje;
+import forme.model.ModelTabeleStavkaIznajmljivanja;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -153,10 +154,17 @@ public class DodajStavkuIznajmljivanjaController {
                     int rb = iznajmljivanje.getStavke().size() + 1;
                     si.setRb(rb);
                     si.setUkupanIznosStavke(ukupanIznos);
+                    System.out.println("EDITED STAVKA: rb=" + si.getRb() + ", idIznaj=" + si.getIdIznajmljivanje() + ", totalStavke=" + si.getUkupanIznosStavke());
+                    System.out.println("PARENT LIST SIZE (posle izmene): " + iznajmljivanje.getStavke().size());
                     listaStavkiIznajmljivanja.add(si);
-
+                    ModelTabeleStavkaIznajmljivanja mtsi = new ModelTabeleStavkaIznajmljivanja(listaStavkiIznajmljivanja);
+                    dic.popuniTabeluStavkama(mtsi);
                     iznajmljivanje.setStavke(listaStavkiIznajmljivanja);
+                    //ovde Iznajmljivanje iz roditeljske forme dobija svoju listu Iznajmljivanja
                     dic.setUkupanIznos();
+                    //valjda nakon sto sam ja napisao setStavke() ovde gore znaci da sam ja u to
+                    //iznajmljivanje setovao stavke i onde su tu i u iznajmljivanju za dsic i za dic
+                    //i onda samo setUkupanIznos() i to je to
                 }
 
             }
@@ -210,7 +218,7 @@ public class DodajStavkuIznajmljivanjaController {
             }
 
             private void izmeni(ActionEvent e) {
-                System.out.println("▶ Pokrenuta izmena stavke iznajmljivanja");
+                System.out.println(" Pokrenuta izmena stavke iznajmljivanja");
                 try {
 
 //                     Prikupljanje podataka iz forme
@@ -237,8 +245,8 @@ public class DodajStavkuIznajmljivanjaController {
                         si.setIdKnjiga(selektovanaKnjiga);
 
                         // Poziv ka serveru za ažuriranje
-                        Komunikacija.getInstance().azurirajStavkuIznajmljivanja(si);
-                        System.out.println("✔ Stavka iznajmljivanja azurirana u bazi: " + si);
+//                        Komunikacija.getInstance().azurirajStavkuIznajmljivanja(si);
+                        System.out.println(" Stavka iznajmljivanja azurirana u bazi: " + si);
 
                         JOptionPane.showMessageDialog(dsif, "Uspešno izmenjena stavka iznajmljivanja!", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                         dsif.dispose();
@@ -257,13 +265,15 @@ public class DodajStavkuIznajmljivanjaController {
                             double noviUkupan = stavke.stream()
                                     .mapToDouble(StavkaIznajmljivanja::getUkupanIznosStavke)
                                     .sum();
+                            iznajmljivanje.setUkupanIznos(noviUkupan);//ove ja upisujem ukupan iznos u ekran DodajIznajmljivanjeForma
+                            iznajmljivanje.setStavke(stavke);
                             iznajmljivanje.setUkupanIznos(noviUkupan);
                             Komunikacija.getInstance().azurirajIznajmljivanje(iznajmljivanje);
                             System.out.println("Iznajmljivanje ažurirano u bazi: Novi ukupan iznos = " + iznajmljivanje.getUkupanIznos());
                             System.out.println("UI: Ažuriram red " + red + " u tabeli sa: " + iznajmljivanje);
 
                             prikazController.azurirajRedUTabeli(red, iznajmljivanje);
-                            }
+                        }
 
                     } else {
                         JOptionPane.showMessageDialog(dsif, "Greška: stavka iznajmljivanja nije pronađena.", "Greška", JOptionPane.ERROR_MESSAGE);

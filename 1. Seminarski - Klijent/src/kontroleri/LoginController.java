@@ -27,14 +27,21 @@ public class LoginController {
 
     private void addActionListener() {
         lf.loginAddActionListener(new ActionListener() {
+            //implementacija te metode se nalazi na dnu LoginForme
             @Override
             public void actionPerformed(ActionEvent e) {
                 prijava(e);
             }
 
             private void prijava(ActionEvent e) {
-                String ki = lf.getTxtusername().getText().trim();
+                String ki = lf.getTxtusername().getText().trim();//korisnicko ime
                 String pass = String.valueOf(lf.getPass().getPassword());
+                String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+
+//                if (!ki.matches(emailRegex)) {
+//                    JOptionPane.showMessageDialog(null, "Korisničko ime mora biti u formi e-mail adrese!");
+//                    return;
+//                }
 
                 Komunikacija.getInstance().Konekcija();
                 Radnik ulogovani = Komunikacija.getInstance().logIn(ki, pass);

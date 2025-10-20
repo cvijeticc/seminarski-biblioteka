@@ -35,19 +35,21 @@ public class ObradaKlijentskihZahteva extends Thread {
 
     public ObradaKlijentskihZahteva(Socket socket) {
         this.socket = socket;
-        posiljalac = new Posiljalac(socket);
-        primalac = new Primalac(socket);
+        posiljalac = new Posiljalac(socket);//znaci na tom soketu salji odgovor
+        primalac = new Primalac(socket);//na tom soketu primaj zahtev
     }
 
     @Override
     public void run() {
         while (!kraj) {
             try {
-                Zahtev zahtev = (Zahtev) primalac.primi();
-                Odgovor odgovor = new Odgovor();
+                Zahtev zahtev = (Zahtev) primalac.primi();//prvo preko soketa primam zahtev
+                Odgovor odgovor = new Odgovor();//onda pravimo ljusku odgovora koju cemo da 
+                //popunimo dole u zavisnoti od operacija (inicijalizujemo)
 
                 switch (zahtev.getOperacija()) {
                     case LOGIN:
+//ovde zahtev ima Operaciju i Parametar, prvo je LOGIN a drugo je Radnik                      
                         Radnik r = (Radnik) zahtev.getParametar();
                         r = Controller.getInstance().login(r);
                         odgovor.setOdgovor(r);
@@ -85,10 +87,10 @@ public class ObradaKlijentskihZahteva extends Thread {
                     case AZURIRAJ_IZNAJMLJIVANJE:
                         Iznajmljivanje i = (Iznajmljivanje) zahtev.getParametar();
                         Controller.getInstance().azurirajIznajmljivanje(i);
-                        odgovor.setOdgovor(odgovor);
-                        System.out.println("✔ Server: primljen zahtev za azuriranje: " + i);
-
+                        odgovor.setOdgovor("OK");  // umesto setOdgovor(odgovor)
+                        System.out.println(" Server: primljen zahtev za azuriranje: " + i);
                         break;
+
                     case UCITAJ_IZNAJMLJIVANJA:
                         List<Iznajmljivanje> iznajmljivanja = Controller.getInstance().ucitajIznajmljivanja();
                         System.out.println("Klasa obrada klijentskih zahteva: ");

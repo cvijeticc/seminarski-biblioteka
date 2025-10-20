@@ -64,6 +64,7 @@ public class Controller {
         operacija.izvrsi(r, null);
 
         System.out.println("Klasa Controller " + operacija.getRadnik());
+        //ovo ispisuje Klasa Controller i ime i prezime radnika koji je logovan
 
         return operacija.getRadnik();
 

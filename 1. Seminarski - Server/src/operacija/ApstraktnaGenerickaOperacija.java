@@ -14,19 +14,20 @@ import repository.db.impl.DbRepositoryGeneric;
  */
 public abstract class ApstraktnaGenerickaOperacija {
     protected final Repository broker;
-
+    
     public ApstraktnaGenerickaOperacija() {
         this.broker = new DbRepositoryGeneric();
     }
-
+    
     public final void izvrsi(Object objekat, String kljuc) throws Exception {
     try {
+        //template method pattern
         preduslovi(objekat);
         zapocniTransakciju();
         izvrsiOperaciju(objekat, kljuc);
-        potvrdiTransakciju();
+        potvrdiTransakciju();//commituj
     } catch (Exception e) {
-        ponistiTransakciju();
+        ponistiTransakciju();//rollbackuj
         throw e;
     } finally {
 //        ugasiKonekciju();

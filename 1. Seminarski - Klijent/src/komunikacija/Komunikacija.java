@@ -52,8 +52,8 @@ public class Komunikacija {
             System.out.println("Klijent pokrenut na portu " + port);
             socket = new Socket("localhost", port);
 
-            posiljalac = new Posiljalac(socket);
-            primalac = new Primalac(socket);
+            posiljalac = new Posiljalac(socket);//posiljalac ce da salje kroz ta vrata
+            primalac = new Primalac(socket);//prmalac ce da prima kroz ta vrata
         } catch (IOException ex) {
             System.out.println("Server nije povezan");
         }
@@ -64,11 +64,11 @@ public class Komunikacija {
         Radnik r = new Radnik();
         r.setKorisnickoIme(ki);
         r.setSifra(pass);
-        Zahtev zahtev = new Zahtev(Operacija.LOGIN, r);
+        Zahtev zahtev = new Zahtev(Operacija.LOGIN, r);//napravljen zahtev
         //sad saljemo zahtev
-        posiljalac.posalji(zahtev); /////////////ovde je bila greska
+        posiljalac.posalji(zahtev); //ovde ga saljemo
 
-        Odgovor odg = (Odgovor) primalac.primi();
+        Odgovor odg = (Odgovor) primalac.primi();//ovde primamo odgovor
         r = (Radnik) odg.getOdgovor();
         return r;
 
@@ -206,16 +206,17 @@ public class Komunikacija {
 
     public void azurirajIznajmljivanje(Iznajmljivanje i) {
         Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_IZNAJMLJIVANJE, i);
-        System.out.println("📤 Šaljem zahtev za AZURIRAJ_IZNAJMLJIVANJE sa podacima: " + i);
+        System.out.println(" Šaljem zahtev za AZURIRAJ_IZNAJMLJIVANJE sa podacima: " + i);
 
         posiljalac.posalji(zahtev);
         Odgovor odg = (Odgovor) primalac.primi();
-        if (odg.getOdgovor() == null) {
+        if (odg.getOdgovor() != null) {
             System.out.println("Uspesno azurirano iznajmljivanje");
             Cordinator.getInstance().osveziFormuIznajmljivanja();
         } else {
             System.out.println("Neuspesno azurirano iznajmljivanje");
         }
+
     }
 
     public void dodajRadnika(Radnik r) {
@@ -401,7 +402,7 @@ public class Komunikacija {
 
         Odgovor odg = (Odgovor) primalac.primi();
         if (odg.getOdgovor() == null) {
-            System.out.println("✔ Stavka iznajmljivanja uspešno obrisana.");
+            System.out.println(" Stavka iznajmljivanja uspešno obrisana.");
             return true;
         } else {
             System.out.println("❌ Brisanje stavke iznajmljivanja nije uspelo.");

@@ -33,7 +33,7 @@ public class LoginOperacija extends ApstraktnaGenerickaOperacija {
             for (Radnik r : sviRadnici) {
                 if (r.equals((Radnik) param)) {
                     radnik = r;// to je radnik koji je inicijalizovan na pocetku klase
-                    return;
+                    return;//samo smo hteli da u radnik promenjivoj upisemo tog ranika koji je param
                 }
             }
 

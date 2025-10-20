@@ -44,14 +44,14 @@ public class LoginForma extends javax.swing.JFrame {
 
         jLabel2.setText("password");
 
-        txtusername.setText("majam");
+        txtusername.setText("mmc");
         txtusername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtusernameActionPerformed(evt);
             }
         });
 
-        pass.setText("secure123");
+        pass.setText("mmc123");
 
         btnUlogujSe.setText("uloguj se");
         btnUlogujSe.addActionListener(new java.awt.event.ActionListener() {

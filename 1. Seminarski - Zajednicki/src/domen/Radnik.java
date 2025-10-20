@@ -21,6 +21,7 @@ public class Radnik implements ApstraktniDomenskiObjekat {
     private String email;
     private String korisnickoIme;
     private String sifra;
+//    private List<TerminSmene> ListaTerminaSmena;
 
     public Radnik() {
     }

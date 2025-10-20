@@ -45,7 +45,7 @@ public class AzurirajStavkuIznajmljivanjaSO extends ApstraktnaGenerickaOperacija
     @Override
     protected void izvrsiOperaciju(Object param, String kljuc) throws Exception {
         StavkaIznajmljivanja si = (StavkaIznajmljivanja) param;
-        System.out.println("☐ SQL UPDATE: " + si.vratiVrednostiZaIzmenu());
+        System.out.println("SQL UPDATE: " + si.vratiVrednostiZaIzmenu());
 
         broker.edit((StavkaIznajmljivanja) param);
     }

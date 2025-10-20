@@ -23,20 +23,21 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
 
     @Override
     public List<ApstraktniDomenskiObjekat> getAll(ApstraktniDomenskiObjekat param, String uslov) throws Exception {
-        List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
+        List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();   //param je npr radnik odredjeni
 
         String upit;
 
         upit = "SELECT * FROM " + param.vratiNazivTabele();
-
+              //SELECT * FROM citaoci
         if (uslov != null) {
             upit += uslov;
         }
         System.out.println(upit);
         Statement st = DbConnectionFactory.getInstance().getConnection().createStatement();
-        ResultSet rs = st.executeQuery(upit);
-        lista = param.vratiListu(rs);
-
+        ResultSet rs = st.executeQuery(upit);//u rs se nalaze svi radnici iz baze sa svim kolonama
+        lista = param.vratiListu(rs);//ovde param je odredjeni radnik i lista je lista svih ranika iz rs
+        //param je ApstraktniDomentskiObjekat i u zavisnosti od toga koji je parametar ta implementacija
+        //metode vratiListu ce da se dogodi
         rs.close();
         st.close();
         return lista;
@@ -105,5 +106,13 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
         st.executeUpdate(upit);
         st.close();
     }
+    
+    public void deleteStavkeByIznajmljivanjeId(int idIznajmljivanja) throws Exception {
+    String upit = "DELETE FROM stavkaiznajmljivanja WHERE idIznajmljivanje=" + idIznajmljivanja;
+    Statement st = DbConnectionFactory.getInstance().getConnection().createStatement();
+    st.executeUpdate(upit);
+    st.close();
+}
+
 
 }

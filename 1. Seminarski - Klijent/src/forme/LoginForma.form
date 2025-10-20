@@ -76,7 +76,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtusername">
       <Properties>
-        <Property name="text" type="java.lang.String" value="majam"/>
+        <Property name="text" type="java.lang.String" value="mmc"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtusernameActionPerformed"/>
@@ -84,7 +84,7 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="pass">
       <Properties>
-        <Property name="text" type="java.lang.String" value="secure123"/>
+        <Property name="text" type="java.lang.String" value="mmc123"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnUlogujSe">

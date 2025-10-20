@@ -77,6 +77,11 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
         jLabel9.setText("Knjiga");
 
         btnDodaj.setText("Dodaj");
+        btnDodaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajActionPerformed(evt);
+            }
+        });
 
         cmbKnjige.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,6 +193,10 @@ public class DodajStavkuIznajmljivanjaForma extends javax.swing.JFrame {
     private void txtIdIznajmljivanjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdIznajmljivanjaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdIznajmljivanjaActionPerformed
+
+    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDodajActionPerformed
 
     /**
      * @param args the command line arguments
