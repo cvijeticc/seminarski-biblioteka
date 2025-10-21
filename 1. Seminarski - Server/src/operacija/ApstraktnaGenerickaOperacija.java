@@ -30,7 +30,8 @@ public abstract class ApstraktnaGenerickaOperacija {
         ponistiTransakciju();//rollbackuj
         throw e;
     } finally {
-//        ugasiKonekciju();
+       ugasiKonekciju();//disconnectuj
+
     }
 }
 
@@ -51,7 +52,7 @@ public abstract class ApstraktnaGenerickaOperacija {
         ((DbRepository) broker).rollback();
     }
 
-    private void ugasiKonekciju() throws Exception {
+    private void ugasiiKonekciju() throws Exception {
         ((DbRepository) broker).disconnect();
     }
 
@@ -59,6 +60,15 @@ public abstract class ApstraktnaGenerickaOperacija {
 
 
     
+    
+    
+    
+    
+    
+    
+    
+    private void ugasiKonekciju() throws Exception {
+    }
 
     
     
